@@ -1,0 +1,424 @@
+/*  Open Heart
+    a Sega Genesis/Mega Drive multi-mod using Raspberry Pi Pico
+    or compatible RP2040 board
+
+    Region switching via controller or reset button:
+    Hold A, B, or C at startup*, or press reset 3 times quickly to
+    cycle Japan > Americas > Europe > Japan...
+    The last selected region is saved to internal flash and used
+    until it is changed.
+
+    In-game reset: Hold A+B+C+Start
+
+    Overclocking: Hold Start at startup*
+
+    * hold for 2 seconds within 10 seconds of power-on
+    
+    This code is not very pretty or good, but it is tested and it
+    does work. I have tried to make up for the bad code with
+    explanatory comments. */
+
+#include <stdio.h>
+#include <string.h>
+#include "pico/stdlib.h"
+#include "pico/flash.h"
+#include "hardware/flash.h"
+#include "hardware/pll.h"
+#include "hardware/clocks.h"
+#include "hardware/pwm.h"
+#include "hardware/gpio.h"
+
+#define GPIO_HALT_PIN 10        // !HALT pin of 68K
+#define GPIO_A_B_PIN 11         // Wired to controller port 1 pin 6
+#define GPIO_S_C_PIN 12         // Wired to controller port 1 pin 9
+#define GPIO_SELECT_PIN 13      // Wired to controller port 1 pin 7
+#define GPIO_CART_ENABLE_PIN 14 // !CART_CE, cart port pin B17. Non TMSS consoles can wire to ground.
+#define GPIO_VRES_PIN 15        // !VRES
+#define GPIO_STANDARD_PIN 16    // low = PAL, high = NTSC
+#define GPIO_REGION_PIN 17      // low = Japan, high = Export
+#define GPIO_VCLK_PIN 20        // CPU clock, for overclocking, optional
+#define GPIO_MCLK_PIN 21        // To master oscillator clock in
+
+// just for reference
+#define MCLK_NTSC 53700000 // on spec is 53693175
+#define MCLK_PAL 53200000  // on spec is 53203424
+
+#define FLASH_TARGET_OFFSET (256 * 1024)
+
+enum {
+    INVALID = 0x80,
+    JAPAN,
+    AMERICAS,
+    EUROPE
+};
+
+const uint8_t *nvdata = (const uint8_t *) (XIP_BASE + FLASH_TARGET_OFFSET);
+uint8_t config[FLASH_PAGE_SIZE];
+
+volatile uint32_t a_btn, b_btn, c_btn, s_btn;
+volatile uint32_t a_prev, b_prev, c_prev, s_prev;
+volatile uint32_t a_held, b_held, c_held, s_held;
+
+uint32_t request = 0;
+
+volatile uint32_t reset_press = 0;
+volatile uint32_t reset_timeout = 0;
+uint32_t region_swap = 0;
+
+uint32_t boot_time_ms = 0;
+
+// FLASH stuff lifted from pico examples
+// This function will be called when it's safe to call flash_range_erase
+static void call_flash_range_erase(void *param) {
+    uint32_t offset = (uint32_t)param;
+    flash_range_erase(offset, FLASH_SECTOR_SIZE);
+}
+
+// This function will be called when it's safe to call flash_range_program
+static void call_flash_range_program(void *param) {
+    uint32_t offset = ((uintptr_t*)param)[0];
+    const uint8_t *data = (const uint8_t *)((uintptr_t*)param)[1];
+    flash_range_program(offset, data, FLASH_PAGE_SIZE);
+}
+
+void read_flash()
+{
+    memcpy(config, nvdata, FLASH_PAGE_SIZE);
+}
+
+void write_flash()
+{
+    int rc; 
+    rc = flash_safe_execute(call_flash_range_erase, (void*)FLASH_TARGET_OFFSET, UINT32_MAX);
+    hard_assert(rc == PICO_OK);
+    
+    uintptr_t params[] = { FLASH_TARGET_OFFSET, (uintptr_t)config};
+    rc = flash_safe_execute(call_flash_range_program, params, UINT32_MAX);
+    hard_assert(rc == PICO_OK);
+}
+
+// MCLK is derived from running the pll_sys
+// at 2x MCLK frequency and dividing it by 2.
+// The pll values were calculated with vcocalc.py
+void set_mclk_ntsc() {
+    set_sys_clock_pll(1074 * MHZ, 5, 2); // = 107.4MHz
+    // divide by 2: 53.7MHz
+    clock_gpio_init(GPIO_MCLK_PIN,
+        CLOCKS_CLK_GPOUT0_CTRL_AUXSRC_VALUE_CLKSRC_PLL_SYS, 2); 
+}
+
+void set_mclk_pal() {
+    set_sys_clock_pll(1596 * MHZ, 3, 5); // = 106.4MHz
+    // divide by 2: 53.2MHz
+    clock_gpio_init(GPIO_MCLK_PIN, 
+        CLOCKS_CLK_GPOUT0_CTRL_AUXSRC_VALUE_CLKSRC_PLL_SYS, 2);
+}
+
+// VCLK is generated with PWM which is clocked to pll_sys (the MCLK source)
+void set_vclk_div(uint32_t div) {
+    gpio_set_function(GPIO_VCLK_PIN, GPIO_FUNC_PWM);
+
+    uint32_t slice = pwm_gpio_to_slice_num(GPIO_VCLK_PIN);
+
+    // Set up a 50% PWM based on the system clock/MCLK speed
+    // and the specified divider
+    pwm_set_clkdiv_int_frac(slice, div, 0);
+    pwm_set_clkdiv_mode(slice, PWM_DIV_FREE_RUNNING);
+    pwm_set_phase_correct(slice, false);
+    pwm_set_wrap(slice, 1);
+    pwm_set_chan_level(slice, pwm_gpio_to_channel(GPIO_VCLK_PIN), 1);
+    pwm_set_enabled(slice, true);
+}
+
+// Set clock & jumpers for regions
+void set_japan()
+{
+    set_mclk_ntsc();
+    set_vclk_div(7);
+    gpio_put(GPIO_STANDARD_PIN, true);
+    gpio_put(GPIO_REGION_PIN, false);
+}
+
+void set_americas()
+{
+    set_mclk_ntsc();
+    set_vclk_div(7);
+    gpio_put(GPIO_STANDARD_PIN, true);
+    gpio_put(GPIO_REGION_PIN, true);
+}
+
+void set_europe()
+{
+    set_mclk_pal();
+    set_vclk_div(7);
+    gpio_put(GPIO_STANDARD_PIN, false);
+    gpio_put(GPIO_REGION_PIN, true);
+}
+
+// The HALT/RESET lines are open collector and
+// need to be asserted in this particular way
+// CPU halt
+void halt_on() {
+    gpio_set_dir(GPIO_HALT_PIN, GPIO_OUT);
+    gpio_put(GPIO_HALT_PIN, false);
+    sleep_ms(10); // for good measure
+}
+
+void halt_off() {
+    sleep_ms(10);
+    gpio_set_dir(GPIO_HALT_PIN, GPIO_IN);
+}
+
+// Holds VRES down
+void reset_on() {
+    gpio_set_dir(GPIO_VRES_PIN, GPIO_OUT);
+    gpio_put(GPIO_VRES_PIN, false);
+}
+
+void reset_off() {
+    gpio_set_dir(GPIO_VRES_PIN, GPIO_IN);
+}
+
+// Reset cycle. According to spritesmind, the vdp
+// asserts VRES for about 16ms on a reset button press 
+void reset_genesis()
+{
+    reset_on();
+    sleep_ms(16);
+    reset_off();
+    reset_press = 0;
+}
+
+// ISR to read controller & reset button
+// Relies on a game to toggle the select pin so
+// that we don't interfere with input
+void read_inputs(uint gpio, uint32_t events) {
+    if(gpio == GPIO_SELECT_PIN) // when the select pin changes
+    {
+        if(events & GPIO_IRQ_EDGE_FALL) { // A & Start buttons
+            a_prev = a_btn;
+            s_prev = s_btn;
+            a_btn = !gpio_get(GPIO_A_B_PIN);
+            s_btn = !gpio_get(GPIO_S_C_PIN);
+            a_held = a_btn & a_prev;
+            s_held = s_btn & s_prev;
+        }
+        if(events & GPIO_IRQ_EDGE_RISE) { // B & C buttons
+            b_prev = b_btn;
+            c_prev = c_btn;
+            b_btn = !gpio_get(GPIO_A_B_PIN);
+            c_btn = !gpio_get(GPIO_S_C_PIN);
+            b_held = b_btn & b_prev;
+            c_held = c_btn & c_prev;     
+        }
+    }
+
+    // Reset input
+    // Which is why we have this, most region error screens
+    // don't read the controller
+    if(gpio == GPIO_VRES_PIN && (events & GPIO_IRQ_EDGE_FALL))
+    {
+        reset_press++;
+        if(reset_press == 1) {
+            reset_timeout = 0;
+        }
+    }
+}
+
+int main() {
+    reset_on();
+    // Do init while reset held down
+
+    // Set up gpio's
+    // VRES
+    gpio_init(GPIO_VRES_PIN);
+
+    // HALT
+    gpio_init(GPIO_HALT_PIN);
+
+    // !CART_CE
+    gpio_init(GPIO_CART_ENABLE_PIN);
+    gpio_set_dir(GPIO_CART_ENABLE_PIN, GPIO_IN);
+
+    // Japan/Export
+    gpio_init(GPIO_REGION_PIN);
+    gpio_set_dir(GPIO_REGION_PIN, GPIO_OUT);
+    
+    // PAL/NTSC
+    gpio_init(GPIO_STANDARD_PIN);
+    gpio_set_dir(GPIO_STANDARD_PIN, GPIO_OUT);
+
+    // Controller pin 6
+    gpio_init(GPIO_A_B_PIN);
+    gpio_set_dir(GPIO_A_B_PIN, GPIO_IN);
+
+    // Controller pin 9
+    gpio_init(GPIO_S_C_PIN);
+    gpio_set_dir(GPIO_S_C_PIN, GPIO_IN);
+
+    // Board LED
+    gpio_init(PICO_DEFAULT_LED_PIN);
+    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+
+    // Room for experimentation: clock signal quality
+    gpio_set_drive_strength(GPIO_MCLK_PIN, GPIO_DRIVE_STRENGTH_2MA);
+    gpio_set_slew_rate(GPIO_MCLK_PIN, GPIO_SLEW_RATE_SLOW);
+    gpio_set_drive_strength(GPIO_VCLK_PIN, GPIO_DRIVE_STRENGTH_2MA);
+    gpio_set_slew_rate(GPIO_VCLK_PIN, GPIO_SLEW_RATE_SLOW);
+
+    // Controller pin 7 & install input handler
+    gpio_init(GPIO_SELECT_PIN);
+    gpio_set_irq_enabled_with_callback(GPIO_SELECT_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &read_inputs);
+    // Also handles VRES (reset button)
+    gpio_set_irq_enabled_with_callback(GPIO_VRES_PIN, GPIO_IRQ_EDGE_FALL, true, &read_inputs);
+
+    // Restore last setting
+    read_flash();
+
+    // Set region & MCLK
+    switch(config[0]) {
+        case JAPAN:
+            set_japan();
+            break;
+        case AMERICAS:
+            set_americas();
+            break;
+        case EUROPE:
+            set_europe();
+            break;
+        default:
+            set_americas();
+            config[0] = AMERICAS;
+            config[1] = 0;
+            write_flash();
+            break;
+    }
+
+    // Release reset
+    reset_off();
+
+    // TMSS skip :)
+    // aka "PRODUCED BY OR UNDER LICENSE FROM SEGA ENTERPRISES LTD."
+    // When the genesis boots, it boots from an internal rom with the cartridge
+    // slot unmapped and copies a small security program to ram. In order to check
+    // the header on the cartridge, it has to swap it in to read it for a very short
+    // time. When this happens, the !CART_CE signal is asserted. By waiting for this to
+    // happen and *immediately* resetting the CPU within the *very* short time the
+    // cart is in the address space, the 68000 will reset with the cart mapped in and
+    // run from the cart just like a console without it.
+    // If this fails, TMSS will run as normal and our code will continue, because
+    // !CART_CE will also go low when the TMSS is done.
+    // This trick could probably be made more robust by underclocking the CPU first,
+    // but the MCU seems fast enough for it to work reliably.
+    while(gpio_get(GPIO_CART_ENABLE_PIN));
+    reset_genesis();
+    gpio_deinit(GPIO_CART_ENABLE_PIN);
+
+    // Setup OK
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
+
+    // Clock how long we took to boot
+    boot_time_ms = to_ms_since_boot(get_absolute_time());
+
+    // Main loop, check for controller hotkeys
+    for(;;) {
+        uint32_t ms_on = to_ms_since_boot(get_absolute_time()) - boot_time_ms;
+
+        uint32_t reset_req = 0;
+        uint32_t region_req = 0;
+        uint32_t oc_req = 0;
+
+        // Region/standard switch
+        if(a_held && b_held && c_held && s_held) {
+            // IGR: A+B+C+Start for 1 second resets
+            while(a_held && b_held && c_held && s_held) {
+                sleep_ms(1);
+                reset_req++;
+                if(reset_req == 1000) {
+                    reset_genesis();
+                    reset_press = 0;
+                }
+            }
+        } else if(ms_on < 10000) {  // Within 10 sec of power on hold for 2 sec:
+            if(s_held) {
+                while(s_held) {
+                    sleep_ms(1);
+                    oc_req++;
+                    if(oc_req == 2000) {
+                        halt_on();
+                        set_vclk_div(5); // MCLK / 5 seems to be a good overclock
+                        halt_off();
+                        gpio_put(PICO_DEFAULT_LED_PIN, false);
+                    }
+                }
+            } else if(a_held) {         // A button: Japan
+                while(a_held) {
+                    sleep_ms(1);
+                    region_req++;
+                    if(region_req == 2000) {
+                        set_japan();
+                        config[0] = JAPAN;
+                        write_flash();
+                        reset_genesis();
+                    }
+                }
+            } else if (b_held) {        // B button: Americas
+                while(b_held) {
+                    sleep_ms(1);
+                    region_req++;
+                    if(region_req == 2000) {
+                        set_americas();
+                        config[0] = AMERICAS;
+                        write_flash();
+                        reset_genesis();
+                    }
+                }
+            } else if (c_held) {        // C button: Europe & 50Hz
+                while(c_held) {
+                    sleep_ms(1);
+                    region_req++;
+                    if(region_req == 2000) {
+                        set_europe();
+                        config[0] = EUROPE;
+                        write_flash();
+                        reset_genesis();
+                    }
+                }
+            }
+        }
+
+        // Swap region with reset button
+        // Press Reset 3x within 1 sec of each other to switch to the next
+        // region: Japan > Americas > Europe > Japan ...
+        if(reset_timeout >= 3000) {
+             reset_press = 0;
+        }
+
+        if(reset_press >= 3 && reset_timeout < 3000) {
+            region_swap++;
+            region_swap %= 3;
+            switch(region_swap) {
+                case 0:
+                    set_japan();
+                    config[0] = JAPAN;
+                break;
+                case 1:
+                    set_americas();
+                    config[0] = AMERICAS;
+                break;
+
+                case 2:
+                    set_europe();
+                    config[0] = EUROPE;
+                break;
+            }
+            write_flash();
+            reset_genesis();
+            reset_press = 0;
+        }
+
+        sleep_ms(1);
+        reset_timeout++;
+        request++;
+    }   
+}
