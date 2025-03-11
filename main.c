@@ -28,6 +28,7 @@
 #include "hardware/pwm.h"
 #include "hardware/gpio.h"
 
+#define GPIO_OC_LED_PIN 1
 #define GPIO_HALT_PIN 10        // !HALT pin of 68K
 #define GPIO_A_B_PIN 11         // Wired to controller port 1 pin 6
 #define GPIO_S_C_PIN 12         // Wired to controller port 1 pin 9
@@ -39,9 +40,10 @@
 #define GPIO_VCLK_PIN 20        // CPU clock, for overclocking, optional
 #define GPIO_MCLK_PIN 21        // To master oscillator clock in
 
-// just for reference
-#define MCLK_NTSC 53700000 // on spec is 53693175
-#define MCLK_PAL 53200000  // on spec is 53203424
+#define PAD_A (1 << 0)
+#define PAD_B (1 << 1)
+#define PAD_S (1 << 2)
+#define PAD_C (1 << 3)
 
 #define FLASH_TARGET_OFFSET (256 * 1024)
 
@@ -55,9 +57,7 @@ enum {
 const uint8_t *nvdata = (const uint8_t *) (XIP_BASE + FLASH_TARGET_OFFSET);
 uint8_t config[FLASH_PAGE_SIZE];
 
-volatile uint32_t a_btn, b_btn, c_btn, s_btn;
-volatile uint32_t a_prev, b_prev, c_prev, s_prev;
-volatile uint32_t a_held, b_held, c_held, s_held;
+volatile uint8_t pad;
 
 uint32_t request = 0;
 
@@ -66,6 +66,8 @@ volatile uint32_t reset_timeout = 0;
 uint32_t region_swap = 0;
 
 uint32_t boot_time_ms = 0;
+
+bool oc_on = false;
 
 // FLASH stuff lifted from pico examples
 // This function will be called when it's safe to call flash_range_erase
@@ -161,11 +163,11 @@ void set_europe()
 void halt_on() {
     gpio_set_dir(GPIO_HALT_PIN, GPIO_OUT);
     gpio_put(GPIO_HALT_PIN, false);
-    sleep_ms(10); // for good measure
+    sleep_ms(1); // for good measure
 }
 
 void halt_off() {
-    sleep_ms(10);
+    sleep_ms(1);
     gpio_set_dir(GPIO_HALT_PIN, GPIO_IN);
 }
 
@@ -189,33 +191,25 @@ void reset_genesis()
     reset_press = 0;
 }
 
+#define UPDATE_PAD(pad, mask, pin) \
+    pad = (pad & ~(mask)) | ((!gpio_get(pin)) ? (mask) : 0);
+
 // ISR to read controller & reset button
 // Relies on a game to toggle the select pin so
 // that we don't interfere with input
 void read_inputs(uint gpio, uint32_t events) {
-    if(gpio == GPIO_SELECT_PIN) // when the select pin changes
-    {
-        if(events & GPIO_IRQ_EDGE_FALL) { // A & Start buttons
-            a_prev = a_btn;
-            s_prev = s_btn;
-            a_btn = !gpio_get(GPIO_A_B_PIN);
-            s_btn = !gpio_get(GPIO_S_C_PIN);
-            a_held = a_btn & a_prev;
-            s_held = s_btn & s_prev;
+    if (gpio == GPIO_SELECT_PIN) {
+        if (events & GPIO_IRQ_EDGE_FALL) {
+            UPDATE_PAD(pad, PAD_A, GPIO_A_B_PIN);
+            UPDATE_PAD(pad, PAD_S, GPIO_S_C_PIN);
         }
-        if(events & GPIO_IRQ_EDGE_RISE) { // B & C buttons
-            b_prev = b_btn;
-            c_prev = c_btn;
-            b_btn = !gpio_get(GPIO_A_B_PIN);
-            c_btn = !gpio_get(GPIO_S_C_PIN);
-            b_held = b_btn & b_prev;
-            c_held = c_btn & c_prev;     
+        if (events & GPIO_IRQ_EDGE_RISE) {
+            UPDATE_PAD(pad, PAD_B, GPIO_A_B_PIN);
+            UPDATE_PAD(pad, PAD_C, GPIO_S_C_PIN);
         }
     }
 
-    // Reset input
-    // Which is why we have this, most region error screens
-    // don't read the controller
+    // Reset input. VRES low is a reset button press
     if(gpio == GPIO_VRES_PIN && (events & GPIO_IRQ_EDGE_FALL))
     {
         reset_press++;
@@ -259,6 +253,10 @@ int main() {
     // Board LED
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+
+    // OC enabled LED
+    gpio_init(GPIO_OC_LED_PIN);
+    gpio_set_dir(GPIO_OC_LED_PIN, GPIO_OUT);
 
     // Room for experimentation: clock signal quality
     gpio_set_drive_strength(GPIO_MCLK_PIN, GPIO_DRIVE_STRENGTH_2MA);
@@ -328,73 +326,34 @@ int main() {
         uint32_t region_req = 0;
         uint32_t oc_req = 0;
 
-        // Region/standard switch
-        if(a_held && b_held && c_held && s_held) {
-            // IGR: A+B+C+Start for 1 second resets
-            while(a_held && b_held && c_held && s_held) {
-                sleep_ms(1);
-                reset_req++;
-                if(reset_req == 1000) {
-                    reset_genesis();
-                    reset_press = 0;
-                }
-            }
-        } else if(ms_on < 10000) {  // Within 10 sec of power on hold for 2 sec:
-            if(s_held) {
-                while(s_held) {
-                    sleep_ms(1);
-                    oc_req++;
-                    if(oc_req == 2000) {
-                        halt_on();
-                        set_vclk_div(5); // MCLK / 5 seems to be a good overclock
-                        halt_off();
-                        gpio_put(PICO_DEFAULT_LED_PIN, false);
-                    }
-                }
-            } else if(a_held) {         // A button: Japan
-                while(a_held) {
-                    sleep_ms(1);
-                    region_req++;
-                    if(region_req == 2000) {
-                        set_japan();
-                        config[0] = JAPAN;
-                        write_flash();
-                        reset_genesis();
-                    }
-                }
-            } else if (b_held) {        // B button: Americas
-                while(b_held) {
-                    sleep_ms(1);
-                    region_req++;
-                    if(region_req == 2000) {
-                        set_americas();
-                        config[0] = AMERICAS;
-                        write_flash();
-                        reset_genesis();
-                    }
-                }
-            } else if (c_held) {        // C button: Europe & 50Hz
-                while(c_held) {
-                    sleep_ms(1);
-                    region_req++;
-                    if(region_req == 2000) {
-                        set_europe();
-                        config[0] = EUROPE;
-                        write_flash();
-                        reset_genesis();
-                    }
-                }
+        // IGR: A+B+C+Start for 1 second resets
+        while(pad == (PAD_A | PAD_B | PAD_C | PAD_S)) {
+            sleep_ms(1);
+            reset_req++;
+            if(reset_req == 1000) {
+                reset_genesis();
             }
         }
 
+        // A + Start for 1 seconds: toggle overclock
+        while((pad == (PAD_A | PAD_S))) {
+            sleep_ms(1);
+            oc_req++;
+            if(oc_req == 1000) {
+                oc_on = !oc_on;
+                halt_on();
+                set_vclk_div((oc_on) ? 7 : 5);
+                halt_off();
+                gpio_put(GPIO_OC_LED_PIN, oc_on);
+            }
+        }
+        
         // Swap region with reset button
         // Press Reset 3x within 1 sec of each other to switch to the next
         // region: Japan > Americas > Europe > Japan ...
         if(reset_timeout >= 3000) {
              reset_press = 0;
-        }
-
-        if(reset_press >= 3 && reset_timeout < 3000) {
+        } else if(reset_press >= 3) {
             region_swap++;
             region_swap %= 3;
             switch(region_swap) {
@@ -414,7 +373,6 @@ int main() {
             }
             write_flash();
             reset_genesis();
-            reset_press = 0;
         }
 
         sleep_ms(1);
