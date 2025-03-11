@@ -315,13 +315,8 @@ int main() {
     // Setup OK
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
-    // Clock how long we took to boot
-    boot_time_ms = to_ms_since_boot(get_absolute_time());
-
     // Main loop, check for controller hotkeys
     for(;;) {
-        uint32_t ms_on = to_ms_since_boot(get_absolute_time()) - boot_time_ms;
-
         uint32_t reset_req = 0;
         uint32_t region_req = 0;
         uint32_t oc_req = 0;
