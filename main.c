@@ -2,21 +2,17 @@
     a Sega Genesis/Mega Drive multi-mod using Raspberry Pi Pico
     or compatible RP2040 board
 
-    Region switching via controller or reset button:
-    Hold A, B, or C at startup*, or press reset 3 times quickly to
+    Region switching: press reset 3 times quickly to
     cycle Japan > Americas > Europe > Japan...
     The last selected region is saved to internal flash and used
     until it is changed.
 
     In-game reset: Hold A+B+C+Start
 
-    Overclocking: Hold Start at startup*
+    Overclocking: Hold A+Start for 1 second to toggle
 
-    * hold for 2 seconds within 10 seconds of power-on
-    
-    This code is not very pretty or good, but it is tested and it
-    does work. I have tried to make up for the bad code with
-    explanatory comments. */
+    TMSS skip: automatic
+ */
 
 #include <stdio.h>
 #include <string.h>
