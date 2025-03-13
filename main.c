@@ -333,7 +333,7 @@ int main() {
             if(oc_req == 1000) {
                 oc_on = !oc_on;
                 halt_on();
-                set_vclk_div((oc_on) ? 7 : 5);
+                set_vclk_div((oc_on) ? 5 : 7);
                 halt_off();
                 gpio_put(GPIO_OC_LED_PIN, oc_on);
             }
