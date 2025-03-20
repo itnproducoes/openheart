@@ -15,6 +15,9 @@ This mod is very similar to other extant mods so adapting it to your particular 
 ## Genesis/MD2 VA0 install
 ![image](https://github.com/user-attachments/assets/e98d79b8-494d-4cbd-8726-a24f79ac75f8)
 
+## Setting up the Pi Pico
+Download the openheart.uf2 image from /build and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will show up as a storage device, just drag the UF2 file onto it. It's good to go when the storage device disconnects.
+
 ## How to use
 - To reset game, hold A+B+C+Start for 1 second
 - To toggle overclock on and off, hold A+Start for 1 second
