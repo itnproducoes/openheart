@@ -35,13 +35,13 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(main
+add_executable(openheart
         main.c
         )
 
 # this ends up being overridden in the code but I think it's required
 # for setting the REFDIV of the system pll
-target_compile_definitions(main PRIVATE
+target_compile_definitions(openheart PRIVATE
         PLL_SYS_REFDIV=2
         PLL_SYS_VCO_FREQ_HZ=1074000000
         PLL_SYS_POSTDIV1=5
@@ -50,9 +50,9 @@ target_compile_definitions(main PRIVATE
 )
 
 # pull in common dependencies
-target_link_libraries(main pico_stdlib hardware_pwm hardware_flash)
+target_link_libraries(openheart pico_stdlib hardware_pwm hardware_flash)
 
 # create map/bin/hex file etc.
-pico_add_extra_outputs(main)
+pico_add_extra_outputs(openheart)
 
 # add url via pico_set_program_url

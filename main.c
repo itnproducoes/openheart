@@ -1,15 +1,16 @@
-/*  Open Heart
+/*  Open Heart by 32mbit
     a Sega Genesis/Mega Drive multi-mod using Raspberry Pi Pico
     or compatible RP2040 board
 
-    Region switching: press reset 3 times quickly to
+    Region switching: press reset 3 times within 3 seconds to
     cycle Japan > Americas > Europe > Japan...
-    The last selected region is saved to internal flash and used
+    The selected region is saved to internal flash and used
     until it is changed.
 
-    In-game reset: Hold A+B+C+Start
+    In-game reset: Hold A+B+C+Start for 1 second
 
-    Overclocking: Hold A+Start for 1 second to toggle
+    Overclocking: Hold A+Start for 1 second to toggle between
+    MCLK/7 (7.67MHz, standard) and MCLK/5 (10.74MHz)
 
     TMSS skip: automatic
  */
@@ -53,16 +54,14 @@ enum {
 const uint8_t *nvdata = (const uint8_t *) (XIP_BASE + FLASH_TARGET_OFFSET);
 uint8_t config[FLASH_PAGE_SIZE];
 
+// Pad state
 volatile uint8_t pad;
 
-uint32_t request = 0;
+uint32_t request;
 
 volatile uint32_t reset_press = 0;
 volatile uint32_t reset_timeout = 0;
 uint32_t region_swap = 0;
-
-uint32_t boot_time_ms = 0;
-
 bool oc_on = false;
 
 // FLASH stuff lifted from pico examples
@@ -95,24 +94,25 @@ void write_flash()
     hard_assert(rc == PICO_OK);
 }
 
-// MCLK is derived from running the pll_sys
-// at 2x MCLK frequency and dividing it by 2.
+// We set the system PLL to run at 2x our desired MCLK rate
 // The pll values were calculated with vcocalc.py
 void set_mclk_ntsc() {
     set_sys_clock_pll(1074 * MHZ, 5, 2); // = 107.4MHz
-    // divide by 2: 53.7MHz
+    // output divide by 2: 53.7MHz MCLK
     clock_gpio_init(GPIO_MCLK_PIN,
         CLOCKS_CLK_GPOUT0_CTRL_AUXSRC_VALUE_CLKSRC_PLL_SYS, 2); 
 }
 
 void set_mclk_pal() {
     set_sys_clock_pll(1596 * MHZ, 3, 5); // = 106.4MHz
-    // divide by 2: 53.2MHz
+    // output divide by 2: 53.2MHz MCLK
     clock_gpio_init(GPIO_MCLK_PIN, 
         CLOCKS_CLK_GPOUT0_CTRL_AUXSRC_VALUE_CLKSRC_PLL_SYS, 2);
 }
 
 // VCLK is generated with PWM which is clocked to pll_sys (the MCLK source)
+// The wrap value effectively divides it by 2 to MCLK rate, then it's
+// divided down appropriately to make VCLK
 void set_vclk_div(uint32_t div) {
     gpio_set_function(GPIO_VCLK_PIN, GPIO_FUNC_PWM);
 
@@ -123,7 +123,7 @@ void set_vclk_div(uint32_t div) {
     pwm_set_clkdiv_int_frac(slice, div, 0);
     pwm_set_clkdiv_mode(slice, PWM_DIV_FREE_RUNNING);
     pwm_set_phase_correct(slice, false);
-    pwm_set_wrap(slice, 1);
+    pwm_set_wrap(slice, 1); // Wrap value of 1 gives us PWM at MCLK rate
     pwm_set_chan_level(slice, pwm_gpio_to_channel(GPIO_VCLK_PIN), 1);
     pwm_set_enabled(slice, true);
 }
@@ -153,36 +153,38 @@ void set_europe()
     gpio_put(GPIO_REGION_PIN, true);
 }
 
-// The HALT/RESET lines are open collector and
-// need to be asserted in this particular way
-// CPU halt
+// (The HALT & RESET lines are open collector and
+// need to be asserted in this particular way)
+// Assert HALT
 void halt_on() {
     gpio_set_dir(GPIO_HALT_PIN, GPIO_OUT);
     gpio_put(GPIO_HALT_PIN, false);
     sleep_ms(1); // for good measure
 }
 
+// Negate HALT
 void halt_off() {
     sleep_ms(1);
     gpio_set_dir(GPIO_HALT_PIN, GPIO_IN);
 }
 
-// Holds VRES down
+// Assert VRES
 void reset_on() {
     gpio_set_dir(GPIO_VRES_PIN, GPIO_OUT);
     gpio_put(GPIO_VRES_PIN, false);
 }
 
+// Negate VRES
 void reset_off() {
     gpio_set_dir(GPIO_VRES_PIN, GPIO_IN);
 }
 
 // Reset cycle. According to spritesmind, the vdp
-// asserts VRES for about 16ms on a reset button press 
+// asserts VRES for about 16.7ms on a reset button press 
 void reset_genesis()
 {
     reset_on();
-    sleep_ms(16);
+    sleep_us(16700);
     reset_off();
     reset_press = 0;
 }
@@ -263,7 +265,7 @@ int main() {
     // Controller pin 7 & install input handler
     gpio_init(GPIO_SELECT_PIN);
     gpio_set_irq_enabled_with_callback(GPIO_SELECT_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &read_inputs);
-    // Also handles VRES (reset button)
+    // Also handles VRES
     gpio_set_irq_enabled_with_callback(GPIO_VRES_PIN, GPIO_IRQ_EDGE_FALL, true, &read_inputs);
 
     // Restore last setting
@@ -312,16 +314,12 @@ int main() {
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
     // Main loop, check for controller hotkeys
-    for(;;) {
-        uint32_t reset_req = 0;
-        uint32_t region_req = 0;
-        uint32_t oc_req = 0;
-
+    for(;; request = 0, reset_timeout++) {
         // IGR: A+B+C+Start for 1 second resets
         while(pad == (PAD_A | PAD_B | PAD_C | PAD_S)) {
             sleep_ms(1);
-            reset_req++;
-            if(reset_req == 1000) {
+            request++;
+            if(request == 1000) {
                 reset_genesis();
             }
         }
@@ -329,8 +327,8 @@ int main() {
         // A + Start for 1 seconds: toggle overclock
         while((pad == (PAD_A | PAD_S))) {
             sleep_ms(1);
-            oc_req++;
-            if(oc_req == 1000) {
+            request++;
+            if(request == 1000) {
                 oc_on = !oc_on;
                 halt_on();
                 set_vclk_div((oc_on) ? 5 : 7);
@@ -367,7 +365,5 @@ int main() {
         }
 
         sleep_ms(1);
-        reset_timeout++;
-        request++;
     }   
 }
