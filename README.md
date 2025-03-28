@@ -33,6 +33,3 @@ Download the [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICI
 - The phase relationship of the Pico-generated VCLK and MCLK haven't been looked at at all or compared to stock in any way.
 - Some (few?) NTSC Model 1 VA7's and Model 2 VA0's [have a broken 50Hz mode.](https://consolemods.org/wiki/Genesis:Motherboard_Differences#VA0_(1993,_All_Regions) "have a broken 50Hz mode.")
 - PAL mode composite video is not tested on NTSC consoles and vice versa--I don't have the equipment. It should work; however, the service manual calls for different parts for the video encoder in each case so it may not function as intended. This doesn't apply to RGB output, which is known to work.
-
-## To-do
-- Add LED mode/region indication
