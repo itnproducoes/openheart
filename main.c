@@ -17,6 +17,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 #include "pico/stdlib.h"
 #include "pico/flash.h"
 #include "hardware/flash.h"
@@ -34,6 +35,8 @@
 #define GPIO_VRES_PIN 15        // !VRES
 #define GPIO_STANDARD_PIN 16    // low = PAL, high = NTSC
 #define GPIO_REGION_PIN 17      // low = Japan, high = Export
+#define GPIO_RED_LED 18
+#define GPIO_GREEN_LED 19
 #define GPIO_VCLK_PIN 20        // CPU clock, for overclocking, optional
 #define GPIO_MCLK_PIN 21        // To master oscillator clock in
 
@@ -43,6 +46,8 @@
 #define PAD_C (1 << 3)
 
 #define FLASH_TARGET_OFFSET (256 * 1024)
+
+#define LED_WRAP 255
 
 enum {
     INVALID = 0x80,
@@ -62,7 +67,8 @@ uint32_t request;
 volatile uint32_t reset_press = 0;
 volatile uint32_t reset_timeout = 0;
 uint32_t region_swap = 0;
-bool oc_on = false;
+volatile bool oc_on = false;
+volatile int led_mode = 0;
 
 // FLASH stuff lifted from pico examples
 // This function will be called when it's safe to call flash_range_erase
@@ -135,6 +141,7 @@ void set_japan()
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
     gpio_put(GPIO_REGION_PIN, false);
+    led_mode = 1;
 }
 
 void set_americas()
@@ -143,6 +150,7 @@ void set_americas()
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
     gpio_put(GPIO_REGION_PIN, true);
+    led_mode = 2;
 }
 
 void set_europe()
@@ -151,6 +159,7 @@ void set_europe()
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, false);
     gpio_put(GPIO_REGION_PIN, true);
+    led_mode = 3;
 }
 
 // (The HALT & RESET lines are open collector and
@@ -217,6 +226,52 @@ void read_inputs(uint gpio, uint32_t events) {
     }
 }
 
+bool led_callback(struct repeating_timer *rt) {
+    const float blink_hz = 3.0f;
+    // Compute current time in seconds.
+    uint64_t time_us = time_us_64();
+    float time_sec = (float) time_us / 1000000.0f;
+    float pulse = (sinf(2.0f * M_PI * blink_hz * time_sec) + 1.0f) / 2.0f;
+    uint32_t brightness = oc_on ? (uint32_t)(pulse * LED_WRAP) : LED_WRAP;
+
+    uint slice_num = pwm_gpio_to_slice_num(GPIO_RED_LED);
+
+    pwm_set_wrap(slice_num, LED_WRAP);
+
+    switch(led_mode) {
+        case 0:
+            // led off...
+            pwm_set_chan_level(slice_num, PWM_CHAN_A, 0);
+            pwm_set_chan_level(slice_num, PWM_CHAN_B, 0);
+            break;
+        case 1:
+            // Red
+            pwm_set_output_polarity(slice_num, false, false);
+            pwm_set_chan_level(slice_num, PWM_CHAN_A, brightness);
+            pwm_set_chan_level(slice_num, PWM_CHAN_B, 0);
+            pwm_set_enabled(slice_num, true);
+            break;
+        case 2:
+            // Green
+            pwm_set_output_polarity(slice_num, false, false);
+            pwm_set_chan_level(slice_num, PWM_CHAN_A, 0);
+            pwm_set_chan_level(slice_num, PWM_CHAN_B, brightness);
+            pwm_set_enabled(slice_num, true);
+            break;
+        case 3:
+            // Amber
+            pwm_set_output_polarity(slice_num, false, true);
+            pwm_set_chan_level(slice_num, PWM_CHAN_A, brightness/2);
+            pwm_set_chan_level(slice_num, PWM_CHAN_B, LED_WRAP-brightness/2);
+            pwm_set_enabled(slice_num, true);
+            break;
+        default:
+            break;
+    }
+
+    return true; // Keep repeating.
+}
+
 int main() {
     reset_on();
     // Do init while reset held down
@@ -240,7 +295,7 @@ int main() {
     gpio_init(GPIO_STANDARD_PIN);
     gpio_set_dir(GPIO_STANDARD_PIN, GPIO_OUT);
 
-    // Controller pin 6
+    // Controller pin 6pwm_set_enabled(slice_num, true);
     gpio_init(GPIO_A_B_PIN);
     gpio_set_dir(GPIO_A_B_PIN, GPIO_IN);
 
@@ -251,6 +306,10 @@ int main() {
     // Board LED
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+
+    // Indicator LED
+    gpio_set_function(GPIO_RED_LED, GPIO_FUNC_PWM);
+    gpio_set_function(GPIO_GREEN_LED, GPIO_FUNC_PWM);
 
     // OC enabled LED
     gpio_init(GPIO_OC_LED_PIN);
@@ -270,6 +329,10 @@ int main() {
 
     // Restore last setting
     read_flash();
+
+    // Set up a repeating timer that fires every 20 ms.
+    struct repeating_timer led_timer;
+    add_repeating_timer_ms(20, led_callback, NULL, &led_timer);
 
     // Set region & MCLK
     switch(config[0]) {
