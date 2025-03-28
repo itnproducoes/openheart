@@ -228,7 +228,7 @@ void read_inputs(uint gpio, uint32_t events) {
 
 bool led_callback(struct repeating_timer *rt) {
     const float blink_hz = 3.0f;
-    // Compute current time in seconds.
+
     uint64_t time_us = time_us_64();
     float time_sec = (float) time_us / 1000000.0f;
     float pulse = (sinf(2.0f * M_PI * blink_hz * time_sec) + 1.0f) / 2.0f;
