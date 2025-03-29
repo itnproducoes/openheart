@@ -7,6 +7,7 @@
 - In-game reset function
 - In-game switchable overclocking
 - TMSS bypass
+- Optional LED to indicate region and overclock status
 
 ## Generic install instructions
 
