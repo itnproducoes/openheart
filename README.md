@@ -22,6 +22,9 @@ Remove the oscillator and mount the Pico as closely to its board location as is 
 The LED can be mounted this way with its cathode leg in the left hole of the original LED mount:
 ![20250328_175125](https://github.com/user-attachments/assets/477e97ee-7fe8-4cce-ab1f-0cc4175103df)
 
+## Model 1 VA6 install
+See [this post](https://github.com/DUSTINODELLOFFICIAL/openheart/issues/4#issuecomment-2764840539) for pictures.
+
 ## Setting up the Pi Pico
 Download the [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart.uf2) from /build and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will show up as a storage device, just drag the UF2 file onto it. It's good to go when the storage device disconnects.
 
