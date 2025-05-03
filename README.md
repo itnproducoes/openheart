@@ -25,6 +25,9 @@ The LED can be mounted this way with its cathode leg in the left hole of the ori
 ## Model 1 VA6 install
 See [this post](https://github.com/DUSTINODELLOFFICIAL/openheart/issues/4#issuecomment-2764840539) for pictures.
 
+## Model 1 VA4 install
+See [these pictures](https://imgur.com/a/BYaBhWR), thanks to Zeb-76
+
 ## Setting up the Pi Pico
 Download the [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart.uf2) from /build and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will show up as a storage device, just drag the UF2 file onto it. It's good to go when the storage device disconnects.
 
