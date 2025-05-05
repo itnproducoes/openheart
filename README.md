@@ -23,7 +23,7 @@ The LED can be mounted this way with its cathode leg in the left hole of the ori
 ![20250328_175125](https://github.com/user-attachments/assets/477e97ee-7fe8-4cce-ab1f-0cc4175103df)
 
 ## Model 1 VA6 install
-See [this post](https://github.com/DUSTINODELLOFFICIAL/openheart/issues/4#issuecomment-2764840539) for pictures.
+See [this post](https://github.com/DUSTINODELLOFFICIAL/openheart/issues/4#issuecomment-2764840539) from adardar211 or [these pictures (without overclock)](https://imgur.com/a/E07TWUL)  from Zeb-76.
 
 ## Model 1 VA4 install
 See [these pictures](https://imgur.com/a/BYaBhWR), thanks to Zeb-76
