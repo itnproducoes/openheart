@@ -53,7 +53,7 @@ enum {
     INVALID = 0x80,
     JAPAN,
     AMERICAS,
-    EUROPE.
+    EUROPE,
     EUROPE60
 };
 
