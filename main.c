@@ -3,7 +3,7 @@
     or compatible RP2040 board
 
     Region switching: press reset 3 times within 3 seconds to
-    cycle Japan > Americas > Europe > Japan...
+    cycle Japan > Americas > Europe > Europe60 > Japan...
     The selected region is saved to internal flash and used
     until it is changed.
 
@@ -53,7 +53,8 @@ enum {
     INVALID = 0x80,
     JAPAN,
     AMERICAS,
-    EUROPE
+    EUROPE.
+    EUROPE60
 };
 
 const uint8_t *nvdata = (const uint8_t *) (XIP_BASE + FLASH_TARGET_OFFSET);
@@ -156,6 +157,15 @@ void set_americas()
 void set_europe()
 {
     set_mclk_pal();
+    set_vclk_div(7);
+    gpio_put(GPIO_STANDARD_PIN, false);
+    gpio_put(GPIO_REGION_PIN, true);
+    led_mode = 3;
+}
+
+void set_europe60()
+{
+    set_mclk_ntsc();
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, false);
     gpio_put(GPIO_REGION_PIN, true);
@@ -345,6 +355,9 @@ int main() {
         case EUROPE:
             set_europe();
             break;
+          case EUROPE60:
+            set_europe60();
+            break;
         default:
             set_americas();
             config[0] = AMERICAS;
@@ -402,7 +415,7 @@ int main() {
         
         // Swap region with reset button
         // Press Reset 3x within 1 sec of each other to switch to the next
-        // region: Japan > Americas > Europe > Japan ...
+        // region: Japan > Americas > Europe > Europe60 > Japan ...
         if(reset_timeout >= 3000) {
              reset_press = 0;
         } else if(reset_press >= 3) {
@@ -421,6 +434,11 @@ int main() {
                 case 2:
                     set_europe();
                     config[0] = EUROPE;
+                break;
+                
+                 case 3:
+                    set_europe60();
+                    config[0] = EUROPE60;
                 break;
             }
             write_flash();
