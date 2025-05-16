@@ -295,7 +295,7 @@ int main() {
     gpio_init(GPIO_STANDARD_PIN);
     gpio_set_dir(GPIO_STANDARD_PIN, GPIO_OUT);
 
-    // Controller pin 6pwm_set_enabled(slice_num, true);
+    // Controller pin 6
     gpio_init(GPIO_A_B_PIN);
     gpio_set_dir(GPIO_A_B_PIN, GPIO_IN);
 
