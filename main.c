@@ -14,7 +14,6 @@
 
     TMSS skip: automatic
  */
-fdsfd
 
 #include <stdio.h>
 #include <string.h>
