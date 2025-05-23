@@ -162,6 +162,12 @@ void set_europe()
     led_mode = 3;
 }
 
+void set_europe60()
+{
+    gpio_put(GPIO_STANDARD_PIN, true);
+    
+}
+
 // (The HALT & RESET lines are open collector and
 // need to be asserted in this particular way)
 // Assert HALT
@@ -247,7 +253,7 @@ bool led_callback(struct repeating_timer *rt) {
         case 1:
             // Red
             pwm_set_output_polarity(slice_num, false, false);
-            pwm_set_chan_level(slice_num, PWM_CHAN_A, brightness);
+            pwm_set_chan_level(slice_num, PWM_CHAN_A, brightness/8);
             pwm_set_chan_level(slice_num, PWM_CHAN_B, 0);
             pwm_set_enabled(slice_num, true);
             break;
@@ -255,14 +261,14 @@ bool led_callback(struct repeating_timer *rt) {
             // Green
             pwm_set_output_polarity(slice_num, false, false);
             pwm_set_chan_level(slice_num, PWM_CHAN_A, 0);
-            pwm_set_chan_level(slice_num, PWM_CHAN_B, brightness);
+            pwm_set_chan_level(slice_num, PWM_CHAN_B, brightness/8);
             pwm_set_enabled(slice_num, true);
             break;
         case 3:
             // Amber
             pwm_set_output_polarity(slice_num, false, true);
-            pwm_set_chan_level(slice_num, PWM_CHAN_A, brightness/2);
-            pwm_set_chan_level(slice_num, PWM_CHAN_B, LED_WRAP-brightness/2);
+            pwm_set_chan_level(slice_num, PWM_CHAN_A, brightness/16);
+            pwm_set_chan_level(slice_num, PWM_CHAN_B, LED_WRAP-brightness/16);
             pwm_set_enabled(slice_num, true);
             break;
         default:
@@ -384,6 +390,14 @@ int main() {
             request++;
             if(request == 1000) {
                 reset_genesis();
+            }
+        }
+        // A+B+Start for 1 second active modo 60Hz PAL
+          while(pad == (PAD_A | PAD_B | PAD_S)) {
+            sleep_ms(1);
+            request++;
+            if(request == 1000) {
+                set_europe60();
             }
         }
 
