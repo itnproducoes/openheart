@@ -423,6 +423,7 @@ int main() {
             } else {
                     set_europe60();
                 }
+            }
         }
 
         // A + Start for 1 seconds: toggle overclock
