@@ -244,7 +244,13 @@ void read_inputs(uint gpio, uint32_t events) {
     {
         reset_press++;
         if(reset_press == 1) {
-            reset_timeout = 0;
+                if (gpio_get(GPIO_CONT_PIN) == true) {
+                        set_europe();
+                        config[0] = EUROPE;
+                        reset_timeout = 0;
+                } else {
+                        reset_timeout = 0;
+                }            
         }
     }
 }
