@@ -142,7 +142,7 @@ void set_japan()
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
     gpio_put(GPIO_REGION_PIN, false);
-    gpio_put (GPIO_CONT_PIN, false);
+    gpio_put(GPIO_CONT_PIN, false);
 
     led_mode = 1;
 }
@@ -153,7 +153,7 @@ void set_americas()
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
     gpio_put(GPIO_REGION_PIN, true);
-    gpio_put (GPIO_CONT_PIN, false);
+    gpio_put(GPIO_CONT_PIN, false);
 
     led_mode = 2;
 }
@@ -164,7 +164,7 @@ void set_europe()
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, false);
     gpio_put(GPIO_REGION_PIN, true);
-    gpio_put (GPIO_CONT_PIN, false);
+    gpio_put(GPIO_CONT_PIN, false);
 
     led_mode = 3;
 }
@@ -172,14 +172,14 @@ void set_europe()
 void set_europe60()
 {
     gpio_put(GPIO_STANDARD_PIN, true);
-    gpio_put (GPIO_CONT_PIN, true);
+    gpio_put(GPIO_CONT_PIN, true);
     
 }
 
 void set_europe50()
 {
     gpio_put(GPIO_STANDARD_PIN, false);
-    gpio_put (GPIO_CONT_PIN, false);
+    gpio_put(GPIO_CONT_PIN, false);
     
 }
 
@@ -404,7 +404,7 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                if (gpio_get(GPIO_CONT_PIN ) == true) {
+                if (gpio_get(GPIO_CONT_PIN) == true) {
                         set_europe();
                         config[0] = EUROPE;
                         reset_genesis();
@@ -418,10 +418,10 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                if (gpio_get(GPIO_CONT_PIN ) == true) {
+                if (gpio_get(GPIO_CONT_PIN) == true) {
                 set_europe50();
             } else {
-                    set_europe60();
+                set_europe60();
                 }
             }
         }
