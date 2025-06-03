@@ -9,6 +9,8 @@
 
     In-game reset: Hold A+B+C+Start for 1 second
 
+    In-game mode Europe 50Hz/60Hz: Hold A+B+Start for 1 second 
+
     Overclocking: Hold A+Start for 1 second to toggle between
     MCLK/7 (7.67MHz, standard) and MCLK/5 (10.74MHz)
 
@@ -417,16 +419,16 @@ int main() {
                     }
                 }
         }
-        // A+B+Start for 1 second active modo 60Hz PAL
+        // A+B+Start for 1 second active modo 60Hz Europe or 50Hz Europe
           while(pad == (PAD_A | PAD_B | PAD_S)) {
             sleep_ms(1);
             request++;
             if(request == 1000) {
                 if (gpio_get(GPIO_CONT_PIN) == true && gpio_get(GPIO_STANDARD_PIN) == false) {
-                set_europe60();
-            } else {
+                    set_europe60();
+                } else {
                      if (gpio_get(GPIO_CONT_PIN) == true && gpio_get(GPIO_STANDARD_PIN) == true) {
-                set_europe50();
+                        set_europe50();
                     }
                 }
             }
