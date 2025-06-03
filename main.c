@@ -422,7 +422,7 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                if (gpio_get(GPIO_CONT_PIN) == true) {
+                if (gpio_get(GPIO_CONT_PIN) == true && gpio_get(GPIO_STANDARD_PIN) == true) {
                 set_europe50();
             } else {
                 set_europe60();
