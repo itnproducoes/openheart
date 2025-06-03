@@ -6,9 +6,11 @@
 - Dual Frequency Oscillator for correct speed in both modes
 - In-game reset function
 - In-game switchable overclocking
+- In-game  mode Europe 50Hz/60Hz
 - TMSS bypass
 - Optional LED to indicate region and overclock status
 
+  
 ## Generic install instructions
 
 You may want to look at [this thread](https://github.com/DUSTINODELLOFFICIAL/openheart/issues/4)
@@ -37,6 +39,7 @@ Download the [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICI
 - To reset game, hold A+B+C+Start for 1 second
 - To toggle overclock on and off, hold A+Start for 1 second
 - To change region, press Reset button 3 times within 3 seconds. The last used region is saved until it is changed again.
+- In game in mode Europe, hold A+B+Start to switch mode 50Hz/60Hz
 
 ## Notes & considerations
 - Use at your own risk: The mod seems to work fine in various Model 1 and Model 2 revisions, but not every revision is tested.
