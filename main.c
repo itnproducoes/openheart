@@ -311,6 +311,10 @@ int main() {
     // Japan/Export
     gpio_init(GPIO_REGION_PIN);
     gpio_set_dir(GPIO_REGION_PIN, GPIO_OUT);
+   
+    // 60Hz/50Hz control
+    gpio_init(GPIO_CONT_PIN);
+    gpio_set_dir(GPIO_CONT_PIN, GPIO_OUT);
     
     // PAL/NTSC
     gpio_init(GPIO_STANDARD_PIN);
