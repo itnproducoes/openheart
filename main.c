@@ -389,7 +389,7 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                if (gpio_get(GPIO_STANDARD_PIN ) == false && gpio_get(GPIO_REGION_PIN) == true) {
+                if (gpio_get(GPIO_GREEN_LED ) == true && gpio_get(GPIO_RED_LED) == true) {
                         set_europe();
                         config[0] = EUROPE;
                         reset_genesis();
