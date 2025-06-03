@@ -451,7 +451,13 @@ int main() {
         // Press Reset 3x within 1 sec of each other to switch to the next
         // region: Japan > Americas > Europe > Japan ...
         if(reset_timeout >= 3000) {
-             reset_press = 0;
+                if (gpio_get(GPIO_CONT_PIN) == true) {
+                        set_europe();
+                        config[0] = EUROPE;
+                         reset_press = 0;
+                } else {
+                        reset_press = 0;
+                } 
         } else if(reset_press >= 3) {
             region_swap++;
             region_swap %= 3;
