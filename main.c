@@ -389,8 +389,14 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                reset_genesis();
-            }
+                if (GPIO_STANDARD_PIN == true && GPIO_REGION_PIN == true) {
+                        set_europe();
+                        config[0] = EUROPE;
+                        reset_genesis();
+                } else {
+                        reset_genesis();
+                    }
+                }
         }
         // A+B+Start for 1 second active modo 60Hz PAL
           while(pad == (PAD_A | PAD_B | PAD_S)) {
