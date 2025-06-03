@@ -39,6 +39,7 @@
 #define GPIO_GREEN_LED 19
 #define GPIO_VCLK_PIN 20        // CPU clock, for overclocking, optional
 #define GPIO_MCLK_PIN 21        // To master oscillator clock in
+#define GPIO_CONT_PIN 0        // To pin control region Europe 50Hz 60Hz
 
 #define PAD_A (1 << 0)
 #define PAD_B (1 << 1)
@@ -141,6 +142,8 @@ void set_japan()
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
     gpio_put(GPIO_REGION_PIN, false);
+    gpio_put (GPIO_CONT_PIN, false);
+
     led_mode = 1;
 }
 
@@ -150,6 +153,8 @@ void set_americas()
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
     gpio_put(GPIO_REGION_PIN, true);
+    gpio_put (GPIO_CONT_PIN, false);
+
     led_mode = 2;
 }
 
@@ -159,12 +164,22 @@ void set_europe()
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, false);
     gpio_put(GPIO_REGION_PIN, true);
+    gpio_put (GPIO_CONT_PIN, false);
+
     led_mode = 3;
 }
 
 void set_europe60()
 {
     gpio_put(GPIO_STANDARD_PIN, true);
+    gpio_put (GPIO_CONT_PIN, true);
+    
+}
+
+void set_europe50()
+{
+    gpio_put(GPIO_STANDARD_PIN, false);
+    gpio_put (GPIO_CONT_PIN, false);
     
 }
 
@@ -389,7 +404,7 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                if (gpio_get(GPIO_GREEN_LED ) == true && gpio_get(GPIO_RED_LED) == true) {
+                if (gpio_get(GPIO_CONT_PIN ) == true) {
                         set_europe();
                         config[0] = EUROPE;
                         reset_genesis();
@@ -403,8 +418,11 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                set_europe60();
-            }
+                if (gpio_get(GPIO_CONT_PIN ) == true) {
+                set_europe50();
+            } else {
+                    set_europe60();
+                }
         }
 
         // A + Start for 1 seconds: toggle overclock
