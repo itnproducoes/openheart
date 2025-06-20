@@ -33,6 +33,10 @@ Remove the oscillator and mount the Pico as closely to its board location as is 
 The LED can be mounted this way with its cathode leg in the left hole of the original LED mount:
 ![20250328_175125](https://github.com/user-attachments/assets/477e97ee-7fe8-4cce-ab1f-0cc4175103df)
 
+## Model 2 VA1 install
+Note: the MRES wire can be attached to a via (the lower left one next to the B1 marking).
+![image](https://github.com/user-attachments/assets/c1c9d5d3-175b-4908-ab80-af9f95baf7d5)
+
 ## Model 1 VA6 install
 See [this post](https://github.com/DUSTINODELLOFFICIAL/openheart/issues/4#issuecomment-2764840539) from adardar211 or [these pictures (without overclock)](https://imgur.com/a/E07TWUL)  from Zeb-76.
 
