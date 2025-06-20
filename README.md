@@ -25,7 +25,7 @@ Remove the oscillator and mount the Pico as closely to its board location as is 
 - **MRES** corresponds to pin B2 of the cartridge port. This is used for the TMSS bypass,when a flashcart gets in and out of special modes such as Master System or Sega CD. If you are installing this on a non TMSS console, this should not be connected.
 - The **VCLK** and **HALT** connections are optional if for some reason you do not wish to use the overclocking feature. If you want to have an LED that shows you what state the mod is in, get a "common cathode" bi-color LED. Attach the cathode to ground somewhere, and the two anodes to LED1 and LED2. Region is indicated by changing color: LED1's color indicates Japan, LED2's color indicates US/Americas, and the mix of the two colors indicates Europe. Overclock is indicated by pulsing the LED at 3Hz when it's enabled. See the MD2 VA0 install below for a suggested mounting for Model 2 MDs.
 
-![Image](https://github.com/user-attachments/assets/c3103201-1d54-4803-9669-58adcd20ef58)
+![image](https://github.com/user-attachments/assets/a98797a3-464b-42b4-849a-a0e069c4d945)
 
 ## Genesis/MD2 VA0 install
 ![image](https://github.com/user-attachments/assets/e98d79b8-494d-4cbd-8726-a24f79ac75f8)
