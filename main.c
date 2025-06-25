@@ -69,6 +69,8 @@ volatile uint32_t reset_press = 0;
 volatile uint32_t reset_timeout = 0;
 uint32_t region_swap = 0;
 volatile bool oc_on = false;
+volatile bool sms_mode = false;
+volatile bool is_booted = false;
 volatile int led_mode = 0;
 volatile int tmssrun = 0;
 
@@ -180,24 +182,23 @@ void halt_off() {
 }
 
 // Assert VRES
-void reset_on() {
+void vres_on() {
     gpio_set_dir(GPIO_VRES_PIN, GPIO_OUT);
     gpio_put(GPIO_VRES_PIN, false);
 }
 
 // Negate VRES
-void reset_off() {
-        gpio_set_dir(GPIO_VRES_PIN, GPIO_IN);
+void vres_off() {
+    gpio_set_dir(GPIO_VRES_PIN, GPIO_IN);
 }
 
-// Reset cycle. According to spritesmind, the vdp
+// "Reset button" cycle. According to spritesmind, the vdp
 // asserts VRES for about 16.7ms on a reset button press 
-
 void reset_genesis()
 {
-    reset_on();
+    vres_on();
     sleep_us(16700);
-    reset_off();
+    vres_off();
     reset_press = 0;
 }
 
@@ -207,13 +208,24 @@ void reset_genesis()
 // since the console gets into an unknown state, so it was sped up.
 void reset_tmss()
 {
-    reset_on();
+    vres_on();
     sleep_us(5);
-    reset_off();
+    vres_off();
     reset_press=0;
 }
 
 //TMSS Skip 
+// When the genesis boots, it boots from an internal rom with the cartridge
+// slot unmapped and copies a small security program to ram. In order to check
+// the header on the cartridge, it has to swap it in to read it for a very short
+// time. When this happens, the !CART_CE signal is asserted. By waiting for this to
+// happen and *immediately* resetting the CPU within the *very* short time the
+// cart is in the address space, the 68000 will reset with the cart mapped in and
+// run from the cart just like a console without it.
+// If this fails, TMSS will run as normal and our code will continue, because
+// !CART_CE will also go low when the TMSS is done.
+// This trick could probably be made more robust by underclocking the CPU first,
+// but the MCU seems fast enough for it to work reliably.
 void tmssskip(){
       // We enable !CART_CE especially when MRES is asserted.
     tmssrun++; //Flag to prevent unwanted region changes while doing the bypass.
@@ -225,41 +237,43 @@ void tmssskip(){
     //We get off the CE bus when done.
     tmssrun=0; //Make the region change available again.    
 }
+
 #define UPDATE_PAD(pad, mask, pin) \
     pad = (pad & ~(mask)) | ((!gpio_get(pin)) ? (mask) : 0);
 
-// ISR to read controller & reset button
-// Relies on a game to toggle the select pin so
-// that we don't interfere with input
-void read_inputs(uint gpio, uint32_t events) {
-    if (gpio == GPIO_SELECT_PIN) {
-        if (events & GPIO_IRQ_EDGE_FALL) {
-            UPDATE_PAD(pad, PAD_A, GPIO_A_B_PIN);
-            UPDATE_PAD(pad, PAD_S, GPIO_S_C_PIN);
-        }
-        if (events & GPIO_IRQ_EDGE_RISE) {
-            UPDATE_PAD(pad, PAD_B, GPIO_A_B_PIN);
-            UPDATE_PAD(pad, PAD_C, GPIO_S_C_PIN);
-        }
-    }
+// ISR to catch and handle events
+void handle_events(uint gpio, uint32_t events) {
+    if (is_booted == false) return;
 
-    // Reset input. VRES low is a reset button press
-    if(gpio == GPIO_VRES_PIN && (events & GPIO_IRQ_EDGE_FALL) && tmssrun==0)
-    {
-        reset_press++;
-        if(reset_press == 1) {
-            reset_timeout = 0;
-        }
+    switch(gpio) {
+        // Controller poll
+        case GPIO_SELECT_PIN:
+            if (events & GPIO_IRQ_EDGE_FALL) {
+                UPDATE_PAD(pad, PAD_A, GPIO_A_B_PIN);
+                UPDATE_PAD(pad, PAD_S, GPIO_S_C_PIN);
+            }
+            if (events & GPIO_IRQ_EDGE_RISE) {
+                UPDATE_PAD(pad, PAD_B, GPIO_A_B_PIN);
+                UPDATE_PAD(pad, PAD_C, GPIO_S_C_PIN);
+            }
+        break;
+        // Reset input. VRES low is a reset button press
+        case GPIO_VRES_PIN:
+            if ((events & GPIO_IRQ_EDGE_FALL) && tmssrun == 0) {
+                reset_press++;
+                if(reset_press == 1) {
+                reset_timeout = 0;
+            }
+            }
+        break;
+        //MRES pressed, means cartridge is changing modes and TMSS skip must be performed again.
+        case GPIO_MRES_PIN:
+            if (events & GPIO_IRQ_EDGE_FALL) {
+                tmssskip();  
+            }
+        break;
     }
-    
-    //MRES pressed, means cartridge is changing modes and TMSS skip must be performed again.
-    if(gpio == GPIO_MRES_PIN && (events & GPIO_IRQ_EDGE_FALL))
-    {      
-        tmssskip();       
-    }
-
 }
-
 
 bool led_callback(struct repeating_timer *rt) {
     const float blink_hz = 3.0f;
@@ -288,7 +302,7 @@ bool led_callback(struct repeating_timer *rt) {
             break;
         case 2:
             // Green
-            pwm_set_output_polarity(slice_num, false, false);
+            pwm_set_output_polarity(slice_num, false, false);    region_swap = config[0];
             pwm_set_chan_level(slice_num, PWM_CHAN_A, 0);
             pwm_set_chan_level(slice_num, PWM_CHAN_B, brightness);
             pwm_set_enabled(slice_num, true);
@@ -307,15 +321,28 @@ bool led_callback(struct repeating_timer *rt) {
     return true; // Keep repeating.
 }
 
+bool event_install(struct repeating_timer *rt) {
+    // Install event handlers
+    // Controller pin 7
+    gpio_init(GPIO_SELECT_PIN);
+    gpio_set_irq_enabled_with_callback(GPIO_SELECT_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &handle_events);
+    // Handle VRES
+    gpio_set_irq_enabled_with_callback(GPIO_VRES_PIN, GPIO_IRQ_EDGE_FALL, true, &handle_events);   
+    //Now handling MRES for when a flashcart enters and exits M3 or SCD modes.
+    gpio_set_irq_enabled_with_callback(GPIO_MRES_PIN, GPIO_IRQ_EDGE_FALL, true, &handle_events);
+
+    return false; // One time
+}
+
 int main() {
-    reset_on();
+    vres_on();
     // Do init while reset held down
 
     // Set up gpio's
     // VRES
     gpio_init(GPIO_VRES_PIN);
 
-        // !MRES
+    // !MRES
     gpio_init(GPIO_MRES_PIN);
     gpio_disable_pulls(GPIO_MRES_PIN);
     gpio_set_dir(GPIO_MRES_PIN, GPIO_IN);
@@ -354,19 +381,12 @@ int main() {
     gpio_set_dir(GPIO_OC_LED_PIN, GPIO_OUT);
 
     // Room for experimentation: clock signal quality
+    // Per villahed94:
     //Drive strength increased from 2mA to 8mA because some chipsets caused the PLL to get overwhelmed and drift.
     gpio_set_drive_strength(GPIO_MCLK_PIN, GPIO_DRIVE_STRENGTH_8MA); 
     gpio_set_slew_rate(GPIO_MCLK_PIN, GPIO_SLEW_RATE_SLOW);
     gpio_set_drive_strength(GPIO_VCLK_PIN, GPIO_DRIVE_STRENGTH_8MA);
     gpio_set_slew_rate(GPIO_VCLK_PIN, GPIO_SLEW_RATE_SLOW);
-
-    // Controller pin 7 & install input handler
-    gpio_init(GPIO_SELECT_PIN);
-    gpio_set_irq_enabled_with_callback(GPIO_SELECT_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &read_inputs);
-    // Also handles VRES
-    gpio_set_irq_enabled_with_callback(GPIO_VRES_PIN, GPIO_IRQ_EDGE_FALL, true, &read_inputs);   
-    //Now handling MRES for when a flashcart enters and exits M3 or SCD modes.
-    gpio_set_irq_enabled_with_callback(GPIO_MRES_PIN, GPIO_IRQ_EDGE_FALL, true, &read_inputs);
 
     // Restore last setting
     read_flash();
@@ -374,6 +394,12 @@ int main() {
     // Set up a repeating timer that fires every 20 ms.
     struct repeating_timer led_timer;
     add_repeating_timer_ms(20, led_callback, NULL, &led_timer);
+
+    // One shot that initializes interrupt handlers 200ms after boot
+    // Needed to get around the initial triggering of MRES that was preventing
+    // retail carts from booting (on a model 2 VA1)
+    struct repeating_timer event_install_timer;
+    add_repeating_timer_ms(200, event_install, NULL, &event_install_timer);
 
     // Set region & MCLK
     switch(config[0]) {
@@ -394,24 +420,17 @@ int main() {
             break;
     }
 
-    // Release reset
-    reset_off();
+    region_swap = config[0];
+
+    // Release reset 
+    vres_off();
 
     // TMSS skip :)
     // aka "PRODUCED BY OR UNDER LICENSE FROM SEGA ENTERPRISES LTD."
-    // When the genesis boots, it boots from an internal rom with the cartridge
-    // slot unmapped and copies a small security program to ram. In order to check
-    // the header on the cartridge, it has to swap it in to read it for a very short
-    // time. When this happens, the !CART_CE signal is asserted. By waiting for this to
-    // happen and *immediately* resetting the CPU within the *very* short time the
-    // cart is in the address space, the 68000 will reset with the cart mapped in and
-    // run from the cart just like a console without it.
-    // If this fails, TMSS will run as normal and our code will continue, because
-    // !CART_CE will also go low when the TMSS is done.
-    // This trick could probably be made more robust by underclocking the CPU first,
-    // but the MCU seems fast enough for it to work reliably.
     tmssskip();
-       // Setup OK
+    
+    // Setup OK
+    is_booted = true;
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
     // Main loop, check for controller hotkeys
