@@ -1,7 +1,7 @@
 # Open Heart
 "Open Heart" is a simple Sega Genesis/Mega Drive multi-mod using a bare Raspberry Pi Pico or compatible board. Now Is Time To The 68000 Heart On Fire.
 
-**NOTE THAT THIS MOD IS STILL A WORK IN PROGRESS and that some features and wiring may change, but the info here will stay consistent with the current version of the firmware. Take note of any changes before updating the firwmare.**
+**NOTE THAT THIS MOD IS STILL A WORK IN PROGRESS and that some features and wiring may change, but the info here will stay consistent with the current version of the firmware. Take note of any changes before updating the firmware.**
 
 ## Features
 - Switchless region changing with automatic PAL/NTSC switching
