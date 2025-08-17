@@ -369,6 +369,11 @@ int main() {
     gpio_init(GPIO_S_C_PIN);
     gpio_set_dir(GPIO_S_C_PIN, GPIO_IN);
 
+     //Master system mode detect
+    gpio_init (GPIO_M3_PIN);
+    gpio_set_dir (GPIO_M3_PIN,GPIO_IN );
+    gpio_pull_up (GPIO_M3_PIN);
+
     // Board LED
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
