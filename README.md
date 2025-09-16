@@ -4,7 +4,7 @@ Multi-region mod for Sega Genesis/Mega Drive using Raspberry Pi Pico (RP2040). T
 
 ---
 
-🧩 Overview
+## 🧩 Overview
 
 Open Heart turns your console into a multi-region hub with advanced features:
 
@@ -19,7 +19,7 @@ Open Heart turns your console into a multi-region hub with advanced features:
 
 ---
 
-🔌 Required Hardware
+## 🔌 Required Hardware
 
 - Raspberry Pi Pico or compatible RP2040
 - ST7735 (TFT) or SSD1306 (OLED) display
@@ -30,7 +30,7 @@ Open Heart turns your console into a multi-region hub with advanced features:
 
 ---
 
-🎮 Commands
+## 🎮 Commands
 
 Function: Commands
 - Region switch:
@@ -56,7 +56,7 @@ Function: Commands
 
 ---
 
-🖥️ Graphical Display
+## 🖥️ Graphical Display
 
 - ST7735 (TFT): colorful graphics and custom logos
 - SSD1306 (OLED): monochrome graphic text
@@ -71,7 +71,7 @@ Displayed messages:
 
 ---
 
-⚙️ Region Configuration
+## ⚙️ Region Configuration
 
 Region is saved to flash and restored on boot. LED indicators:
 
@@ -81,7 +81,7 @@ Region is saved to flash and restored on boot. LED indicators:
 
 ---
 
-🚀 TMSS Skip
+## 🚀 TMSS Skip
 
 Advanced technique that automatically bypasses TMSS:
 
@@ -91,7 +91,7 @@ Advanced technique that automatically bypasses TMSS:
 
 ---
 
-🧑‍💻 Author
+## 🧑‍💻 Author
 
 Developed by Irineu Teza Nunes (YouTube @itnproducoes) for the Brazilian retro gaming community.
 Project inspired by 32mbit and enhanced.
@@ -99,6 +99,12 @@ Project inspired by 32mbit and enhanced.
 
 ---
 
+## 📄 License
+This project is licensed under the terms of the **GNU General Public License v3.0 (GPLv3)**.  
+You may redistribute and/or modify it under the terms of the license.  
+For more information, visit: [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html).
+
+---
 
 # Open Heart by 32mbit
 
@@ -189,4 +195,11 @@ Técnica avançada que ignora o TMSS automaticamente:
 Desenvolvido por **Irineu Teza Nunes (youtube @itnproducoes)** para a comunidade retro gamer brasileira 🇧🇷  
 Projeto inspirado por 32mbit e aprimorado.
 
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob os termos da **GNU General Public License v3.0 (GPLv3)**.  
+Você pode redistribuí-lo e/ou modificá-lo conforme os termos da licença.  
+Para mais informações, acesse: [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.ht
 
