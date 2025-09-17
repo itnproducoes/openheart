@@ -364,10 +364,12 @@ int main() {
     // Controller pin 6
     gpio_init(GPIO_A_B_PIN);
     gpio_set_dir(GPIO_A_B_PIN, GPIO_IN);
+    gpio_pull_up(GPIO_A_B_PIN);
 
     // Controller pin 9
     gpio_init(GPIO_S_C_PIN);
     gpio_set_dir(GPIO_S_C_PIN, GPIO_IN);
+    gpio_pull_up(GPIO_S_C_PIN);
 
      //Master system mode detect
     gpio_init (GPIO_M3_PIN);
