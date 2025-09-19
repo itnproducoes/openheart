@@ -13,7 +13,7 @@
     
     In-game region switching: Hold B+C+Start
     
-    In-game master system mode pause: Hold UP+B+C for 2 second
+    In-game master system mode pause: Hold UP+B+C for 1 second
     
     In-game master system mode reset: Hold UP+C for 5 second
 
@@ -504,11 +504,11 @@ int main() {
         // Only master system mode
         if (gpio_get(GPIO_M3_PIN) == false ) {
         
-             // UP + B + C for 2 seconds pause master system mode
+             // UP + B + C for 1 second pause master system mode
              while (gpio_get(GPIO_A_B_PIN) == false && gpio_get(GPIO_S_C_PIN) == false && gpio_get(GPIO_UP_PIN) == false ) {
                     sleep_ms(1);
                     request++;
-                    if(request == 2000) {                  
+                    if(request == 1000) {                  
                         pause_mastersystem();
                   }
              } 
