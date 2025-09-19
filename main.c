@@ -13,7 +13,7 @@
     
     In-game region switching: Hold B+C+Start
     
-    In-game master system mode pause: Hold UP+B+C for 1 second
+    In-game master system mode pause: Hold UP+B+C for 2 second
     
     In-game master system mode reset: Hold UP+C for 5 second
 
@@ -398,14 +398,17 @@ int main() {
     // Controller pin 6
     gpio_init(GPIO_A_B_PIN);
     gpio_set_dir(GPIO_A_B_PIN, GPIO_IN);
+    gpio_pull_up(GPIO_A_B_PIN);
 
     // Controller pin 9
     gpio_init(GPIO_S_C_PIN);
     gpio_set_dir(GPIO_S_C_PIN, GPIO_IN);
+    gpio_pull_up(GPIO_S_C_PIN);
     
     // Controller pin 1
     gpio_init(GPIO_UP_PIN);
     gpio_set_dir(GPIO_UP_PIN, GPIO_IN);
+    gpio_pull_down(GPIO_UP_PIN);
     
     // Board LED
     gpio_init(PICO_DEFAULT_LED_PIN);
