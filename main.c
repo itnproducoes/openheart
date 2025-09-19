@@ -382,6 +382,11 @@ int main() {
     gpio_init (GPIO_A23_PIN);
     gpio_set_dir (GPIO_A23_PIN,GPIO_IN );
     gpio_pull_up (GPIO_A23_PIN);
+
+    //Master system mode detect
+    gpio_init (GPIO_M3_PIN);
+    gpio_set_dir (GPIO_M3_PIN,GPIO_IN );
+    gpio_pull_up (GPIO_M3_PIN);
     
     // Japan/Export
     gpio_init(GPIO_REGION_PIN);
