@@ -13,7 +13,7 @@
     
     In-game region switching: Hold B+C+Start
     
-    In-game master system mode pause: Hold UP+B+C for 1 second
+    In-game master system mode pause: Hold UP+B+C for 2 second
     
     In-game master system mode reset: Hold UP+C for 5 second
 
@@ -33,7 +33,6 @@
 #include "hardware/clocks.h"
 #include "hardware/pwm.h"
 #include "hardware/gpio.h"
-
 
 #define GPIO_UP_PIN 4           // Wired to controller port 1 pin 1
 #define GPIO_M3_PIN 5           // master system mode detect
@@ -84,6 +83,7 @@ volatile uint32_t reset_timeout = 0;
 uint32_t region_swap = 0;
 volatile bool oc_on = false;
 volatile int led_mode = 0;
+volatile int tmssrun = 0;
 
 // FLASH stuff lifted from pico examples
 // This function will be called when it's safe to call flash_range_erase
@@ -237,7 +237,6 @@ void reset_mastersystem () {
     gpio_deinit (GPIO_MRES_PIN);
 }
 
-
 // Reset cycle. According to spritesmind, the vdp
 // asserts VRES for about 16.7ms on a reset button press 
 void reset_genesis()
@@ -248,6 +247,33 @@ void reset_genesis()
     reset_press = 0;
 }
 
+
+// Reset cycle for TMSS. The default reset_genesis function
+// asserts VRES for about 16.7ms on a reset button press 
+// however this causes issues when dealing with MRES,
+// since the console gets into an unknown state, so it was sped up.
+void reset_tmss()
+{
+    reset_on();
+    sleep_us(5);
+    reset_off();
+    reset_press=0;
+}
+
+//TMSS Skip 
+void tmssskip(){
+        // We enable !CART_CE especially when MRES is asserted.
+        tmssrun++;
+         //Flag to prevent unwanted region changes while doing the bypass.
+        gpio_init(GPIO_CART_ENABLE_PIN);
+        gpio_set_dir(GPIO_CART_ENABLE_PIN, GPIO_IN);
+        while(gpio_get(GPIO_CART_ENABLE_PIN));
+        reset_tmss();
+        gpio_deinit(GPIO_CART_ENABLE_PIN); 
+        //We get off the CE bus when done.
+        tmssrun=0; //Make the region change available again.
+}
+
 #define UPDATE_PAD(pad, mask, pin) \
     pad = (pad & ~(mask)) | ((!gpio_get(pin)) ? (mask) : 0);
 
@@ -255,6 +281,7 @@ void reset_genesis()
 // Relies on a game to toggle the select pin so
 // that we don't interfere with input
 void read_inputs(uint gpio, uint32_t events) {
+ 
     if (gpio == GPIO_SELECT_PIN) {
         if (events & GPIO_IRQ_EDGE_FALL) {
             UPDATE_PAD(pad, PAD_A, GPIO_A_B_PIN);
@@ -268,7 +295,7 @@ void read_inputs(uint gpio, uint32_t events) {
     }
 
     // Reset input. VRES low is a reset button press
-    if(gpio == GPIO_VRES_PIN && (events & GPIO_IRQ_EDGE_FALL))
+    if(gpio == GPIO_VRES_PIN && (events & GPIO_IRQ_EDGE_FALL) && tmssrun==0)
     {
         reset_press++;
         if(reset_press == 1) {
@@ -281,8 +308,14 @@ void read_inputs(uint gpio, uint32_t events) {
                 }            
         }
     }
+    
+      //MRES pressed, means cartridge is changing modes and TMSS skip must be performed again and UP not press (UP not press is necessary for reset master system)
+      if(gpio == GPIO_MRES_PIN && (events & GPIO_IRQ_EDGE_FALL) && (gpio_get(GPIO_UP_PIN) == true ))
+      {
+       tmssskip();       
+      }    
 }
-
+    
 bool led_callback(struct repeating_timer *rt) {
     const float blink_hz = 3.0f;
 
@@ -336,29 +369,20 @@ int main() {
     // Set up gpio's
     // VRES
     gpio_init(GPIO_VRES_PIN);
-
+    
+    // !MRES
+    gpio_init(GPIO_MRES_PIN);
+    gpio_disable_pulls(GPIO_MRES_PIN);
+    gpio_set_dir(GPIO_MRES_PIN, GPIO_IN); 
+    
     // HALT
     gpio_init(GPIO_HALT_PIN);
-    
-    // Master system mode detect
-    gpio_init(GPIO_M3_PIN);
-    gpio_set_dir(GPIO_M3_PIN, GPIO_IN);
-    gpio_pull_up (GPIO_M3_PIN);
-    
-    // Master system mode reset
-    gpio_init (GPIO_MRES_PIN);
-    gpio_set_dir (GPIO_MRES_PIN,GPIO_IN );
-    gpio_pull_up (GPIO_MRES_PIN);
-    
+        
     // Master system mode pause
     gpio_init (GPIO_A23_PIN);
     gpio_set_dir (GPIO_A23_PIN,GPIO_IN );
     gpio_pull_up (GPIO_A23_PIN);
     
-    // !CART_CE
-    gpio_init(GPIO_CART_ENABLE_PIN);
-    gpio_set_dir(GPIO_CART_ENABLE_PIN, GPIO_IN);
-        
     // Japan/Export
     gpio_init(GPIO_REGION_PIN);
     gpio_set_dir(GPIO_REGION_PIN, GPIO_OUT);
@@ -396,9 +420,10 @@ int main() {
     gpio_set_dir(GPIO_OC_LED_PIN, GPIO_OUT);
 
     // Room for experimentation: clock signal quality
-    gpio_set_drive_strength(GPIO_MCLK_PIN, GPIO_DRIVE_STRENGTH_2MA);
+    //Drive strength increased from 2mA to 8mA because some chipsets caused the PLL to get overwhelmed and drift.
+    gpio_set_drive_strength(GPIO_MCLK_PIN, GPIO_DRIVE_STRENGTH_8MA);
     gpio_set_slew_rate(GPIO_MCLK_PIN, GPIO_SLEW_RATE_SLOW);
-    gpio_set_drive_strength(GPIO_VCLK_PIN, GPIO_DRIVE_STRENGTH_2MA);
+    gpio_set_drive_strength(GPIO_VCLK_PIN, GPIO_DRIVE_STRENGTH_8MA);
     gpio_set_slew_rate(GPIO_VCLK_PIN, GPIO_SLEW_RATE_SLOW);
 
     // Controller pin 7 & install input handler
@@ -406,6 +431,8 @@ int main() {
     gpio_set_irq_enabled_with_callback(GPIO_SELECT_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &read_inputs);
     // Also handles VRES
     gpio_set_irq_enabled_with_callback(GPIO_VRES_PIN, GPIO_IRQ_EDGE_FALL, true, &read_inputs);
+    //Now handling MRES for when a flashcart enters and exits M3 or SCD modes.
+    gpio_set_irq_enabled_with_callback(GPIO_MRES_PIN, GPIO_IRQ_EDGE_FALL, true, &read_inputs);
 
     // Restore last setting
     read_flash();
@@ -449,10 +476,8 @@ int main() {
     // !CART_CE will also go low when the TMSS is done.
     // This trick could probably be made more robust by underclocking the CPU first,
     // but the MCU seems fast enough for it to work reliably.
-    while(gpio_get(GPIO_CART_ENABLE_PIN));
-    reset_genesis();
-    gpio_deinit(GPIO_CART_ENABLE_PIN);
-
+    tmssskip();
+    
     // Setup OK
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
@@ -502,9 +527,9 @@ int main() {
         }
               
         // Only master system mode
-        if (gpio_get(GPIO_M3_PIN) == false ) {
-        
-             // UP + B + C for 1 second pause master system mode
+       if (gpio_get(GPIO_M3_PIN) == false ) {   
+       
+             // UP + B + C for 1 seconds pause master system mode
              while (gpio_get(GPIO_A_B_PIN) == false && gpio_get(GPIO_S_C_PIN) == false && gpio_get(GPIO_UP_PIN) == false ) {
                     sleep_ms(1);
                     request++;
@@ -513,12 +538,12 @@ int main() {
                   }
              } 
         
-               // C for 5 seconds reset master system mode
+             // UP + C for 5 seconds reset master system mode
              while (gpio_get(GPIO_A_B_PIN) == true && gpio_get(GPIO_S_C_PIN) == false && gpio_get(GPIO_UP_PIN) == false) {
                     sleep_ms(1);
                     request++;
                     if(request == 5000) {                    
-                        reset_mastersystem();
+                        reset_mastersystem();                                                  
                     }                
             }
          }        
