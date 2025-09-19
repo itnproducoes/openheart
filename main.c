@@ -13,7 +13,7 @@
     
     In-game region switching: Hold B+C+Start
     
-    In-game master system mode pause: Hold UP+B+C for 2 second
+    In-game master system mode pause: Hold UP+B+C for 1 second
     
     In-game master system mode reset: Hold UP+C for 5 second
 
