@@ -232,7 +232,7 @@ O overclock é indicado por um piscar do LED a 3Hz quando ativado.
 Baixe a imagem [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para dentro dele.
 Quando o dispositivo de armazenamento se desconectar automaticamente, significa que está pronto para uso.
 
-**Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/example).
+**Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
 **Pinagem do pico** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png)
 
