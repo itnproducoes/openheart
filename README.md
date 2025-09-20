@@ -232,6 +232,25 @@ O overclock é indicado por um piscar do LED a 3Hz quando ativado.
 Baixe a imagem [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para dentro dele.
 Quando o dispositivo de armazenamento se desconectar automaticamente, significa que está pronto para uso.
 
+**Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/example).
+
+**Pinagem do pico** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png)
+
+**Notas e considerações**
+Use por sua conta e risco: O mod parece funcionar bem em várias revisões dos modelos 1 e 2, mas nem todas as revisões foram testadas.
+
+O overclock ajusta a CPU para o clock mestre dividido por 5 (o padrão é MCLK/7). Isso resulta em cerca de 10,74 MHz no NTSC. A maioria dos jogos funciona bem com isso, mas esteja ciente de que ainda podem ocorrer travamentos, falhas gráficas ou mau funcionamento dos controles.
+
+Os clocks gerados pelo Pi Pico são imperceptivelmente diferentes (+0,013% no NTSC, -0,006% no PAL) em relação às especificações originais do oscilador. Isso não é perceptível, mas pode ser relevante para speedrunners.
+
+Alternar entre 50Hz e 60Hz, ou ativar/desativar o overclock com frequência durante o jogo, pode ocasionalmente causar comportamentos estranhos. Se isso acontecer, basta reiniciar o console.
+
+Alguns (poucos?) consoles NTSC Model 1 VA7 e Model 2 VA0 têm o modo 50Hz quebrado "têm o modo 50Hz quebrado"). Esses consoles ainda funcionam normalmente em 60Hz.
+
+O vídeo composto em modo PAL em consoles NTSC (e vice-versa) pode ou não funcionar. A saída RGB funcionará. Isso pode depender da sua TV ou do padrão utilizado.
+
+Em vídeo composto no modo PAL/60Hz a imagem irá ficar sintilante com cores alteradas ou preto e branco. A saída RGB funcionará.
+
 ---
 
 ## 📄 Licença
