@@ -114,6 +114,9 @@ This mod is very similar to other existing mods, so adapting it to your specific
 
 **A23 (B11)** corresponds to pin B11 of the cartridge port.
 
+**Reset Button** correspond to pin 2 the button reset.
+Add a voltage divider resistor for Model 1 VA5/VA6 on the reset button. Connect a 4.7k resistor to 5V and a 10k resistor to GND. The connection point between the two resistors should be connected to the Pi Pico's Reset Button pin.
+
 **RST, CS, DC, SCL, SDA, BLK and Detect Display** are only needed if you plan to use an LCD display.
 
 **Bluetooth up/down** will only be connected if used to control a retro Bluetooth module for wireless controllers.
@@ -271,6 +274,9 @@ Os **pinos 1, 6, 7 e 9** (adicionar resistor para pino 7 do controle (22k) model
 - **M3 (B30)** corresponde ao pino B30 da porta do cartucho.
   
 - **A23 (B11)** corresponde ao pino B11 da porta do cartucho.
+
+- **Reset Button** corresponde ao pino 2 do botão de reset.
+Adicione um resistor divisor para o modelo 1 VA5/VA6 no botão de reset. Conecte um resitor de 4,7k no 5v e 10k no GND. O ponto de conexão entre os dois resistores deve ser conectado ao pino do botão de reset do Pi Pico.
 
 - **RST, CS, DC, SCL, SDA, BLK e Detect Display** são necessários apenas se for utilizar display LCD. 
 
