@@ -190,10 +190,47 @@ Técnica avançada que ignora o TMSS automaticamente:
 
 ---
 
-## 🧑‍💻 Autor
+## Instruções
 
-Desenvolvido por **Irineu Teza Nunes (youtube @itnproducoes)** para a comunidade retro gamer brasileira 🇧🇷  
-Projeto inspirado por 32mbit e aprimorado.
+Este mod é muito semelhante a outros mods existentes, então adaptá-lo ao seu console específico não deve ser difícil. Esquemáticos ou referências de outros mods similares podem ser úteis. Remova o oscilador e monte o Pico o mais próximo possível da localização original da placa.
+
+- **5V** e **terra** podem ser facilmente conectados aos furos deixados pela remoção do oscilador. Recomenda-se usar um diodo (eu usei um 1n4001) no ponto de 5V se você pretende atualizar o firmware com o mod instalado.
+  
+- **MCLK** deve ser conectado à saída de clock do oscilador.
+  
+- **VCLK** é conectado ao pino de entrada de clock do 68000 (o VDP também está conectado a este pino e deve ser desconectado dele). Esses fios devem ser mantidos o mais curtos possível. VCLK é opcional caso você não deseje usar o recurso de overclock.
+  
+- **Jpn/Export** e **NTSC/PAL** devem ser conectados aos pontos da sua placa onde +5V e terra determinam a região e 50/60Hz, respectivamente.
+  
+- **VRES** e **HALT** são conectados aos pinos correspondentes do 68000.  HALT é opcional caso você não deseje usar o recurso de overclock.
+  
+Os **pinos 1, 6, 7 e 9** (adicionar resistor para pino 7 do controle (22k) model 1 va0 to va4) correspondem aos pinos da primeira porta de controle, contando de 1 a 9 começando pelo pino superior esquerdo visto de frente para o console.
+
+- **Cart Enable** corresponde ao pino B17 da porta do cartucho. O pino B1 é o mais à esquerda na frente, voltado para o console. Isso é usado para o bypass do TMSS. Se você estiver instalando isso em um console sem TMSS, provavelmente deve conectar esse pino ao terra.
+  
+- **MRES** corresponde ao pino B2 da porta do cartucho. Isso é usado para o bypass do TMSS, quando um flashcart entra e sai de modos especiais como Master System ou Sega CD. Se estiver instalando em um console sem TMSS, este pino não deve ser conectado.
+
+- **M3 (B30)** corresponde ao pino B30 da porta do cartucho.
+  
+- **A23 (B11)** corresponde ao pino B11 da porta do cartucho.
+
+- **RST, CS, DC, SCL, SDA, BLK e Detect Display** são necessários apenas se for utilizar display LCD. 
+
+- **Bluetooth up/down** será conectado apenas se for utilizado para controlar um módulo bluetooth retro para controles sem fio.
+  
+
+Se quiser um LED que mostre o estado do mod, use um LED bicolor de cátodo comum. Conecte o cátodo ao terra e os dois ânodos aos pinos LED1 e LED2. A região é indicada pela cor:
+
+Cor do LED1 indica Japão
+Cor do LED2 indica EUA/Américas
+Mistura das duas cores indica Europa
+
+O overclock é indicado por um piscar do LED a 3Hz quando ativado.
+
+**Configurando o pico**
+
+Baixe a imagem [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para dentro dele.
+Quando o dispositivo de armazenamento se desconectar automaticamente, significa que está pronto para uso.
 
 ---
 
@@ -201,5 +238,12 @@ Projeto inspirado por 32mbit e aprimorado.
 
 Este projeto está licenciado sob os termos da **GNU General Public License v3.0 (GPLv3)**.  
 Você pode redistribuí-lo e/ou modificá-lo conforme os termos da licença.  
-Para mais informações, acesse: [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.ht
+Para mais informações, acesse: [https://www.gnu.org/licenses/gpl-3.0.html]
+
+---
+
+## 🧑‍💻 Autor
+
+Desenvolvido por **Irineu Teza Nunes (youtube @itnproducoes)** para a comunidade retro gamer brasileira 🇧🇷  
+Projeto inspirado por 32mbit e aprimorado.
 
