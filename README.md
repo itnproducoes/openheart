@@ -108,7 +108,7 @@ This mod is very similar to other existing mods, so adapting it to your specific
 
 - **Cart Enable** corresponds to pin B17 of the cartridge port. Pin B1 is the leftmost pin at the front, facing the console. This is used for TMSS bypass. If you are installing this on a non-TMSS console, this pin should probably be connected to ground.
 
-- **MRES** corresponds to pin B2 of the cartridge port. This is used for TMSS bypass when a flashcart enters and exits special modes such as Master System or Sega CD. If installing on a non-TMSS console, this pin should not be connected.
+- **MRES** corresponds to pin B2 on the cartridge port. It is used for TMSS bypass and reset in Master System mode, when a flashcart enters and exits special modes such as Master System or Sega CD.
 
 - **M3 (B30)** corresponds to pin B30 of the cartridge port.
 
@@ -269,7 +269,7 @@ Os **pinos 1, 6, 7 e 9** (adicionar resistor para pino 7 do controle (22k) model
 
 - **Cart Enable** corresponde ao pino B17 da porta do cartucho. O pino B1 é o mais à esquerda na frente, voltado para o console. Isso é usado para o bypass do TMSS. Se você estiver instalando isso em um console sem TMSS, provavelmente deve conectar esse pino ao terra.
   
-- **MRES** corresponde ao pino B2 da porta do cartucho. Isso é usado para o bypass do TMSS, quando um flashcart entra e sai de modos especiais como Master System ou Sega CD. Se estiver instalando em um console sem TMSS, este pino não deve ser conectado.
+- **MRES** corresponde ao pino B2 da porta do cartucho. Isso é usado para o bypass do TMSS and reset in mode master system, quando um flashcart entra e sai de modos especiais como Master System ou Sega CD.
 
 - **M3 (B30)** corresponde ao pino B30 da porta do cartucho.
   
