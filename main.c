@@ -63,6 +63,9 @@
 
 #define LED_WRAP 255
 
+//50Hz 60Hz europe control
+int controleuro = 1;
+
 enum {
     INVALID = 0x80,
     JAPAN,
@@ -150,51 +153,55 @@ void set_vclk_div(uint32_t div) {
 }
 
 // Set clock & jumpers for regions
+// Configures system for Japan region
 void set_japan()
 {
     set_mclk_ntsc();
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
     gpio_put(GPIO_REGION_PIN, false);
-    gpio_put(GPIO_CONT_PIN, false);
-
+    controleuro = 0;
     led_mode = 1;
 }
 
+// Configures system for Americas region
 void set_americas()
 {
     set_mclk_ntsc();
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
     gpio_put(GPIO_REGION_PIN, true);
-    gpio_put(GPIO_CONT_PIN, false);
-
+    controleuro = 0;
     led_mode = 2;
 }
 
+// Configures system for Europe region
 void set_europe()
 {
     set_mclk_pal();
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, false);
     gpio_put(GPIO_REGION_PIN, true);
-    gpio_put(GPIO_CONT_PIN, true);
-
+    controleuro = 1;
     led_mode = 3;
 }
 
+// Sets Europe region to 60Hz
 void set_europe60()
 {
+    set_mclk_ntsc();
+    set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
-    gpio_put(GPIO_CONT_PIN, true);
-    
+    controleuro = 1;
 }
 
+// Sets Europe region to 50Hz
 void set_europe50()
 {
+    set_mclk_pal();
+    set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, false);
-    gpio_put(GPIO_CONT_PIN, true);
-    
+    controleuro = 1;
 }
 
 // (The HALT & RESET lines are open collector and
