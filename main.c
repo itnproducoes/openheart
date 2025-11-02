@@ -34,6 +34,7 @@
 #include "hardware/pwm.h"
 #include "hardware/gpio.h"
 
+#define GPIO_BTRES_PIN 0        // To pin button reset
 #define GPIO_UP_PIN 4           // Wired to controller port 1 pin 1
 #define GPIO_M3_PIN 5           // master system mode detect
 #define GPIO_A23_PIN 8          // Pause to master system mode
@@ -51,8 +52,6 @@
 #define GPIO_VCLK_PIN 20        // CPU clock, for overclocking, optional
 #define GPIO_MCLK_PIN 21        // To master oscillator clock in
 #define GPIO_OC_LED_PIN 22
-#define GPIO_CONT_PIN 28          // To pin control region Europe 50Hz 60Hz
-
 
 #define PAD_A (1 << 0)
 #define PAD_B (1 << 1)
@@ -62,6 +61,13 @@
 #define FLASH_TARGET_OFFSET (256 * 1024)
 
 #define LED_WRAP 255
+
+//50Hz 60Hz europe control
+int controleuro = 1;
+
+//Required to change regions using the reset button. Controls different types of board revisions.
+bool pinbtres = true;
+bool negpinbtres = false;
 
 enum {
     INVALID = 0x80,
@@ -84,6 +90,7 @@ uint32_t region_swap = 0;
 volatile bool oc_on = false;
 volatile int led_mode = 0;
 volatile int tmssrun = 0;
+volatile bool is_booted = false;
 
 // FLASH stuff lifted from pico examples
 // This function will be called when it's safe to call flash_range_erase
@@ -150,51 +157,55 @@ void set_vclk_div(uint32_t div) {
 }
 
 // Set clock & jumpers for regions
+// Configures system for Japan region
 void set_japan()
 {
     set_mclk_ntsc();
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
     gpio_put(GPIO_REGION_PIN, false);
-    gpio_put(GPIO_CONT_PIN, false);
-
+    controleuro = 0;
     led_mode = 1;
 }
 
+// Configures system for Americas region
 void set_americas()
 {
     set_mclk_ntsc();
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
     gpio_put(GPIO_REGION_PIN, true);
-    gpio_put(GPIO_CONT_PIN, false);
-
+    controleuro = 0;
     led_mode = 2;
 }
 
+// Configures system for Europe region
 void set_europe()
 {
     set_mclk_pal();
     set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, false);
     gpio_put(GPIO_REGION_PIN, true);
-    gpio_put(GPIO_CONT_PIN, true);
-
+    controleuro = 1;
     led_mode = 3;
 }
 
+// Sets Europe region to 60Hz
 void set_europe60()
 {
+    set_mclk_ntsc();
+    set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, true);
-    gpio_put(GPIO_CONT_PIN, true);
-    
+    controleuro = 1;
 }
 
+// Sets Europe region to 50Hz
 void set_europe50()
 {
+    set_mclk_pal();
+    set_vclk_div(7);
     gpio_put(GPIO_STANDARD_PIN, false);
-    gpio_put(GPIO_CONT_PIN, true);
-    
+    controleuro = 1;
 }
 
 // (The HALT & RESET lines are open collector and
@@ -281,41 +292,37 @@ void tmssskip(){
 // Relies on a game to toggle the select pin so
 // that we don't interfere with input
 void read_inputs(uint gpio, uint32_t events) {
- 
-    if (gpio == GPIO_SELECT_PIN) {
-        if (events & GPIO_IRQ_EDGE_FALL) {
-            UPDATE_PAD(pad, PAD_A, GPIO_A_B_PIN);
-            UPDATE_PAD(pad, PAD_S, GPIO_S_C_PIN);
-        }
-        if (events & GPIO_IRQ_EDGE_RISE) {
-            UPDATE_PAD(pad, PAD_B, GPIO_A_B_PIN);
-            UPDATE_PAD(pad, PAD_C, GPIO_S_C_PIN);
-        }
-        
-    }
-
-    // Reset input. VRES low is a reset button press
-    if(gpio == GPIO_VRES_PIN && (events & GPIO_IRQ_EDGE_FALL) && tmssrun==0)
-    {
-        reset_press++;
-        if(reset_press == 1) {
-                if (gpio_get(GPIO_CONT_PIN) == true) {
-                        set_europe();
-                        config[0] = EUROPE;
-                        reset_timeout = 0;
-                } else {
-                        reset_timeout = 0;
-                }            
-        }
-    }
-    
+   if (is_booted == false) return;
+    switch(gpio) {
+        // Controller poll
+        case GPIO_SELECT_PIN:
+            if (events & GPIO_IRQ_EDGE_FALL) {
+                UPDATE_PAD(pad, PAD_A, GPIO_A_B_PIN);
+                UPDATE_PAD(pad, PAD_S, GPIO_S_C_PIN);
+            }
+            if (events & GPIO_IRQ_EDGE_RISE) {
+                UPDATE_PAD(pad, PAD_B, GPIO_A_B_PIN);
+                UPDATE_PAD(pad, PAD_C, GPIO_S_C_PIN);
+            }
+        break;
+        // Reset input. VRES low is a reset button press
+        case GPIO_VRES_PIN:
+            if ((events & GPIO_IRQ_EDGE_FALL) && tmssrun == 0) {
+                reset_press++;
+                if(reset_press == 1) {
+                reset_timeout = 0;
+            }
+            }
+        break;
       //MRES pressed, means cartridge is changing modes and TMSS skip must be performed again and UP not press (UP not press is necessary for reset master system)
-      if(gpio == GPIO_MRES_PIN && (events & GPIO_IRQ_EDGE_FALL) && (gpio_get(GPIO_UP_PIN) == true ))
-      {
-       tmssskip();       
-      }    
-}
-    
+        case GPIO_MRES_PIN:
+            if(gpio == GPIO_MRES_PIN && (events & GPIO_IRQ_EDGE_FALL) && (gpio_get(GPIO_UP_PIN) == true ))
+            {
+                tmssskip();  
+            }
+        break;
+    }
+}    
 bool led_callback(struct repeating_timer *rt) {
     const float blink_hz = 3.0f;
 
@@ -369,6 +376,23 @@ int main() {
     // Set up gpio's
     // VRES
     gpio_init(GPIO_VRES_PIN);
+
+     // BTRES
+    gpio_init(GPIO_BTRES_PIN);
+    gpio_set_dir(GPIO_BTRES_PIN, GPIO_IN);
+    gpio_pull_down (GPIO_BTRES_PIN);
+    /**
+    If false, with the reset button pressed we have 3.3v (revision va0 to va4 model 1).
+    If true, with the reset button pressed we have 0v (revision va5/va6 model 1).
+    It is necessary to use a voltage divider with 4.7k resistors at 5v and 10k at GND to 3.3v.
+    **/
+    if (gpio_get(GPIO_BTRES_PIN) == true) {
+        pinbtres=false;
+        negpinbtres=true;
+    }else{
+        pinbtres=true;
+        negpinbtres=false;
+    }
     
     // !MRES
     gpio_init(GPIO_MRES_PIN);
@@ -390,11 +414,7 @@ int main() {
     
     // Japan/Export
     gpio_init(GPIO_REGION_PIN);
-    gpio_set_dir(GPIO_REGION_PIN, GPIO_OUT);
-   
-    // 60Hz/50Hz control
-    gpio_init(GPIO_CONT_PIN);
-    gpio_set_dir(GPIO_CONT_PIN, GPIO_OUT);
+    gpio_set_dir(GPIO_REGION_PIN, GPIO_OUT);   
     
     // PAL/NTSC
     gpio_init(GPIO_STANDARD_PIN);
@@ -487,6 +507,7 @@ int main() {
     tmssskip();
     
     // Setup OK
+    is_booted = true;
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
     // Main loop, check for controller hotkeys
@@ -496,7 +517,7 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                  if (gpio_get(GPIO_CONT_PIN) == true) {
+                  if (controleuro == 1) {
                         set_europe();
                         config[0] = EUROPE;
                         reset_genesis();
@@ -511,15 +532,22 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                if (gpio_get(GPIO_CONT_PIN) == true && gpio_get(GPIO_STANDARD_PIN) == false) {
+                if (controleuro == 1 && gpio_get(GPIO_STANDARD_PIN) == false) {
                     set_europe60();
                 } else {
-                     if (gpio_get(GPIO_CONT_PIN) == true && gpio_get(GPIO_STANDARD_PIN) == true) {
+                     if (controleuro == 1 && gpio_get(GPIO_STANDARD_PIN) == true) {
                         set_europe50();
                     }
                 }
             }
         }
+
+     //Immediate check: if in Europe 60Hz mode, switch back to 50Hz"
+      if (gpio_get(GPIO_BTRES_PIN) == pinbtres) {
+        if (controleuro == 1 && gpio_get(GPIO_STANDARD_PIN) == true) {
+          set_europe50();
+        }
+     }
 
        // A + Start for 1 seconds: toggle overclock
         while((pad == (PAD_A | PAD_S))) {
