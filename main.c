@@ -51,8 +51,6 @@
 #define GPIO_VCLK_PIN 20        // CPU clock, for overclocking, optional
 #define GPIO_MCLK_PIN 21        // To master oscillator clock in
 #define GPIO_OC_LED_PIN 22
-#define GPIO_CONT_PIN 28          // To pin control region Europe 50Hz 60Hz
-
 
 #define PAD_A (1 << 0)
 #define PAD_B (1 << 1)
@@ -301,20 +299,15 @@ void read_inputs(uint gpio, uint32_t events) {
         
     }
 
-    // Reset input. VRES low is a reset button press
-    if(gpio == GPIO_VRES_PIN && (events & GPIO_IRQ_EDGE_FALL) && tmssrun==0)
-    {
-        reset_press++;
-        if(reset_press == 1) {
-                if (gpio_get(GPIO_CONT_PIN) == true) {
-                        set_europe();
-                        config[0] = EUROPE;
-                        reset_timeout = 0;
-                } else {
-                        reset_timeout = 0;
-                }            
-        }
-    }
+ // Reset input. VRES low is a reset button press
+        case GPIO_VRES_PIN:
+            if ((events & GPIO_IRQ_EDGE_FALL) && tmssrun == 0) {
+                reset_press++;
+                if(reset_press == 1) {
+                reset_timeout = 0;
+            }
+            }
+        break;
     
       //MRES pressed, means cartridge is changing modes and TMSS skip must be performed again and UP not press (UP not press is necessary for reset master system)
       if(gpio == GPIO_MRES_PIN && (events & GPIO_IRQ_EDGE_FALL) && (gpio_get(GPIO_UP_PIN) == true ))
@@ -397,11 +390,7 @@ int main() {
     
     // Japan/Export
     gpio_init(GPIO_REGION_PIN);
-    gpio_set_dir(GPIO_REGION_PIN, GPIO_OUT);
-   
-    // 60Hz/50Hz control
-    gpio_init(GPIO_CONT_PIN);
-    gpio_set_dir(GPIO_CONT_PIN, GPIO_OUT);
+    gpio_set_dir(GPIO_REGION_PIN, GPIO_OUT);   
     
     // PAL/NTSC
     gpio_init(GPIO_STANDARD_PIN);
@@ -503,7 +492,7 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                  if (gpio_get(GPIO_CONT_PIN) == true) {
+                  if (controleuro == 1) {
                         set_europe();
                         config[0] = EUROPE;
                         reset_genesis();
@@ -518,10 +507,10 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                if (gpio_get(GPIO_CONT_PIN) == true && gpio_get(GPIO_STANDARD_PIN) == false) {
+                if (gpio_get(controleuro == 1 && gpio_get(GPIO_STANDARD_PIN) == false) {
                     set_europe60();
                 } else {
-                     if (gpio_get(GPIO_CONT_PIN) == true && gpio_get(GPIO_STANDARD_PIN) == true) {
+                     if (gpio_get(controleuro == 1 && gpio_get(GPIO_STANDARD_PIN) == true) {
                         set_europe50();
                     }
                 }
