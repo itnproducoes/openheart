@@ -85,6 +85,7 @@ uint32_t region_swap = 0;
 volatile bool oc_on = false;
 volatile int led_mode = 0;
 volatile int tmssrun = 0;
+volatile bool is_booted = false;
 
 // FLASH stuff lifted from pico examples
 // This function will be called when it's safe to call flash_range_erase
@@ -286,20 +287,20 @@ void tmssskip(){
 // Relies on a game to toggle the select pin so
 // that we don't interfere with input
 void read_inputs(uint gpio, uint32_t events) {
- 
-    if (gpio == GPIO_SELECT_PIN) {
-        if (events & GPIO_IRQ_EDGE_FALL) {
-            UPDATE_PAD(pad, PAD_A, GPIO_A_B_PIN);
-            UPDATE_PAD(pad, PAD_S, GPIO_S_C_PIN);
-        }
-        if (events & GPIO_IRQ_EDGE_RISE) {
-            UPDATE_PAD(pad, PAD_B, GPIO_A_B_PIN);
-            UPDATE_PAD(pad, PAD_C, GPIO_S_C_PIN);
-        }
-        
-    }
-
- // Reset input. VRES low is a reset button press
+   if (is_booted == false) return;
+    switch(gpio) {
+        // Controller poll
+        case GPIO_SELECT_PIN:
+            if (events & GPIO_IRQ_EDGE_FALL) {
+                UPDATE_PAD(pad, PAD_A, GPIO_A_B_PIN);
+                UPDATE_PAD(pad, PAD_S, GPIO_S_C_PIN);
+            }
+            if (events & GPIO_IRQ_EDGE_RISE) {
+                UPDATE_PAD(pad, PAD_B, GPIO_A_B_PIN);
+                UPDATE_PAD(pad, PAD_C, GPIO_S_C_PIN);
+            }
+        break;
+        // Reset input. VRES low is a reset button press
         case GPIO_VRES_PIN:
             if ((events & GPIO_IRQ_EDGE_FALL) && tmssrun == 0) {
                 reset_press++;
@@ -308,14 +309,15 @@ void read_inputs(uint gpio, uint32_t events) {
             }
             }
         break;
-    
       //MRES pressed, means cartridge is changing modes and TMSS skip must be performed again and UP not press (UP not press is necessary for reset master system)
-      if(gpio == GPIO_MRES_PIN && (events & GPIO_IRQ_EDGE_FALL) && (gpio_get(GPIO_UP_PIN) == true ))
-      {
-       tmssskip();       
-      }    
-}
-    
+        case GPIO_MRES_PIN:
+            if(gpio == GPIO_MRES_PIN && (events & GPIO_IRQ_EDGE_FALL) && (gpio_get(GPIO_UP_PIN) == true ))
+            {
+                tmssskip();  
+            }
+        break;
+    }
+}    
 bool led_callback(struct repeating_timer *rt) {
     const float blink_hz = 3.0f;
 
@@ -483,6 +485,7 @@ int main() {
     tmssskip();
     
     // Setup OK
+    is_booted = true;
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
     // Main loop, check for controller hotkeys
