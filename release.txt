@@ -1,0 +1,9 @@
+==== v 1.0.1 ====
+
+--> Color system correction in the European 60Hz model.
+
+--> Correction in the reset detection mode of the European 50/60Hz mode.
+
+--> Added manual for Mega Drive Extreme Edition IV (only in Brazilian Portuguese).
+
+
