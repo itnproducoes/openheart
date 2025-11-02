@@ -507,10 +507,10 @@ int main() {
             sleep_ms(1);
             request++;
             if(request == 1000) {
-                if (gpio_get(controleuro == 1 && gpio_get(GPIO_STANDARD_PIN) == false) {
+                if (controleuro == 1 && gpio_get(GPIO_STANDARD_PIN) == false) {
                     set_europe60();
                 } else {
-                     if (gpio_get(controleuro == 1 && gpio_get(GPIO_STANDARD_PIN) == true) {
+                     if (controleuro == 1 && gpio_get(GPIO_STANDARD_PIN) == true) {
                         set_europe50();
                     }
                 }
