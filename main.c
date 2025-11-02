@@ -34,6 +34,7 @@
 #include "hardware/pwm.h"
 #include "hardware/gpio.h"
 
+#define GPIO_BTRES_PIN 0        // To pin button reset
 #define GPIO_UP_PIN 4           // Wired to controller port 1 pin 1
 #define GPIO_M3_PIN 5           // master system mode detect
 #define GPIO_A23_PIN 8          // Pause to master system mode
@@ -63,6 +64,10 @@
 
 //50Hz 60Hz europe control
 int controleuro = 1;
+
+//Required to change regions using the reset button. Controls different types of board revisions.
+bool pinbtres = true;
+bool negpinbtres = false;
 
 enum {
     INVALID = 0x80,
@@ -371,6 +376,23 @@ int main() {
     // Set up gpio's
     // VRES
     gpio_init(GPIO_VRES_PIN);
+
+     // BTRES
+    gpio_init(GPIO_BTRES_PIN);
+    gpio_set_dir(GPIO_BTRES_PIN, GPIO_IN);
+    gpio_pull_down (GPIO_BTRES_PIN);
+    /**
+    If false, with the reset button pressed we have 3.3v (revision va0 to va4 model 1).
+    If true, with the reset button pressed we have 0v (revision va5/va6 model 1).
+    It is necessary to use a voltage divider with 4.7k resistors at 5v and 10k at GND to 3.3v.
+    **/
+    if (gpio_get(GPIO_BTRES_PIN) == true) {
+        pinbtres=false;
+        negpinbtres=true;
+    }else{
+        pinbtres=true;
+        negpinbtres=false;
+    }
     
     // !MRES
     gpio_init(GPIO_MRES_PIN);
