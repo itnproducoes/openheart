@@ -546,11 +546,7 @@ int main() {
       if (gpio_get(GPIO_BTRES_PIN) == pinbtres) {
         if (controleuro == 1 && gpio_get(GPIO_STANDARD_PIN) == true) {
           set_europe50();
-          if (displaydetect == 2) {
-              region_display_clean();
-          }
-          europe50_display(displaydetect);
-       }
+        }
      }
 
        // A + Start for 1 seconds: toggle overclock
