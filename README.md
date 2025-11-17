@@ -130,7 +130,7 @@ A mix of both colors indicates Europe
 Overclocking is indicated by the LED blinking at 3Hz when enabled.
 
 **Setting up the Pico**
-Download the  [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v101.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
+Download the mega drive model 1 va0 until va4 [openheart8Mhz.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_8MHZ_free.uf2) or va5/va6 [openheart1074Mhz.uf2])https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_1074MHZ_free.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
 
 **Installation examples here** [Here](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
@@ -293,8 +293,7 @@ O overclock é indicado por um piscar do LED a 3Hz quando ativado.
 
 **Configurando o pico**
 
-Baixe a imagem [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v100.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para dentro dele.
-Quando o dispositivo de armazenamento se desconectar automaticamente, significa que está pronto para uso.
+Baixe a imagem de firmware do modelo 1 do Mega Drive (VA0 a VA4) [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_8MHZ_free.uf2) ou do modelo va5/va6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_1074MHZ_free.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
 
 **Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
