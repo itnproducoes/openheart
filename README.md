@@ -130,7 +130,7 @@ A mix of both colors indicates Europe
 Overclocking is indicated by the LED blinking at 3Hz when enabled.
 
 **Setting up the Pico**
-Download the mega drive model 1 va0 until va4 [openheart8Mhz.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_8MHZ_free.uf2) or va5/va6 [openheart1074Mhz.uf2])https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_1074MHZ_free.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
+Download the mega drive model 1 va0 until va4 [openheart8Mhz.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_8MHZ_free.uf2) or va5/va6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_1074MHZ_free.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
 
 **Installation examples here** [Here](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
