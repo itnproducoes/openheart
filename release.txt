@@ -1,4 +1,5 @@
 === v 2.0.0 ===
+--> The entire compilation structure and logic has been changed.
 --> Added support for the ST7735 and SD1306 displays.
 --> Added support for activating and deactivating the BlueRetro module.
 https://github.com/darthcloud/BlueRetro
