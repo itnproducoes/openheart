@@ -157,6 +157,8 @@ In PAL/60Hz composite video, the image may flicker with altered colors or appear
 
 **This video** [here](https://youtu.be/fwqdS2af00g?si=j-Wv8TLf7hVxnpF5)
 
+---
+
 ## 📄 License
 This project is licensed under the terms of the **GNU General Public License v3.0 (GPLv3)**.  
 You may redistribute and/or modify it under the terms of the license.  
@@ -317,6 +319,12 @@ Alguns (poucos?) consoles NTSC Model 1 VA7 e Model 2 VA0 têm o modo 50Hz quebra
 O vídeo composto em modo PAL em consoles NTSC (e vice-versa) pode ou não funcionar. A saída RGB funcionará. Isso pode depender da sua TV ou do padrão utilizado.
 
 Em vídeo composto no modo PAL/60Hz a imagem irá ficar sintilante com cores alteradas ou preto e branco. A saída RGB funcionará.
+
+---
+
+## Demonstração do funcionamento das funções.
+
+**Neste video** [aqui](https://youtu.be/fwqdS2af00g?si=j-Wv8TLf7hVxnpF5)
 
 ---
 
