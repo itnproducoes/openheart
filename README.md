@@ -153,9 +153,9 @@ In PAL/60Hz composite video, the image may flicker with altered colors or appear
 
 ---
 
-## Demonstration functions
+## Demonstration of how the functions work.
 
-[https://youtu.be/fwqdS2af00g?si=j-Wv8TLf7hVxnpF5]
+**This video** [here](https://youtu.be/fwqdS2af00g?si=j-Wv8TLf7hVxnpF5)
 
 ## 📄 License
 This project is licensed under the terms of the **GNU General Public License v3.0 (GPLv3)**.  
