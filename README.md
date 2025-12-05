@@ -49,7 +49,7 @@ Function: Commands
   B + Start (2s)
 - Enable/Disable Bluetooth in start:
   Hold UP while turning on the console.
-  - Master System pause:
+- Master System pause:
   UP + B + C (1s)
 - Master System reset:
   UP + C (5s)
