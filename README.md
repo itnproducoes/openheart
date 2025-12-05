@@ -47,7 +47,9 @@ Function: Commands
   A + C + Start (3s)
 - Enable Bluetooth:
   B + Start (2s)
-- Master System pause:
+- Enable/Disable Bluetooth in start:
+  Hold UP while turning on the console.
+  - Master System pause:
   UP + B + C (1s)
 - Master System reset:
   UP + C (5s)
@@ -207,18 +209,19 @@ Open Heart transforma seu console em uma central multi-região com recursos avan
 
 ## 🎮 Comandos
 
-| Função                       | Comandos                             |
-|------------------------------|--------------------------------------|
-| Troca de região              | B + C + Start (1s)                   |
-| Troca de região (botão físico) | Botão Reset (3s)                   |
-| Reset do jogo                | A + B + C + Start (1s)               |
-| Troca 50Hz/60Hz (Europa)     | A + B + Start (1s)                   |
-| Overclock                    | A + Start (1s)                       |
-| Reset do Pico                | A + C + Start (3s)                   |
-| Ativar Bluetooth             | B + Start (2s)                       |
-| Pausa Master System          | UP + B + C (1s)                      |
-| Reset Master System          | UP + C (5s)                          |
-| Alternar logo                | C + Start (1s)                       |
+| Função                                 | Comandos                             |
+|----------------------------------------|--------------------------------------|
+| Troca de região                        | B + C + Start (1s)                   |
+| Troca de região (botão físico)         | Botão Reset (3s)                     |
+| Reset do jogo                          | A + B + C + Start (1s)               |
+| Troca 50Hz/60Hz (Europa)               | A + B + Start (1s)                   |
+| Overclock                              | A + Start (1s)                       |
+| Reset do Pico                          | A + C + Start (3s)                   |
+| Ativar Bluetooth                       | B + Start (2s)                       |
+| Ativar/desativar Bluetooth no iniciar  | Segurar UP ao ligar o console        |
+| Pausa Master System                    | UP + B + C (1s)                      |
+| Reset Master System                    | UP + C (5s)                          |
+| Alternar logo                          | C + Start (1s)                       |
 
 ---
 
