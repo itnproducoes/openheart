@@ -8,6 +8,7 @@ https://github.com/darthcloud/BlueRetro
 --> Added pico recording delay to preserve flash memory and for testing purposes.
 --> Changed region switching mode.
 --> Fixed random region switching issues during gameplay.
+--> Issue with the 32x having intermittent region switching fixed.
 --> The logic of the main loop has been changed, and controller hotkeys have been checked.
 --> Void tmsskip has been changed to use an absolute time flag.
 --> Added a specific build for VA0 to VA4 motherboards, limiting overclocking to 8MHz, as issues were reported with overclocking at 10.74MHz.
