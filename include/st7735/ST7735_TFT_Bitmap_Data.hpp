@@ -40,3 +40,9 @@ extern const uint8_t * psegalogopretoImage;
 extern const uint8_t * psegalogobrancoImage;
 extern const uint8_t * ppausemasterImage;
 extern const uint8_t * ppausemasteroffImage;
+extern const uint8_t * popenheartImage;
+extern const uint8_t * plicenseImage;
+
+
+
+
