@@ -2,6 +2,8 @@
 
 Multi-region mod for Sega Genesis/Mega Drive using Raspberry Pi Pico (RP2040). This project allows switching between regions, controlling frequency, enabling Master System mode, overclocking, and much more — all via controller or physical button.
 
+Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on the Open Heart 2 project developed for the Brazilian community, but the functions and operation are the same.
+
 ---
 
 ## 🧩 Overview
@@ -182,6 +184,8 @@ Project inspired by 32mbit and enhanced.
 # Open Heart by 32mbit
 
 Mod multi-região para Sega Genesis/Mega Drive usando Raspberry Pi Pico (RP2040). Este projeto permite alternar entre regiões, controlar frequência, ativar modo Master System, overclock, e muito mais — tudo via controle ou botão físico.
+
+Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no projeto Open heart 2 desenvolvido para a comunidade brasileira, mas o código fonte, funções e funcionamento são os mesmos.
 
 ---
 
