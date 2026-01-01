@@ -131,6 +131,8 @@ A mix of both colors indicates Europe
 
 Overclocking is indicated by the LED blinking at 3Hz when enabled.
 
+Bluetooth is indicated by a flashing LED at 0.5Hz when activated.
+
 **Setting up the Pico**
 Download the mega drive model 1 va0 until va4 firmware image [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_8MHZ_free.uf2) or va5/va6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_1074MHZ_free.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
 
@@ -140,6 +142,8 @@ Download the mega drive model 1 va0 until va4 firmware image [openheart8Mhz.uf2]
 
 **Notes & considerations**
 Use at your own risk: The mod seems to work well on various Model 1 and Model 2 revisions, but not all revisions have been tested.
+
+The first time the firmware is loaded, it automatically starts Bluetooth, so the LED will blink at 0.5Hz. Turn the console off and on again while pressing the UP button to deactivate and save the configuration.
 
 Overclocking sets the CPU to the master clock divided by 5 (default is MCLK/7). This results in about 10.74 MHz on NTSC. Most games work well with this, but be aware that crashes, graphical glitches, or controller malfunctions may still occur.
 
@@ -300,6 +304,8 @@ Mistura das duas cores indica Europa
 
 O overclock é indicado por um piscar do LED a 3Hz quando ativado.
 
+O Bluetooth é indicado por um piscar do LED a 0,5Hz quando ativado.
+
 **Configurando o pico**
 
 Baixe a imagem de firmware do Mega Drive modelo 1 VA0 até VA4 [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_8MHZ_free.uf2) ou VA5/VA6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_1074MHZ_free.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
@@ -310,6 +316,8 @@ Baixe a imagem de firmware do Mega Drive modelo 1 VA0 até VA4 [openheart8Mhz.uf
 
 **Notas e considerações**
 Use por sua conta e risco: O mod parece funcionar bem em várias revisões dos modelos 1 e 2, mas nem todas as revisões foram testadas.
+
+A primeira vez que o firmware é carregado, ele inicia o bluetooth automaticamente, sendo assim o LED irá ficar piscando a 0,5Hz. Desligue e ligue o console com o UP pressionado para desativar e salvar a configuração. 
 
 O overclock ajusta a CPU para o clock mestre dividido por 5 (o padrão é MCLK/7). Isso resulta em cerca de 10,74 MHz no NTSC. A maioria dos jogos funciona bem com isso, mas esteja ciente de que ainda podem ocorrer travamentos, falhas gráficas ou mau funcionamento dos controles.
 
