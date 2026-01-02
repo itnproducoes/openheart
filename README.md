@@ -2,6 +2,8 @@
 
 Multi-region mod for Sega Genesis/Mega Drive using Raspberry Pi Pico (RP2040). This project allows switching between regions, controlling frequency, enabling Master System mode, overclocking, and much more — all via controller or physical button.
 
+Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on the Open Heart 2 project developed for the Brazilian community, but the functions and operation are the same.
+
 ---
 
 ## 🧩 Overview
@@ -47,6 +49,8 @@ Function: Commands
   A + C + Start (3s)
 - Enable Bluetooth:
   B + Start (2s)
+- Enable/Disable Bluetooth in start:
+  Hold UP while turning on the console.
 - Master System pause:
   UP + B + C (1s)
 - Master System reset:
@@ -60,7 +64,6 @@ Function: Commands
 
 - ST7735 (TFT): colorful graphics and custom logos
 - SSD1306 (OLED): monochrome graphic text
-
 Displayed messages:
 
 - Region and frequency
@@ -68,6 +71,10 @@ Displayed messages:
 - Overclock status
 - Bluetooth on/off
 - Logos: SEGA, 16bit, Custom message
+
+<img src="https://github.com/itnproducoes/openheart/blob/main/example/ssd1306_01.jpg" alt="ssd1306" width="300" />
+
+<img src="https://github.com/itnproducoes/openheart/blob/main/example/ST7735_01.jpg" alt="ST7735" width="300" />
 
 ---
 
@@ -129,15 +136,19 @@ A mix of both colors indicates Europe
 
 Overclocking is indicated by the LED blinking at 3Hz when enabled.
 
+Bluetooth is indicated by a flashing LED at 0.5Hz when activated.
+
 **Setting up the Pico**
-Download the  [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v101.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
+Download the mega drive model 1 va0 until va4 firmware image [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_8MHZ_free.uf2) or va5/va6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_1074MHZ_free.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
 
 **Installation examples here** [Here](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
-**Pico pinout here** [here](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png)
+**Pico pinout here** ![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png)
 
 **Notes & considerations**
 Use at your own risk: The mod seems to work well on various Model 1 and Model 2 revisions, but not all revisions have been tested.
+
+The first time the firmware is loaded, it automatically starts Bluetooth, so the LED will blink at 0.5Hz. Turn the console off and on again while pressing the UP button to deactivate and save the configuration.
 
 Overclocking sets the CPU to the master clock divided by 5 (default is MCLK/7). This results in about 10.74 MHz on NTSC. Most games work well with this, but be aware that crashes, graphical glitches, or controller malfunctions may still occur.
 
@@ -150,6 +161,12 @@ Some (few?) NTSC Model 1 VA7 and Model 2 VA0 consoles have a broken 50Hz mode). 
 PAL mode composite video on NTSC consoles (and vice versa) may or may not work. RGB output will work. This may depend on your TV or the standard being used.
 
 In PAL/60Hz composite video, the image may flicker with altered colors or appear in black and white. RGB output will work.
+
+---
+
+## Demonstration of how the functions work.
+
+**This video** [here](https://youtu.be/fwqdS2af00g?si=j-Wv8TLf7hVxnpF5)
 
 ---
 
@@ -170,6 +187,8 @@ Project inspired by 32mbit and enhanced.
 # Open Heart by 32mbit
 
 Mod multi-região para Sega Genesis/Mega Drive usando Raspberry Pi Pico (RP2040). Este projeto permite alternar entre regiões, controlar frequência, ativar modo Master System, overclock, e muito mais — tudo via controle ou botão físico.
+
+Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no projeto Open heart 2 desenvolvido para a comunidade brasileira, mas o código fonte, funções e funcionamento são os mesmos.
 
 ---
 
@@ -201,18 +220,19 @@ Open Heart transforma seu console em uma central multi-região com recursos avan
 
 ## 🎮 Comandos
 
-| Função                       | Comandos                             |
-|------------------------------|--------------------------------------|
-| Troca de região              | B + C + Start (1s)                   |
-| Troca de região (botão físico) | Botão Reset (3s)                   |
-| Reset do jogo                | A + B + C + Start (1s)               |
-| Troca 50Hz/60Hz (Europa)     | A + B + Start (1s)                   |
-| Overclock                    | A + Start (1s)                       |
-| Reset do Pico                | A + C + Start (3s)                   |
-| Ativar Bluetooth             | B + Start (2s)                       |
-| Pausa Master System          | UP + B + C (1s)                      |
-| Reset Master System          | UP + C (5s)                          |
-| Alternar logo                | C + Start (1s)                       |
+| Função                                 | Comandos                             |
+|----------------------------------------|--------------------------------------|
+| Troca de região                        | B + C + Start (1s)                   |
+| Troca de região (botão físico)         | Botão Reset (3s)                     |
+| Reset do jogo                          | A + B + C + Start (1s)               |
+| Troca 50Hz/60Hz (Europa)               | A + B + Start (1s)                   |
+| Overclock                              | A + Start (1s)                       |
+| Reset do Pico                          | A + C + Start (3s)                   |
+| Ativar Bluetooth                       | B + Start (2s)                       |
+| Ativar/desativar Bluetooth no iniciar  | Segurar UP ao ligar o console        |
+| Pausa Master System                    | UP + B + C (1s)                      |
+| Reset Master System                    | UP + C (5s)                          |
+| Alternar logo                          | C + Start (1s)                       |
 
 ---
 
@@ -228,6 +248,10 @@ Mensagens exibidas:
 - Status do overclock
 - Bluetooth ligado/desligado
 - Logos: SEGA, 16bit, Mensagem personalizada
+
+<img src="https://github.com/itnproducoes/openheart/blob/main/example/ssd1306_01.jpg" alt="ssd1306" width="300" />
+
+<img src="https://github.com/itnproducoes/openheart/blob/main/example/ST7735_01.jpg" alt="ST7735" width="300" />
 
 ---
 
@@ -291,17 +315,20 @@ Mistura das duas cores indica Europa
 
 O overclock é indicado por um piscar do LED a 3Hz quando ativado.
 
+O Bluetooth é indicado por um piscar do LED a 0,5Hz quando ativado.
+
 **Configurando o pico**
 
-Baixe a imagem [openheart.uf2 firmware image](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v100.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para dentro dele.
-Quando o dispositivo de armazenamento se desconectar automaticamente, significa que está pronto para uso.
+Baixe a imagem de firmware do Mega Drive modelo 1 VA0 até VA4 [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_8MHZ_free.uf2) ou VA5/VA6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_v200_1074MHZ_free.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
 
 **Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
-**Pinagem do pico** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png)
+**Pinagem do pico** ![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png)
 
 **Notas e considerações**
 Use por sua conta e risco: O mod parece funcionar bem em várias revisões dos modelos 1 e 2, mas nem todas as revisões foram testadas.
+
+A primeira vez que o firmware é carregado, ele inicia o bluetooth automaticamente, sendo assim o LED irá ficar piscando a 0,5Hz. Desligue e ligue o console com o UP pressionado para desativar e salvar a configuração. 
 
 O overclock ajusta a CPU para o clock mestre dividido por 5 (o padrão é MCLK/7). Isso resulta em cerca de 10,74 MHz no NTSC. A maioria dos jogos funciona bem com isso, mas esteja ciente de que ainda podem ocorrer travamentos, falhas gráficas ou mau funcionamento dos controles.
 
@@ -314,6 +341,12 @@ Alguns (poucos?) consoles NTSC Model 1 VA7 e Model 2 VA0 têm o modo 50Hz quebra
 O vídeo composto em modo PAL em consoles NTSC (e vice-versa) pode ou não funcionar. A saída RGB funcionará. Isso pode depender da sua TV ou do padrão utilizado.
 
 Em vídeo composto no modo PAL/60Hz a imagem irá ficar sintilante com cores alteradas ou preto e branco. A saída RGB funcionará.
+
+---
+
+## Demonstração do funcionamento das funções.
+
+**Neste video** [aqui](https://youtu.be/fwqdS2af00g?si=j-Wv8TLf7hVxnpF5)
 
 ---
 

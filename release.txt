@@ -1,9 +1,21 @@
+=== v 2.0.0 ===
+--> The entire compilation structure and logic has been changed.
+--> Added support for the ST7735 and SD1306 displays.
+--> Added support for activating and deactivating the BlueRetro module.
+https://github.com/darthcloud/BlueRetro
+--> Added license check control.
+--> Added pico reset mode via controller. 
+--> Added pico recording delay to preserve flash memory and for testing purposes.
+--> Changed region switching mode.
+--> Fixed random region switching issues during gameplay.
+--> Issue with the 32x having intermittent region switching fixed.
+--> The logic of the main loop has been changed, and controller hotkeys have been checked.
+--> Void tmsskip has been changed to use an absolute time flag.
+--> Added a specific build for VA0 to VA4 motherboards, limiting overclocking to 8MHz, as issues were reported with overclocking at 10.74MHz.
+
 ==== v 1.0.1 ====
-
 --> Color system correction in the European 60Hz model.
-
 --> Correction in the reset detection mode of the European 50/60Hz mode.
-
 --> Added manual for Mega Drive Extreme Edition IV (only in Brazilian Portuguese).
 
 
