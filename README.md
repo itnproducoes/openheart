@@ -64,7 +64,6 @@ Function: Commands
 
 - ST7735 (TFT): colorful graphics and custom logos
 - SSD1306 (OLED): monochrome graphic text
-
 Displayed messages:
 
 - Region and frequency
@@ -72,6 +71,10 @@ Displayed messages:
 - Overclock status
 - Bluetooth on/off
 - Logos: SEGA, 16bit, Custom message
+
+![ssd1306]https://github.com/itnproducoes/openheart/blob/main/example/ssd1306_01.jpg
+
+![ST7735]https://github.com/itnproducoes/openheart/blob/main/example/ST7735_01.jpg
 
 ---
 
