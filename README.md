@@ -249,6 +249,10 @@ Mensagens exibidas:
 - Bluetooth ligado/desligado
 - Logos: SEGA, 16bit, Mensagem personalizada
 
+<img src="https://github.com/itnproducoes/openheart/blob/main/example/ssd1306_01.jpg" alt="ssd1306" width="300" />
+
+<img src="https://github.com/itnproducoes/openheart/blob/main/example/ST7735_01.jpg" alt="ST7735" width="300" />
+
 ---
 
 ## ⚙️ Configuração de Região
