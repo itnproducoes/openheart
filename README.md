@@ -316,7 +316,7 @@ Baixe a imagem de firmware do Mega Drive modelo 1 VA0 até VA4 [openheart8Mhz.uf
 
 **Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
-**Pinagem do pico** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png)
+**Pinagem do pico** ![aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png)
 
 **Notas e considerações**
 Use por sua conta e risco: O mod parece funcionar bem em várias revisões dos modelos 1 e 2, mas nem todas as revisões foram testadas.
