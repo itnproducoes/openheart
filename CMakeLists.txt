@@ -77,5 +77,5 @@ pico_add_extra_outputs(openheart)
 # add url via pico_set_program_url
 
 # Enable usb output, disable uart output
-#pico_enable_stdio_usb(${PROJECT_NAME} 1)
-#pico_enable_stdio_uart(${PROJECT_NAME} 0)
+pico_enable_stdio_usb(openheart 1)
+pico_enable_stdio_uart(openheart 0)
