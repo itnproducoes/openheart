@@ -72,7 +72,7 @@ Displayed messages:
 - Bluetooth on/off
 - Logos: SEGA, 16bit, Custom message
 
-![ssd1306](<img src="https://github.com/itnproducoes/openheart/blob/main/example/ssd1306_01.jpg" alt="ssd1306" width="300" />)
+![ssd1306]<img src="https://github.com/itnproducoes/openheart/blob/main/example/ssd1306_01.jpg" alt="ssd1306" width="300" />
 
 ![ST7735](https://github.com/itnproducoes/openheart/blob/main/example/ST7735_01.jpg)
 
