@@ -178,28 +178,33 @@ Source-Available Freeware License
 
 1. License Grant
 The Licensor grants the Licensee a non-exclusive, non-transferable right to access and view the Software’s source code, as well as use it internally, exclusively for personal or corporate purposes, under the terms of this agreement.
+
 2. Rights and Restrictions
 Unless expressly authorized in writing by the Licensor, the Licensee may not:
 
 (a) commercially use the Software or any derivative work (including selling, renting, offering as a service/SaaS, or consulting involving distribution of the Software);
+
 (b) redistribute, publish, make available, or sublicense the Software or its source code, in whole or in part;
+
 (c) modify or create derivative works for external distribution;
+
 (d) remove or alter copyright notices, trademarks, or credits;
+
 (e) circumvent technical protection mechanisms.
 
 3. Internal Modification Permission
 The Licensee may modify the source code only for internal use, without distribution to third parties. Any external distribution requires prior written authorization from the Licensor.
 
-5. Intellectual Property
+4. Intellectual Property
 The Software and its source code remain the property of the Licensor. No ownership rights are transferred to the Licensee.
 
-7. Warranty and Liability
+5. Warranty and Liability
 The Software is provided “as is,” without warranties of any kind. The Licensor shall not be liable for any damages arising from the use or inability to use the Software.
 
-9. Termination and Compliance
+6. Termination and Compliance
 The Licensor may revoke this license in case of violation. The Licensee agrees to provide reasonable information to verify compliance upon request.
 
-11. Governing Law and Jurisdiction
+7. Governing Law and Jurisdiction
 This agreement is governed by Brazilian law, and the courts of the Licensor’s city shall have jurisdiction over any disputes.
 
 ---
@@ -389,9 +394,13 @@ O Licenciante concede ao Licenciado o direito não exclusivo e intransferível d
 Salvo autorização prévia e por escrito do Licenciante, o Licenciado não poderá:
 
 (a) usar comercialmente o Software ou qualquer obra derivada (inclui venda, aluguel, prestação como serviço/SaaS, consultoria com distribuição do Software);
+
 (b) redistribuir, publicar, disponibilizar ou sublicenciar o Software ou o código-fonte, no todo ou em parte;
+
 (c) modificar ou criar obras derivadas com finalidade de distribuição externa;
+
 (d) remover ou alterar avisos de direitos autorais, marcas e créditos;
+
 (e) contornar mecanismos técnicos de proteção.
 
 3. Permissão de Modificação Interna
