@@ -14,9 +14,6 @@ https://github.com/darthcloud/BlueRetro
 --> Added a specific build for VA0 to VA4 motherboards, limiting overclocking to 8MHz, as issues were reported with overclocking at 10.74MHz.
 --> License terms changed.
 
-==== v 1.0.2 ====
---> Color system correction in the European 60Hz model (Ntsc).
-
 ==== v 1.0.1 ====
 --> Correction in the reset detection mode of the European 50/60Hz mode.
 --> Added manual for Mega Drive Extreme Edition IV (only in Brazilian Portuguese).
