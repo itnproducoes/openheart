@@ -189,13 +189,17 @@ Unless expressly authorized in writing by the Licensor, the Licensee may not:
 
 3. Internal Modification Permission
 The Licensee may modify the source code only for internal use, without distribution to third parties. Any external distribution requires prior written authorization from the Licensor.
-4. Intellectual Property
+
+5. Intellectual Property
 The Software and its source code remain the property of the Licensor. No ownership rights are transferred to the Licensee.
-5. Warranty and Liability
+
+7. Warranty and Liability
 The Software is provided “as is,” without warranties of any kind. The Licensor shall not be liable for any damages arising from the use or inability to use the Software.
-6. Termination and Compliance
+
+9. Termination and Compliance
 The Licensor may revoke this license in case of violation. The Licensee agrees to provide reasonable information to verify compliance upon request.
-7. Governing Law and Jurisdiction
+
+11. Governing Law and Jurisdiction
 This agreement is governed by Brazilian law, and the courts of the Licensor’s city shall have jurisdiction over any disputes.
 
 ---
@@ -380,7 +384,6 @@ Licença de Uso de Código-Fonte – Freeware
 
 1. Concessão de Licença
 O Licenciante concede ao Licenciado o direito não exclusivo e intransferível de acessar e visualizar o código-fonte do Software, bem como utilizá-lo internamente, exclusivamente para fins pessoais ou corporativos, conforme estes termos.
-
 
 2. Direitos e Restrições
 Salvo autorização prévia e por escrito do Licenciante, o Licenciado não poderá:
