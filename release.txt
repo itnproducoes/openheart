@@ -12,6 +12,7 @@ https://github.com/darthcloud/BlueRetro
 --> The logic of the main loop has been changed, and controller hotkeys have been checked.
 --> Void tmsskip has been changed to use an absolute time flag.
 --> Added a specific build for VA0 to VA4 motherboards, limiting overclocking to 8MHz, as issues were reported with overclocking at 10.74MHz.
+--> License terms changed.
 
 ==== v 1.0.2 ====
 --> Color system correction in the European 60Hz model (Ntsc).
