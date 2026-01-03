@@ -142,7 +142,7 @@ Bluetooth is indicated by a flashing LED at 0.5Hz when activated.
 **Setting up the Pico**
 
 **Warning: demo version.**
-Download the mega drive model 1 va0 until va4 firmware image  [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_20_8MHz_DEMO.uf2) or va5/va6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_20_1074MHz_DEMO.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
+Download the mega drive model 1 va0 until va4 firmware image  [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_20_8MHz_DEMO.uf2) or va5/va6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_20_1074MHz_DEMO.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
 
 **Installation examples here** [Here](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
@@ -353,7 +353,7 @@ O Bluetooth é indicado por um piscar do LED a 0,5Hz quando ativado.
 **Configurando o pico**
 
 **Atenção: versão demonstração.**
-Baixe a imagem de firmware do Mega Drive modelo 1 VA0 até VA4 [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_20_8MHz_DEMO.uf2) ou VA5/VA6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/raw/refs/heads/main/build/openheart_20_1074MHz_DEMO.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
+Baixe a imagem de firmware do Mega Drive modelo 1 VA0 até VA4 [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_20_8MHz_DEMO.uf2) ou VA5/VA6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_20_1074MHz_DEMO.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
 
 **Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
