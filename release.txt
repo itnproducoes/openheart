@@ -1,0 +1,4 @@
+==== v 1.0.2 ====
+
+--> Color system correction in the European 60Hz model (NTSC).
+
