@@ -218,6 +218,7 @@ Project inspired by 32mbit and enhanced.
 ---
 
 # Open Heart by 32mbit
+# Versão 2.0
 
 Mod multi-região para Sega Genesis/Mega Drive usando Raspberry Pi Pico (RP2040). Este projeto permite alternar entre regiões, controlar frequência, ativar modo Master System, overclock, e muito mais — tudo via controle ou botão físico.
 
