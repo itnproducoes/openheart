@@ -58,7 +58,7 @@ Function: Commands
   UP + C (5s)
 - Toggle logo:
   C + Start (1s)
-  - LED brightness:
+ - LED brightness:
   UP + Start (1s) 
 
 ---
