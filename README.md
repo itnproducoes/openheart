@@ -58,6 +58,8 @@ Function: Commands
   UP + C (5s)
 - Toggle logo:
   C + Start (1s)
+  - LED brightness:
+  UP + Start (1s) 
 
 ---
 
@@ -85,7 +87,8 @@ Region is saved to flash and restored on boot. LED indicators:
 
 - Red: Japan
 - Green: Americas
-- Amber: Europe
+- Amber: Europe 50Hz
+- Purple:  Europe 60Hz
 
 ---
 
@@ -133,7 +136,8 @@ If you want a LED to show the mod's status, use a common cathode bi-color LED. C
 
 LED1 color indicates Japan
 LED2 color indicates USA/Americas
-A mix of both colors indicates Europe
+A mix of both colors indicate Europe 50Hz
+LED1 High + LED2 low indicate Europe 60Hz
 
 Overclocking is indicated by the LED blinking at 3Hz when enabled.
 
@@ -265,6 +269,7 @@ Open Heart transforma seu console em uma central multi-região com recursos avan
 | Pausa Master System                    | UP + B + C (1s)                      |
 | Reset Master System                    | UP + C (5s)                          |
 | Alternar logo                          | C + Start (1s)                       |
+| Alternar brilho do LED                 | UP + Start (1s)                      |
 
 ---
 
@@ -293,7 +298,8 @@ Região salva na flash e restaurada na inicialização. LEDs indicam:
 
 - Vermelho: Japão
 - Verde: Américas
-- Âmbar: Europa
+- Âmbar: Europa 50Hz
+- Roxo: Europa 60Hz
 
 ---
 
@@ -343,7 +349,8 @@ Se quiser um LED que mostre o estado do mod, use um LED bicolor de cátodo comum
 
 Cor do LED1 indica Japão
 Cor do LED2 indica EUA/Américas
-Mistura das duas cores indica Europa
+Mistura das duas cores indica Europa 50Hz
+Cor do LED1 High + Cor do LED2 baixa indica Europa 60Hz
 
 O overclock é indicado por um piscar do LED a 3Hz quando ativado.
 
