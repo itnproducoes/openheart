@@ -13,6 +13,8 @@ https://github.com/darthcloud/BlueRetro
 --> Void tmsskip has been changed to use an absolute time flag.
 --> Added a specific build for VA0 to VA4 motherboards, limiting overclocking to 8MHz, as issues were reported with overclocking at 10.74MHz.
 --> License terms changed.
+--> Added option to change the brightness of the UP+START LED for 1 second.
+--> Changed LED color to purple in PAL 60Hz mode.
 
 ==== v 1.0.1 ====
 --> Correction in the reset detection mode of the European 50/60Hz mode.
