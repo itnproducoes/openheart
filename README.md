@@ -212,6 +212,24 @@ This agreement is governed by Brazilian law, and the courts of the Licensor’s 
 
 ---
 
+## 📄 Appendix
+
+If you do not have one of the two displays (ssd 1306 ou ST7735) installed and need to obtain the serial number of the Raspberry Pi 2040, follow the steps below:
+
+1 - While holding down the BOOTSEL key, connect PicoTool.
+
+2 - Download and install the driver below:
+
+https://zadig.akeo.ie/
+
+3 - Now go to Device Manager, look for RP2 Boot, right-click on it and click on Properties.
+
+4 - Click on the Details tab, and in Properties look for root; in the value you will find the serial number after \. Example below:
+
+![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png)
+
+---
+
 ## 🧑‍💻 Author
 
 Developed by Irineu Teza Nunes (YouTube @itnproducoes) for the Brazilian retro gaming community.
@@ -427,20 +445,23 @@ Este acordo é regido pela legislação brasileira e fica eleito o foro da cidad
 
 ## 📄 Appendix
 
-If you do not have one of the two displays (ssd 1306 ou ST7735) installed and need to obtain the serial number of the Raspberry Pi 2040, follow the steps below:
+Apêndice
 
-1 - While holding down the BOOTSEL key, connect PicoTool.
+Caso não tenha um dos dois displays (SSD 1306 ou ST7735) instalado e precise obter o número de série do Raspberry Pi 2040, siga os passos abaixo:
 
-2 - Download and install the driver below:
+1 - Com a tecla BOOTSEL pressionada, conecte o PicoTool.
+
+2 - Baixe e instale o driver abaixo:
 
 https://zadig.akeo.ie/
 
-3 - Now go to Device Manager, look for RP2 Boot, right-click on it and click on Properties.
+3 - Agora, acesse o Gerenciador de Dispositivos, procure por "RP2 Boot", clique com o botão direito do mouse e selecione "Propriedades".
 
-4 - Click on the Details tab, and in Properties look for root; in the value you will find the serial number after \. Example below:
+4 - Clique na aba "Detalhes" e, em "Propriedades", procure por "root"; no valor, você encontrará o número de série após a barra invertida (\). Exemplo abaixo:
 
-![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/serialnumber.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/serialnumber.png)
+![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png)
 
+---
 
 ## 🧑‍💻 Autor
 
