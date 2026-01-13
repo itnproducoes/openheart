@@ -425,6 +425,23 @@ Este acordo é regido pela legislação brasileira e fica eleito o foro da cidad
 
 ---
 
+## 📄 Appendix
+
+If you do not have one of the two displays (ssd 1306 ou ST7735) installed and need to obtain the serial number of the Raspberry Pi 2040, follow the steps below:
+
+1 - While holding down the BOOTSEL key, connect PicoTool.
+
+2 - Download and install the driver below:
+
+https://zadig.akeo.ie/
+
+3 - Now go to Device Manager, look for RP2 Boot, right-click on it and click on Properties.
+
+4 - Click on the Details tab, and in Properties look for root; in the value you will find the serial number after \. Example below:
+
+![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/serialnumber.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/serialnumber.png)
+
+
 ## 🧑‍💻 Autor
 
 Desenvolvido por **Irineu Teza Nunes (youtube @itnproducoes)** para a comunidade retro gamer brasileira 🇧🇷  
