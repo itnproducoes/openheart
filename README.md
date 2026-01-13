@@ -443,9 +443,7 @@ Este acordo é regido pela legislação brasileira e fica eleito o foro da cidad
 
 ---
 
-## 📄 Appendix
-
-Apêndice
+## 📄 Apêndice
 
 Caso não tenha um dos dois displays (SSD 1306 ou ST7735) instalado e precise obter o número de série do Raspberry Pi 2040, siga os passos abaixo:
 
