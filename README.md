@@ -447,15 +447,15 @@ Este acordo é regido pela legislação brasileira e fica eleito o foro da cidad
 
 Caso não tenha um dos dois displays (SSD 1306 ou ST7735) instalado e precise obter o número de série do Raspberry Pi 2040, siga os passos abaixo:
 
-1 - Com a tecla BOOTSEL pressionada, conecte o PicoTool.
+1 - Com a tecla BOOTSEL pressionada, conecte o PicoTool, baixe e carregue no pico o firmware do link abaixo:
+[aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/serialnumber.uf2)
 
 2 - Baixe e instale o driver abaixo:
-
 https://zadig.akeo.ie/
 
-3 - Agora, acesse o Gerenciador de Dispositivos, procure por "RP2 Boot", clique com o botão direito do mouse e selecione "Propriedades".
+3 - Agora, acesse o Gerenciador de Dispositivos, procure por "PICO", clique com o botão direito do mouse e selecione "Propriedades".
 
-4 - Clique na aba "Detalhes" e, em "Propriedades", procure por "root"; no valor, você encontrará o número de série após a barra invertida (\). Exemplo abaixo:
+4 - Clique na aba "Detalhes" e, em "Propriedades", procure por "caminho da instância do dispositivo"; no valor, você encontrará o número de série após a barra invertida (\). Exemplo abaixo:
 
 ![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png)
 
