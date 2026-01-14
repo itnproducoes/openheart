@@ -457,7 +457,7 @@ https://zadig.akeo.ie/
 
 4 - Clique na aba "Detalhes" e, em "Propriedades", procure por "caminho da instância do dispositivo"; no valor, você encontrará o número de série após a barra invertida (\). Exemplo abaixo:
 
-![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png)
+![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/sn.png)
 
 ---
 
