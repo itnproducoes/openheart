@@ -58,8 +58,9 @@ Function: Commands
   UP + C (5s)
 - Toggle logo:
   C + Start (1s)
- - LED brightness:
-  UP + Start (1s) 
+- LED brightness:
+  UP + Start (1s)
+- Standby mode: UP + Start + A (2s) Reset in console return.
 
 ---
 
@@ -288,6 +289,8 @@ Open Heart transforma seu console em uma central multi-região com recursos avan
 | Reset Master System                    | UP + C (5s)                          |
 | Alternar logo                          | C + Start (1s)                       |
 | Alternar brilho do LED                 | UP + Start (1s)                      |
+| Modo standby 	                         | UP + Start +A (2s)                   |
+|	                                       | Reset no console para retornar       |
 
 ---
 
