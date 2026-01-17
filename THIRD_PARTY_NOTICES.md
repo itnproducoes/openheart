@@ -11,15 +11,23 @@ In accordance with best practices for open‑source compliance, this notice docu
 Involved files (now removed)
 
  include/st7735/ST7735_TFT.hpp
+ 
  include/st7735/ST7735_TFT_Bitmap_Data.hpp
+ 
  include/st7735/ST7735_TFT_Font.hpp
+ 
  include/st7735/ST7735_TFT_Print.hpp
+ 
  include/st7735/ST7735_TFT_graphics.hpp
  
  src/st7735/ST7735_TFT.cpp
+ 
  src/st7735/ST7735_TFT_Bitmap_Data.cpp
+ 
  src/st7735/ST7735_TFT_Font.cpp
+ 
  src/st7735/ST7735_TFT_Print.cpp
+ 
  src/st7735/ST7735_TFT_graphics.cpp
 
 Origin / Author
@@ -67,15 +75,23 @@ Seguindo as melhores práticas de conformidade, esta nota documenta origem, auto
 Arquivos envolvidos (já removidos)
 
 include/st7735/ST7735_TFT.hpp
+
 include/st7735/ST7735_TFT_Bitmap_Data.hpp
+
 include/st7735/ST7735_TFT_Font.hpp
+
 include/st7735/ST7735_TFT_Print.hpp
+
 include/st7735/ST7735_TFT_graphics.hpp
 
 src/st7735/ST7735_TFT.cpp
+
 src/st7735/ST7735_TFT_Bitmap_Data.cpp
+
 src/st7735/ST7735_TFT_Font.cpp
+
 src/st7735/ST7735_TFT_Print.cpp
+
 src/st7735/ST7735_TFT_graphics.cpp
 
 Origem / Autor
