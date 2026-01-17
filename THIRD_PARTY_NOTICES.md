@@ -27,12 +27,12 @@ src/st7735/ST7735_TFT_Print.cpp
 src/st7735/ST7735_TFT_graphics.cpp
 
 
-Origin / Author
+### Origin / Author
 
 Developed by Gavin Lyons
 Part of the ST7735_TFT_PICO / displaylib_16bit_PICO family
 
-Original License
+### Original License
 
 GNU General Public License v3.0 (GPL‑3.0)
 (Upstream ST7735 libraries by this author are documented as GPL‑3.0.)
