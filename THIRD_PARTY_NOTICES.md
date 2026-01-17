@@ -67,8 +67,11 @@ The removal of the files on January 17, 2026 eliminates any future ambiguity, bu
 
 3. Contact
 For questions about this file or additional information regarding license compliance:
+
 OpenHeart Project Author
+
 Irineu Teza Nunes
+
 (YouTube @itnproducoes)
 
 
@@ -138,8 +141,11 @@ A remoção dos arquivos em 17 jan 2026 elimina qualquer ambiguidade futura, mas
 
 3. Contato
 Para dúvidas sobre este arquivo ou informações adicionais sobre conformidade de licenças:
+
 Autor do projeto OpenHeart
+
 Irineu Teza Nunes
+
 (YouTube @itnproducoes)
 
 
