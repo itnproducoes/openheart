@@ -49,6 +49,7 @@ Disclaimer
 
 These files are and remain GPL‑3.0, regardless of the current OpenHeart license.
 They were not used in the build process of OpenHeart and were present only due to historical oversight.
+
 2. General Notice
 
     The presence of GPL‑licensed components in earlier commits does not modify the license of the rest of the OpenHeart project.
@@ -113,6 +114,7 @@ Declaração
 
 Esses arquivos são e permanecem GPL‑3.0, independentemente da licença atual do OpenHeart.
 Não eram utilizados no processo de build e estavam presentes apenas por engano histórico.
+
 2. Aviso Geral
 
     A existência de arquivos licenciados sob GPL em commits anteriores não altera a licença do restante do projeto.
