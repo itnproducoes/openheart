@@ -1,5 +1,5 @@
 # Open Heart by 32mbit
-# Version 2.0
+# Version 2.1
 
 Multi-region mod for Sega Genesis/Mega Drive using Raspberry Pi Pico (RP2040). This project allows switching between regions, controlling frequency, enabling Master System mode, overclocking, and much more — all via controller or physical button.
 
@@ -58,8 +58,9 @@ Function: Commands
   UP + C (5s)
 - Toggle logo:
   C + Start (1s)
- - LED brightness:
-  UP + Start (1s) 
+- LED brightness:
+  UP + Start (1s)
+- Standby mode: UP + Start + A (2s) Reset in console return.
 
 ---
 
@@ -146,7 +147,7 @@ Bluetooth is indicated by a flashing LED at 0.5Hz when activated.
 **Setting up the Pico**
 
 **Warning: demo version.**
-Download the mega drive model 1 va0 until va4 firmware image  [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_20_8MHz_DEMO.uf2) or va5/va6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_20_1074MHz_DEMO.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
+Download the mega drive model 1 va0 until va4 firmware image  [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_21_8MHz_DEMO.uf2) or va5/va6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_21_1074MHz_DEMO.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
 
 **Installation examples here** [Here](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
@@ -212,6 +213,24 @@ This agreement is governed by Brazilian law, and the courts of the Licensor’s 
 
 ---
 
+## 📄 Appendix
+
+If you don't have one of the two displays (SSD 1306 or ST7735) installed and need to obtain the serial number of your Raspberry Pi 2040, follow the steps below:
+
+1 - With the BOOTSEL key pressed, connect PicoTool, download and load the firmware from the link below onto the pico:
+[here](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/serialnumber.uf2)
+
+2 - Download and install the driver below:
+https://zadig.akeo.ie/
+
+3 - Now, access Device Manager, search for "PICO", right-click and select "Properties".
+
+4 - Click on the "Details" tab and, in "Properties", look for "device instance path"; in the value, you will find the serial number after the backslash (\). Example below:
+
+![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/sn.png)
+
+---
+
 ## 🧑‍💻 Author
 
 Developed by Irineu Teza Nunes (YouTube @itnproducoes) for the Brazilian retro gaming community.
@@ -220,7 +239,7 @@ Project inspired by 32mbit and enhanced.
 ---
 
 # Open Heart by 32mbit
-# Versão 2.0
+# Versão 2.1
 
 Mod multi-região para Sega Genesis/Mega Drive usando Raspberry Pi Pico (RP2040). Este projeto permite alternar entre regiões, controlar frequência, ativar modo Master System, overclock, e muito mais — tudo via controle ou botão físico.
 
@@ -270,6 +289,8 @@ Open Heart transforma seu console em uma central multi-região com recursos avan
 | Reset Master System                    | UP + C (5s)                          |
 | Alternar logo                          | C + Start (1s)                       |
 | Alternar brilho do LED                 | UP + Start (1s)                      |
+| Modo standby 	                         | UP + Start +A (2s)                   |
+|	                                       | Reset no console para retornar       |
 
 ---
 
@@ -359,7 +380,7 @@ O Bluetooth é indicado por um piscar do LED a 0,5Hz quando ativado.
 **Configurando o pico**
 
 **Atenção: versão demonstração.**
-Baixe a imagem de firmware do Mega Drive modelo 1 VA0 até VA4 [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_20_8MHz_DEMO.uf2) ou VA5/VA6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_20_1074MHz_DEMO.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
+Baixe a imagem de firmware do Mega Drive modelo 1 VA0 até VA4 [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_21_8MHz_DEMO.uf2) ou VA5/VA6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_21_1074MHz_DEMO.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
 
 **Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
@@ -422,6 +443,24 @@ O Licenciante pode revogar esta licença em caso de violação. O Licenciado con
 
 7. Lei Aplicável e Foro
 Este acordo é regido pela legislação brasileira e fica eleito o foro da cidade do Licenciante para dirimir controvérsias.
+
+---
+
+## 📄 Apêndice
+
+Caso não tenha um dos dois displays (SSD 1306 ou ST7735) instalado e precise obter o número de série do Raspberry Pi 2040, siga os passos abaixo:
+
+1 - Com a tecla BOOTSEL pressionada, conecte o PicoTool, baixe e carregue no pico o firmware do link abaixo:
+[aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/serialnumber.uf2)
+
+2 - Baixe e instale o driver abaixo:
+https://zadig.akeo.ie/
+
+3 - Agora, acesse o Gerenciador de Dispositivos, procure por "PICO", clique com o botão direito do mouse e selecione "Propriedades".
+
+4 - Clique na aba "Detalhes" e, em "Propriedades", procure por "caminho da instância do dispositivo"; no valor, você encontrará o número de série após a barra invertida (\). Exemplo abaixo:
+
+![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/snumber.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/sn.png)
 
 ---
 
