@@ -212,6 +212,7 @@ The Licensor may revoke this license in case of violation. The Licensee agrees t
 This agreement is governed by Brazilian law, and the courts of the Licensor’s city shall have jurisdiction over any disputes.
 
 Note: We removed GPLv3 files that were kept in error; they were not in use. Older versions (v1.01 or earlier) remain under GPLv3.
+Between January 3rd and 17th, 2026, this repository included third-party files under GPL-3.0 (driver ST7735). These were not used in the project build. On January 17th, 2026, these files were removed. The files were (and are) GPL-3.0; any restrictions of the ‘Freeware’ license do not apply to them.
 
 ---
 
@@ -446,7 +447,8 @@ O Licenciante pode revogar esta licença em caso de violação. O Licenciado con
 7. Lei Aplicável e Foro
 Este acordo é regido pela legislação brasileira e fica eleito o foro da cidade do Licenciante para dirimir controvérsias.
 
-Nota: Removemos arquivos GPLv3 mantidos por engano; não eram utilizados. Versões antigas (v1.01 ou anterior), permanecem sob Gplv3.” 
+Nota: Removemos arquivos GPLv3 que foram mantidos por engano; eles não estavam em uso. Versões mais antigas (v1.01 ou anteriores) permanecem sob a licença GPLv3.
+“Entre 3 e 17 de janeiro de 2026, este repositório incluiu arquivos de terceiros sob a licença GPL-3.0 (driver ST7735). Estes não foram usados ​​na compilação do projeto. Em 17 de janeiro de 2026, esses arquivos foram removidos. Os arquivos eram (e são) GPL-3.0; quaisquer restrições da licença ‘Freeware’ não se aplicam a eles.”
 
 ---
 
