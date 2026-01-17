@@ -7,6 +7,7 @@ This document lists third‑party components that were previously present in thi
 Although they were later removed, their original licenses remain valid for all users who obtained earlier versions of the project.
 
 In accordance with best practices for open‑source compliance, this notice documents origin, authorship, licensing, and the period during which such files were accessible.
+
 1. ST7735 Display Driver (ST7735_TFT_PICO)
 Involved files (now removed)
 
