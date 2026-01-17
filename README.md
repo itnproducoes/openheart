@@ -211,6 +211,8 @@ The Licensor may revoke this license in case of violation. The Licensee agrees t
 7. Governing Law and Jurisdiction
 This agreement is governed by Brazilian law, and the courts of the Licensor’s city shall have jurisdiction over any disputes.
 
+Note: We removed GPLv3 files that were kept in error; they were not in use. Older versions (v1.01 or earlier) remain under GPLv3.
+
 ---
 
 ## 📄 Appendix
@@ -443,6 +445,8 @@ O Licenciante pode revogar esta licença em caso de violação. O Licenciado con
 
 7. Lei Aplicável e Foro
 Este acordo é regido pela legislação brasileira e fica eleito o foro da cidade do Licenciante para dirimir controvérsias.
+
+Nota: Removemos arquivos GPLv3 mantidos por engano; não eram utilizados. Versões antigas (v1.01 ou anterior), permanecem sob Gplv3.” 
 
 ---
 
