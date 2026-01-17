@@ -59,3 +59,65 @@ For questions about this notice or licensing compliance:
 OpenHeart Project Author
 Irineu Teza Nunes
 YouTube: @itnproducoes
+
+
+# AVISOS DE TERCEIROS
+### OpenHeart – Avisos de Terceiros e Reconhecimento de Licenças
+
+**Última atualização:** 17 de janeiro de 2026
+
+Este documento lista os componentes de terceiros que estavam presentes anteriormente neste repositório.
+
+Embora tenham sido removidos posteriormente, **suas licenças originais permanecem válidas** para todos os usuários que obtiveram versões anteriores do projeto.
+
+Em conformidade com as melhores práticas de código aberto, este aviso documenta a **origem, autores, licenças** e **o período** durante o qual esses arquivos estiveram acessíveis.
+
+---
+
+## 1. Driver de Display ST7735 (ST7735_TFT_PICO)
+
+### Arquivos envolvidos (agora (removido)
+
+include/st7735/ST7735_TFT.hpp
+include/st7735/ST7735_TFT_Bitmap_Data.hpp
+include/st7735/ST7735_TFT_Font.hpp
+include/st7735/ST7735_TFT_Print.hpp
+include/st7735/ST7735_TFT_g gráficos.hpp
+
+src/st7735/ST7735_TFT.cpp
+src/st7735/ST7735_TFT_Bitmap_Data.cpp
+src/st7735/ST7735_TFT_Font.cpp
+src/st7735/ST7735_TFT_Print.cpp
+src/st7735/ST7735_TFT_graphics.cpp
+
+### Origem/Autor
+
+Desenvolvido por Gavin Lyons
+Parte da família ST7735_TFT_PICO / displaylib_16bit_PICO
+
+### Licença Original
+
+GNU General Public License v3.0 (GPL-3.0)
+(As bibliotecas ST7735 upstream deste autor são documentadas como GPL-3.0.)
+
+### Presença no repositório OpenHeart
+
+Presente: 3 de janeiro de 2026 → 17 de janeiro de 2026
+Removido: 17 de janeiro de 2026 (limpeza do repositório)
+
+### Aviso Legal
+Estes arquivos são e permanecem GPL-3.0, independentemente da licença atual do OpenHeart.
+
+Eles não foram usados ​​no processo de compilação e estavam presentes apenas devido a um descuido histórico.
+
+## 2. Aviso Geral
+
+A presença de componentes licenciados sob a GPL em commits mais antigos não modifica a licença do restante do projeto OpenHeart.
+Cada componente de terceiros mantém sua licença original, independentemente das alterações de licença no projeto OpenHeart.
+A remoção desses arquivos em 17 de janeiro de 2026 evita ambiguidades futuras, mas não revoga os direitos concedidos anteriormente (especialmente em relação ao material GPL-3.0).
+
+## 3. Contato
+Para perguntas sobre este aviso ou conformidade com a licença:
+Autor do Projeto OpenHeart
+Irineu Teza Nunes
+YouTube: @itnproducoes
