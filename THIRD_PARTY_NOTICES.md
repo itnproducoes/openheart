@@ -44,7 +44,9 @@ Libraries by the author supporting ST7735 publicly documented as GPL-3.0
 Examples:
 
 ST7735 for Raspberry Pi (GPL-3.0) [freelicence.com]
+
 displaylib_16bit_PICO with ST7735 support (GPL-3.0) [forum.oute...ace.com.br]
+
 Forks of the same code clearly display GPL-3.0 at the root (ST7735_TFT_PICO) [media.gith...ontent.com]
 
 Period the files were in the OpenHeart repository:
@@ -120,7 +122,9 @@ Bibliotecas do autor com suporte ST7735 publicamente documentadas como GPL‑3.0
 Exemplos:
 
 ST7735 para Raspberry Pi (GPL‑3.0) [freelicence.com]
+
 displaylib_16bit_PICO com suporte ST7735 (GPL‑3.0) [forum.oute...ace.com.br]
+
 Forks do mesmo código exibem claramente GPL‑3.0 na raiz (ST7735_TFT_PICO) [media.gith...ontent.com]
 
 Período em que os arquivos estiveram no repositório OpenHeart:
