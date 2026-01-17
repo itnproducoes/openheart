@@ -61,8 +61,11 @@ They were not used in the build process of OpenHeart and were present only due t
 For questions about this notice or licensing compliance, contact:
 
 OpenHeart Project Author
+
 Irineu Teza Nunes
+
 YouTube: @itnproducoes
+
 AVISOS DE TERCEIROS
 OpenHeart – Avisos de Terceiros e Reconhecimentos de Licença
 
@@ -126,5 +129,7 @@ Não eram utilizados no processo de build e estavam presentes apenas por engano 
 Para dúvidas ou informações adicionais sobre conformidade:
 
 Autor do Projeto OpenHeart
+
 Irineu Teza Nunes
+
 YouTube: @itnproducoes
