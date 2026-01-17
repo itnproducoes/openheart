@@ -1,155 +1,112 @@
-THIRD PARTY NOTICES
-
-OpenHeart – Third-Party Notices and License Acknowledgments
+THIRD_PARTY_NOTICES
+OpenHeart – Third‑Party Notices and License Acknowledgments
 
 Last updated: January 17, 2026
 
-This file lists third-party components that were previously present in the repository and whose license remains valid for anyone who received these files through previous commits.
+This document lists third‑party components that were previously present in this repository.
+Although they were later removed, their original licenses remain valid for all users who obtained earlier versions of the project.
 
-As a best practice for compliance, this notice documents the origin, authors, licenses, and period during which such files were accessible in the OpenHeart project repository.
-
+In accordance with best practices for open‑source compliance, this notice documents origin, authorship, licensing, and the period during which such files were accessible.
 1. ST7735 Display Driver (ST7735_TFT_PICO)
-Involved files (already removed):
+Involved files (now removed)
 
 include/st7735/ST7735_TFT.hpp
-
 include/st7735/ST7735_TFT_Bitmap_Data.hpp
-
 include/st7735/ST7735_TFT_Font.hpp
-
 include/st7735/ST7735_TFT_Print.hpp
-
 include/st7735/ST7735_TFT_graphics.hpp
 
 src/st7735/ST7735_TFT.cpp
-
 src/st7735/ST7735_TFT_Bitmap_Data.cpp
-
 src/st7735/ST7735_TFT_Font.cpp
-
 src/st7735/ST7735_TFT_Print.cpp
-
 src/st7735/ST7735_TFT_graphics.cpp
 
-Origin Author:
+Origin / Author
 
-Developed by Gavin Lyons
-Original project/family: ST7735_TFT_PICO / displaylib_16bit_PICO
+    Developed by Gavin Lyons
+    Part of the ST7735_TFT_PICO / displaylib_16bit_PICO family of drivers
 
-Original license:
+Original License
 
-GNU General Public License v3.0 (GPL-3.0)
+    GNU General Public License v3.0 (GPL‑3.0)
+    Upstream libraries by this author, including those supporting ST7735 for Raspberry Pi and Raspberry Pi Pico, are documented as GPL‑3.0.
 
-Libraries by the author supporting ST7735 publicly documented as GPL-3.0
-Examples:
+Presence in OpenHeart repository
 
-ST7735 for Raspberry Pi (GPL-3.0) [freelicence.com]
+    Present: January 3, 2026 → January 17, 2026
+    Removed: January 17, 2026 (repository cleanup)
 
-displaylib_16bit_PICO with ST7735 support (GPL-3.0) [forum.oute...ace.com.br]
+Disclaimer
 
-Forks of the same code clearly display GPL-3.0 at the root (ST7735_TFT_PICO) [media.gith...ontent.com]
-
-Period the files were in the OpenHeart repository:
-
-Present in commits between January 3rd 2026 and January 17, 2026
-Completely removed on January 17, 2026 (repository cleanup)
-
-Disclaimer:
-These files are and remain GPL-3.0, regardless of the current OpenHeart project license.
-
-The OpenHeart project does not use them or functionally derive from them; they were present by historical error and were subsequently removed.
-
+These files are and remain GPL‑3.0, regardless of the current OpenHeart license.
+They were not used in the build process of OpenHeart and were present only due to historical oversight.
 2. General Notice
 
-The presence of these libraries in the history does not alter the license of the rest of the project.
-
-Each component listed in this document retains its original license, regardless of the current OpenHeart license.
-
-The removal of the files on January 17, 2026 eliminates any future ambiguity, but does not revoke rights previously granted to those who obtained older versions (especially in the case of material under GPL-3.0).
+    The presence of GPL‑licensed components in earlier commits does not modify the license of the rest of the OpenHeart project.
+    Each third‑party component retains its original license, regardless of the license later adopted by OpenHeart.
+    Removal of these files on January 17, 2026 avoids future ambiguity but does not revoke rights previously granted to recipients of earlier versions (especially GPL‑3.0 material).
 
 3. Contact
-For questions about this file or additional information regarding license compliance:
+
+For questions about this notice or licensing compliance, contact:
 
 OpenHeart Project Author
-
 Irineu Teza Nunes
-
-(YouTube @itnproducoes)
-
-
+YouTube: @itnproducoes
 AVISOS DE TERCEIROS
-
-OpenHeart – Avisos a Terceiros e Reconhecimentos de Licença
+OpenHeart – Avisos de Terceiros e Reconhecimentos de Licença
 
 Última atualização: 17 jan 2026
 
-Este arquivo lista componentes de terceiros que estiveram presentes anteriormente no repositório e cuja licença continua válida para qualquer pessoa que tenha recebido esses arquivos por meio de commits anteriores.
-Conforme prática recomendada de conformidade, esta nota documenta a origem, autores, licenças e período em que tais arquivos estiveram acessíveis no repositório do projeto OpenHeart.
+Este documento lista componentes de terceiros que estiveram presentes anteriormente no repositório.
+Embora tenham sido removidos, suas licenças originais permanecem válidas para todos os usuários que obtiveram versões anteriores do projeto.
 
-1. ST7735 Display Driver (ST7735_TFT_PICO)
-Arquivos envolvidos (já removidos):
+Seguindo as melhores práticas de conformidade, esta nota documenta origem, autoria, licenciamento e o período em que tais arquivos estiveram disponíveis.
+1. Driver ST7735 (ST7735_TFT_PICO)
+Arquivos envolvidos (já removidos)
 
 include/st7735/ST7735_TFT.hpp
-
 include/st7735/ST7735_TFT_Bitmap_Data.hpp
-
 include/st7735/ST7735_TFT_Font.hpp
-
 include/st7735/ST7735_TFT_Print.hpp
-
 include/st7735/ST7735_TFT_graphics.hpp
 
 src/st7735/ST7735_TFT.cpp
-
 src/st7735/ST7735_TFT_Bitmap_Data.cpp
-
 src/st7735/ST7735_TFT_Font.cpp
-
 src/st7735/ST7735_TFT_Print.cpp
-
 src/st7735/ST7735_TFT_graphics.cpp
 
-Origem / Autor:
+Origem / Autor
 
-Desenvolvido por Gavin Lyons
-Projeto original/familia: ST7735_TFT_PICO / displaylib_16bit_PICO
+    Desenvolvido por Gavin Lyons
+    Parte da família ST7735_TFT_PICO / displaylib_16bit_PICO
 
-Licença original:
+Licença original
 
-GNU General Public License v3.0 (GPL‑3.0)
+    GNU General Public License v3.0 (GPL‑3.0)
+    As bibliotecas originais do autor, incluindo drivers ST7735 para Raspberry Pi e Pico, são publicadas sob GPL‑3.0.
 
-Bibliotecas do autor com suporte ST7735 publicamente documentadas como GPL‑3.0
-Exemplos:
+Período no repositório OpenHeart
 
-ST7735 para Raspberry Pi (GPL‑3.0) [freelicence.com]
+    Presentes: 03 jan 2026 → 17 jan 2026
+    Removidos: 17 jan 2026 (limpeza do repositório)
 
-displaylib_16bit_PICO com suporte ST7735 (GPL‑3.0) [forum.oute...ace.com.br]
+Declaração
 
-Forks do mesmo código exibem claramente GPL‑3.0 na raiz (ST7735_TFT_PICO) [media.gith...ontent.com]
-
-Período em que os arquivos estiveram no repositório OpenHeart:
-
-Presentes em commits entre 03 jan 2026 e 17 jan 2026
-Removidos integralmente em 17 jan 2026 (limpeza de repositório)
-
-Declaração:
-Estes arquivos são e permanecem GPL‑3.0, independentemente da licença atual do projeto OpenHeart.
-O projeto OpenHeart não os utiliza nem deriva funcionalmente deles; estavam presentes por engano histórico e foram posteriormente removidos.
-
+Esses arquivos são e permanecem GPL‑3.0, independentemente da licença atual do OpenHeart.
+Não eram utilizados no processo de build e estavam presentes apenas por engano histórico.
 2. Aviso Geral
 
-A presença dessas bibliotecas no histórico não altera a licença do restante do projeto.
-Cada componente listado neste documento mantém sua licença original, independentemente da licença atual do OpenHeart.
-A remoção dos arquivos em 17 jan 2026 elimina qualquer ambiguidade futura, mas não revoga direitos previamente concedidos a quem obteve versões antigas (especialmente no caso de material sob GPL‑3.0).
-
+    A existência de arquivos licenciados sob GPL em commits anteriores não altera a licença do restante do projeto.
+    Cada componente listado mantém sua licença original, independentemente das mudanças posteriores no OpenHeart.
+    A remoção em 17 jan 2026 elimina ambiguidades futuras, mas não revoga os direitos de quem recebeu versões anteriores (especialmente material GPL‑3.0).
 
 3. Contato
-Para dúvidas sobre este arquivo ou informações adicionais sobre conformidade de licenças:
 
-Autor do projeto OpenHeart
+Para dúvidas ou informações adicionais sobre conformidade:
 
+Autor do Projeto OpenHeart
 Irineu Teza Nunes
-
-(YouTube @itnproducoes)
-
-
+YouTube: @itnproducoes
