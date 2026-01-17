@@ -12,14 +12,23 @@ As a best practice for compliance, this notice documents the origin, authors, li
 Involved files (already removed):
 
 include/st7735/ST7735_TFT.hpp
+
 include/st7735/ST7735_TFT_Bitmap_Data.hpp
+
 include/st7735/ST7735_TFT_Font.hpp
+
 include/st7735/ST7735_TFT_Print.hpp
+
 include/st7735/ST7735_TFT_graphics.hpp
+
 src/st7735/ST7735_TFT.cpp
+
 src/st7735/ST7735_TFT_Bitmap_Data.cpp
+
 src/st7735/ST7735_TFT_Font.cpp
+
 src/st7735/ST7735_TFT_Print.cpp
+
 src/st7735/ST7735_TFT_graphics.cpp
 
 Origin Author:
@@ -76,14 +85,23 @@ Conforme prática recomendada de conformidade, esta nota documenta a origem, aut
 Arquivos envolvidos (já removidos):
 
 include/st7735/ST7735_TFT.hpp
+
 include/st7735/ST7735_TFT_Bitmap_Data.hpp
+
 include/st7735/ST7735_TFT_Font.hpp
+
 include/st7735/ST7735_TFT_Print.hpp
+
 include/st7735/ST7735_TFT_graphics.hpp
+
 src/st7735/ST7735_TFT.cpp
+
 src/st7735/ST7735_TFT_Bitmap_Data.cpp
+
 src/st7735/ST7735_TFT_Font.cpp
+
 src/st7735/ST7735_TFT_Print.cpp
+
 src/st7735/ST7735_TFT_graphics.cpp
 
 Origem / Autor:
