@@ -33,13 +33,13 @@ Involved files (now removed)
 
 Origin / Author
 
-    Developed by Gavin Lyons
-    Part of the ST7735_TFT_PICO / displaylib_16bit_PICO family of drivers
+Developed by Gavin Lyons
+Part of the ST7735_TFT_PICO / displaylib_16bit_PICO family of drivers
 
 Original License
 
-    GNU General Public License v3.0 (GPL‑3.0)
-    Upstream libraries by this author, including those supporting ST7735 for Raspberry Pi and Raspberry Pi Pico, are documented as GPL‑3.0.
+GNU General Public License v3.0 (GPL‑3.0)
+Upstream libraries by this author, including those supporting ST7735 for Raspberry Pi and Raspberry Pi Pico, are documented as GPL‑3.0.
 
 Presence in OpenHeart repository
 
