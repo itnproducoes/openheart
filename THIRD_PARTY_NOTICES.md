@@ -10,17 +10,17 @@ In accordance with best practices for open‑source compliance, this notice docu
 1. ST7735 Display Driver (ST7735_TFT_PICO)
 Involved files (now removed)
 
-include/st7735/ST7735_TFT.hpp
-include/st7735/ST7735_TFT_Bitmap_Data.hpp
-include/st7735/ST7735_TFT_Font.hpp
-include/st7735/ST7735_TFT_Print.hpp
-include/st7735/ST7735_TFT_graphics.hpp
-
-src/st7735/ST7735_TFT.cpp
-src/st7735/ST7735_TFT_Bitmap_Data.cpp
-src/st7735/ST7735_TFT_Font.cpp
-src/st7735/ST7735_TFT_Print.cpp
-src/st7735/ST7735_TFT_graphics.cpp
+ include/st7735/ST7735_TFT.hpp
+ include/st7735/ST7735_TFT_Bitmap_Data.hpp
+ include/st7735/ST7735_TFT_Font.hpp
+ include/st7735/ST7735_TFT_Print.hpp
+ include/st7735/ST7735_TFT_graphics.hpp
+ 
+ src/st7735/ST7735_TFT.cpp
+ src/st7735/ST7735_TFT_Bitmap_Data.cpp
+ src/st7735/ST7735_TFT_Font.cpp
+ src/st7735/ST7735_TFT_Print.cpp
+ src/st7735/ST7735_TFT_graphics.cpp
 
 Origin / Author
 
