@@ -80,17 +80,19 @@ Em conformidade com as melhores práticas de código aberto, este aviso document
 
 ### Arquivos envolvidos (agora (removido)
 
+```text
 include/st7735/ST7735_TFT.hpp
 include/st7735/ST7735_TFT_Bitmap_Data.hpp
 include/st7735/ST7735_TFT_Font.hpp
 include/st7735/ST7735_TFT_Print.hpp
-include/st7735/ST7735_TFT_g gráficos.hpp
+include/st7735/ST7735_TFT_graphics.hpp
 
 src/st7735/ST7735_TFT.cpp
 src/st7735/ST7735_TFT_Bitmap_Data.cpp
 src/st7735/ST7735_TFT_Font.cpp
 src/st7735/ST7735_TFT_Print.cpp
 src/st7735/ST7735_TFT_graphics.cpp
+```
 
 ### Origem/Autor
 
