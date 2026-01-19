@@ -39,7 +39,9 @@ add_compile_options(-Wall)
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(openheart main/main.cpp lib/ssd1306.c lib/ssd1306_bitmap.c)
+add_executable(openheart main/main.cpp src/ssd1306/ssd1306.c src/ssd1306/ssd1306_bitmap.c)
+
+#add_executable(openheart main/ST7735_TFT_BMP_DATA/main.cpp)
 
 # this ends up being overridden in the code but I think it's required
 # for setting the REFDIV of the system pll
@@ -54,11 +56,11 @@ target_compile_definitions(openheart PRIVATE
 add_library(pico_st7735 INTERFACE)
 
 target_sources(pico_st7735 INTERFACE
-  ${CMAKE_CURRENT_LIST_DIR}/src/st7735/pico_ST7735_TFT.cpp
-  ${CMAKE_CURRENT_LIST_DIR}/src/st7735/pico_ST7735_TFT_graphics.cpp
-  ${CMAKE_CURRENT_LIST_DIR}/src/st7735/pico_ST7735_TFT_Print.cpp
-  ${CMAKE_CURRENT_LIST_DIR}/src/st7735/pico_ST7735_TFT_Font.cpp
-  ${CMAKE_CURRENT_LIST_DIR}/src/st7735/pico_ST7735_TFT_Bitmap_Data.cpp
+ ${CMAKE_CURRENT_LIST_DIR}/src/st7735/pico_st7735.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/src/st7735/pico_st7735_font.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/src/st7735/pico_st7735_bitmap.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/src/st7735/pico_st7735_compat.cpp
+
 )
 
 
