@@ -39,7 +39,7 @@ add_compile_options(-Wall)
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(openheart main/main.cpp src/ssd1306/ssd1306.c src/ssd1306/ssd1306_bitmap.c)
+add_executable(openheart main/main_openheart.cpp src/ssd1306/ssd1306.c src/ssd1306/ssd1306_bitmap.c)
 
 #add_executable(openheart main/ST7735_TFT_BMP_DATA/main.cpp)
 
