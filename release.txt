@@ -1,3 +1,10 @@
+=== v 2.1 ===
+--> Code optimization.
+--> Reset fixes.
+--> Addition of standby function.
+--> Hardware upgrade for model 1 va0 to va4 boards.
+--> No delay to start the console with the display connected.
+
 === v 2.0.0 ===
 --> The entire compilation structure and logic has been changed.
 --> Added support for the ST7735 and SD1306 displays.
