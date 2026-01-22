@@ -30,6 +30,7 @@ Open Heart turns your console into a multi-region hub with advanced features:
 - Voltage divider resistors (4.7k and 10k) for Model 1 VA5/VA6
 - Resistor for controller pin 7 (22k) and pin VCLK 82Ω for Model 1 VA0 to VA4
 - Wires for GPIO connections to console and controller
+- Diode 1n4001 optional.
 
 ---
 
@@ -275,7 +276,8 @@ Open Heart transforma seu console em uma central multi-região com recursos avan
 - Sega Genesis/Mega Drive (Modelos 1 ou 2)
 - Resistores para divisor de tensão (4.7k e 10k) model 1 va5/va6
 - Resistor para o pino 7 do controlador (22kΩ) e pino VCLK de 82Ω para o Modelo 1 VA0 a VA4
-- Fios para GPIOs conectados ao console e controle
+- Fios para GPIOs conectados ao console e controle.
+- Diodo 1n4001 opcional.
 
 ---
 
