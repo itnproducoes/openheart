@@ -29,6 +29,7 @@ Open Heart turns your console into a multi-region hub with advanced features:
 - Sega Genesis/Mega Drive (Model 1 or 2)
 - Voltage divider resistors (4.7k and 10k) for Model 1 VA5/VA6
 - Resistor for controller pin 7 (22k) and pin VCLK 82Ω for Model 1 VA0 to VA4
+- 20mm Piezo Disc Transducer and 100Ω resistor.
 - Wires for GPIO connections to console and controller
 - Diode 1n4001 optional.
 
@@ -61,7 +62,10 @@ Function: Commands
   C + Start (1s)
 - LED brightness:
   UP + Start (1s)
-- Standby mode: UP + Start + A (2s) Reset in console return.
+- Standby mode:
+   UP + Start + A (2s) Reset in console return.
+- Sound Buzzer OFF / ON
+  UP + Start + B (2s) 
 
 ---
 
@@ -133,6 +137,8 @@ Add a voltage divider resistor for Model 1 VA5/VA6 on the reset button. Connect 
 - **RST, CS, DC, SCL, SDA, BLK and Detect Display** are only needed if you plan to use an LCD display.
 
 - **Bluetooth up/down** will only be connected if used to control a retro Bluetooth module for wireless controllers.
+  
+- **Buzzer** needed only for connecting the Piezo Disc Transducer that will emit beep sounds during startup and functions. Connect the GND pin to ground and the + pin to a 100Ω resistor in series with the pico output pin.
 
 If you want a LED to show the mod's status, use a common cathode bi-color LED. Connect the cathode to ground and the two anodes to pins LED1 and LED2. The region is indicated by color:
 
@@ -148,7 +154,7 @@ Bluetooth is indicated by a flashing LED at 0.5Hz when activated.
 **Setting up the Pico**
 
 **Warning: demo version.**
-Download the mega drive model 1 va0 until va4 firmware image  [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_21_8MHz_DEMO.uf2) or va5/va6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_21_1074MHz_DEMO.uf2) firmware image from the /build folder and flash it to the Pico by connecting it to your computer while holding down the BOOTSEL button. It will appear as a storage device — just drag the UF2 file onto it. When the storage device disconnects automatically, it's ready to use.
+Download the firmware image from this link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21DEMO.uf2) from the /build folder and flash it to the Pico by connecting it to the computer while holding down the BOOTSEL button. It will appear as a storage device — simply drag the UF2 file onto it. When the storage device automatically disconnects, it will be ready for use.
 
 **Installation examples here** [Here](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
@@ -276,6 +282,7 @@ Open Heart transforma seu console em uma central multi-região com recursos avan
 - Sega Genesis/Mega Drive (Modelos 1 ou 2)
 - Resistores para divisor de tensão (4.7k e 10k) model 1 va5/va6
 - Resistor para o pino 7 do controlador (22kΩ) e pino VCLK de 82Ω para o Modelo 1 VA0 a VA4
+- Transdutor Piezo Disco 20mm e resitor de 100Ω.
 - Fios para GPIOs conectados ao console e controle.
 - Diodo 1n4001 opcional.
 
@@ -299,6 +306,8 @@ Open Heart transforma seu console em uma central multi-região com recursos avan
 | Alternar brilho do LED                 | UP + Start (1s)                      |
 | Modo standby 	                         | UP + Start +A (2s)                   |
 |	                                       | Reset no console para retornar       |
+| Beep OFF / ON                          | UP + Start + B (2s)                  |
+ 
 
 ---
 
@@ -369,7 +378,9 @@ Os **pinos 1, 6, 7 e 9** (adicionar resistor para pino 7 do controle (22k) model
 - **Reset Button** corresponde ao pino 2 do botão de reset.
 Adicione um resistor divisor para o modelo 1 VA5/VA6 no botão de reset. Conecte um resitor de 4,7k no 5v e 10k no GND. O ponto de conexão entre os dois resistores deve ser conectado ao pino do botão de reset do Pi Pico.
 
-- **RST, CS, DC, SCL, SDA, BLK e Detect Display** são necessários apenas se for utilizar display LCD. 
+- **RST, CS, DC, SCL, SDA, BLK e Detect Display** são necessários apenas se for utilizar display LCD.
+  
+- **Buzzer** necessário apenas para ligação do Transdutor Piezo Disco que irá emitir os sons de beep durante inicialização e funções. Ligue o pino GND ao terra e o pino + em um resitor de 100Ω em série com o pino de saida do pico.
 
 - **Bluetooth up/down** será conectado apenas se for utilizado para controlar um módulo bluetooth retro para controles sem fio.
   
@@ -388,7 +399,7 @@ O Bluetooth é indicado por um piscar do LED a 0,5Hz quando ativado.
 **Configurando o pico**
 
 **Atenção: versão demonstração.**
-Baixe a imagem de firmware do Mega Drive modelo 1 VA0 até VA4 [openheart8Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_21_8MHz_DEMO.uf2) ou VA5/VA6 [openheart1074Mhz.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart_21_1074MHz_DEMO.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
+Baixe a imagem de firmware nesse link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21DEMO.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
 
 **Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
