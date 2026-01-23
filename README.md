@@ -64,7 +64,7 @@ Function: Commands
   UP + Start (1s)
 - Standby mode:
    UP + Start + A (2s) Reset in console return.
-- Sound Buzzer OFF / ON
+- Sound Buzzer (OFF/ON):
   UP + Start + B (2s) 
 
 ---
