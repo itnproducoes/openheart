@@ -296,9 +296,9 @@ Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no proje
 
 ---
 
-**Versão Open heart**: disponível completa apenas para colaboradores do projeto (versão DEMO disponível para todos).
+**Versão Open heart**: disponível completa apenas para colaboradores do projeto (versão DEMO disponível para todos).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21DEMO.uf2)
 
-**Versão Open Heart Lite**: disponível para todos apenas para uso pessoal (não comercial).
+**Versão Open Heart Lite**: disponível para todos apenas para uso pessoal (não comercial).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21LITE.uf2)
 
 **Extreme Edition**: versão comercial e irrestrita.
 
