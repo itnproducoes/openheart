@@ -7,6 +7,42 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 
 ---
 
+
+## 📦 Version Information
+
+**Open Heart Version**: fully available only to project collaborators (DEMO version available to everyone).
+
+**Open Heart Lite Version**: available to all users for personal, non‑commercial use.
+
+**Extreme Edition**: commercial and unrestricted version.
+
+---
+
+## 📋 Feature Comparison
+
+| User Feature / Action | **Extreme Edition** | **Open Heart** | **OpenHeart Lite** |
+|---|---|---|---|
+| **Restart game (A+B+C+Start, 1s)** | Available | Available | Available |
+| **Europe 50 Hz ↔ 60 Hz (A+B+Start, 1s)** | Available | Available | Available |
+| **Region Switch (B+C+Start, 1s)** | Available | Available | **Not available** |
+| **Region Switch using Reset (3s)** | Available | Available | Available |
+| **Overclock (A+Start, 1s)** | Available | Available | **Not available** |
+| **Enter Standby (UP+A+Start, 2s)** | Available | Available | **Not available** |
+| **Exit Standby (Reset)** | Available | Available | — |
+| **Bluetooth (B+Start, 2s)** | Available | Available | **Not available** |
+| **Bluetooth on power‑on while holding UP** | Toggles and saves | Toggles and saves | **Disabled (always OFF)** |
+| **Beep ON/OFF (UP+B+Start, 2s)** | Available | Available | **Not available** |
+| **LED Brightness (UP+Start, 1s)** | Available | Available | **Not available** |
+| **Manual Logo / Screensaver Switch (C+Start, 1s)** | Available | Available | **Not available** |
+| **Inactivity Screensaver** | Active | Active | Active |
+| **Master System Pause (UP+B+C, 1s)** | Available | Available | Available |
+| **Master System Reset (UP+C, 5s)** | Available | Available | Available |
+| **Startup Screen** | “Extreme Edition” | “Open Heart 2.1” | “Open Heart 2.1” |
+| **Custom startup message** | Available | **Not available** | **Not available** |
+| **Personal‑use notice** | — | Active | Active |
+
+---
+
 ## 🧩 Overview
 
 Open Heart turns your console into a multi-region hub with advanced features:
@@ -257,6 +293,37 @@ Project inspired by 32mbit and enhanced.
 Mod multi-região para Sega Genesis/Mega Drive usando Raspberry Pi Pico (RP2040). Este projeto permite alternar entre regiões, controlar frequência, ativar modo Master System, overclock, e muito mais — tudo via controle ou botão físico.
 
 Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no projeto Open heart 2 desenvolvido para a comunidade brasileira, mas o código fonte, funções e funcionamento são os mesmos.
+
+---
+
+**Versão Open heart**: disponível completa apenas para colaboradores do projeto (versão DEMO disponível para todos).
+
+**Versão Open Heart Lite**: disponível para todos apenas para uso pessoal (não comercial).
+
+**Extreme Edition**: versão comercial e irrestrita.
+
+## 📋 Comparativo de Funcionalidades.
+
+| Recurso / Ação do Usuário | **Extreme Edition** | **Open Heart** | **OpenHeart Lite** |
+|---|---|---|---|
+| **Reiniciar o jogo (A+B+C+Start, 1s)** | Disponível | Disponível | Disponível |
+| **Europa 50 Hz ↔ 60 Hz (A+B+Start, 1s)** | Disponível | Disponível | Disponível |
+| **Trocar Região (B+C+Start, 1s)** | Disponível | Disponível | **Não disponível** |
+| **Trocar Região pelo Reset (3s)** | Disponível | Disponível | Disponível |
+| **Overclock (A+Start, 1s)** | Disponível | Disponível | **Não disponível** |
+| **Entrar em Standby (UP+A+Start, 2s)** | Disponível | Disponível | **Não disponível** |
+| **Acordar do Standby (Reset)** | Disponível | Disponível | — |
+| **Bluetooth (B+Start, 2s)** | Disponível | Disponível | **Não disponível** |
+| **Bluetooth ao ligar segurando UP** | Alterna e memoriza | Alterna e memoriza | **Desativado (sempre OFF)** |
+| **Beep ON/OFF (UP+B+Start, 2s)** | Disponível | Disponível | **Não disponível** |
+| **Brilho LED (UP+Start, 1s)** | Disponível | Disponível | **Não disponível** |
+| **Troca de Logos / Protetor manual (C+Start, 1s)** | Disponível | Disponível | **Não disponível** |
+| **Protetor de Tela por inatividade** | Ativo | Ativo | Ativo |
+| **Pause Master System (UP+B+C, 1s)** | Disponível | Disponível | Disponível |
+| **Reset Master System (UP+C, 5s)** | Disponível | Disponível | Disponível |
+| **Tela inicial** | “Extreme Edition ” | “Open Heart 2.1” | “Open Heart 2.1” |
+| **Mensagem inicial personalizada** |  Disponível | **Não disponível**  | **Não disponível**  |
+| **Mensagem de uso pessoal**    | — | Ativa | Ativa |
 
 ---
 
