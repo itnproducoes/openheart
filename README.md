@@ -308,6 +308,7 @@ Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no proje
 | Recurso / Ação do Usuário | **Extreme Edition** | **Open Heart** | **OpenHeart Lite** |
 |---|---|---|---|
 | **Reiniciar o jogo (A+B+C+Start, 1s)** | Disponível | Disponível | Disponível |
+| **Pico reset (A+C+Start, 5s)** | Disponível |**Não disponível**  |**Não disponível** |
 | **Europa 50 Hz ↔ 60 Hz (A+B+Start, 1s)** | Disponível | Disponível | Disponível |
 | **Trocar Região (B+C+Start, 1s)** | Disponível | Disponível | **Não disponível** |
 | **Trocar Região pelo Reset (3s)** | Disponível | Disponível | Disponível |
