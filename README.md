@@ -10,9 +10,9 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 
 ## 📦 Version Information
 
-**Open Heart Version**: fully available only to project collaborators (DEMO version available to everyone). [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21_DEMO.uf2)
+**Open Heart Version**: fully available only to project collaborators (DEMO version available to everyone). [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21DEMO.uf2)
 
-**Open Heart Lite Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21_LITE.uf2)
+**Open Heart Lite Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21LITE.uf2)
 
 **Extreme Edition**: commercial and unrestricted version.
 
