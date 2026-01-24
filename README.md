@@ -23,6 +23,7 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 | User Feature / Action | **Extreme Edition** | **Open Heart** | **OpenHeart Lite** |
 |---|---|---|---|
 | **Restart game (A+B+C+Start, 1s)** | Available | Available | Available |
+| **Pico reset (A+C+Start, 5s)** | Available |**Not available**  |**Not available** |
 | **Europe 50 Hz ↔ 60 Hz (A+B+Start, 1s)** | Available | Available | Available |
 | **Region Switch (B+C+Start, 1s)** | Available | Available | **Not available** |
 | **Region Switch using Reset (3s)** | Available | Available | Available |
