@@ -5,6 +5,7 @@
 --> Hardware upgrade for model 1 va0 to va4 boards.
 --> No delay to start the console with the display connected.
 --> Restructuring the shortcut detection mode to make it more responsive and reduce errors.
+--> Fixed pause mode for the master system on Everdrive X5.
 
 === v 2.0.0 ===
 --> The entire compilation structure and logic has been changed.
