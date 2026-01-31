@@ -65,7 +65,8 @@ Open Heart turns your console into a multi-region hub with advanced features:
 - ST7735 (TFT) or SSD1306 (OLED) display
 - Sega Genesis/Mega Drive (Model 1 or 2)
 - Voltage divider resistors (4.7k and 10k) for Model 1 VA5/VA6
-- Resistor for controller pin 7 (22k) and pin VCLK 82Ω for Model 1 VA0 to VA4
+- Resistor for controller pin 7 (22k) for Model 1 VA0 to VA4
+- Resitor pin VCLK 82Ω 
 - 20mm Piezo Disc Transducer and 100Ω resistor.
 - Wires for GPIO connections to console and controller
 - Diode 1n4001 optional.
@@ -152,7 +153,7 @@ This mod is very similar to other existing mods, so adapting it to your specific
 
 - **MCLK** should be connected to the oscillator clock output.
   
-- **VCLK** is connected to the clock input pin of the 68000 (VDP is also connected to this pin and must be disconnected from it). These wires should be kept as short as possible. VCLK is optional if you do not wish to use the overclocking feature. Add a resistor in series between the peak and the 82-ohm pin; the resistor should be as close as possible to the peak, preferably soldered to the pin. (models 1 va0 to va4).
+- **VCLK** is connected to the clock input pin of the 68000 (VDP is also connected to this pin and must be disconnected from it). These wires should be kept as short as possible. VCLK is optional if you do not wish to use the overclocking feature. Add a resistor in series between the peak and the 82-ohm pin; the resistor should be as close as possible to the peak, preferably soldered to the pin.
 
 - **Jpn/Export** and **NTSC/PAL** should be connected to the points on your board where +5V and ground determine the region and 50/60Hz respectively.
 
@@ -350,7 +351,8 @@ Open Heart transforma seu console em uma central multi-região com recursos avan
 - Tela ST7735 (TFT) ou SSD1306 (OLED)
 - Sega Genesis/Mega Drive (Modelos 1 ou 2)
 - Resistores para divisor de tensão (4.7k e 10k) model 1 va5/va6
-- Resistor para o pino 7 do controlador (22kΩ) e pino VCLK de 82Ω para o Modelo 1 VA0 a VA4
+- Resistor para o pino 7 do controlador (22kΩ).
+- Resitor no pino VCLK de 82Ω.
 - Transdutor Piezo Disco 20mm e resitor de 100Ω.
 - Fios para GPIOs conectados ao console e controle.
 - Diodo 1n4001 opcional.
@@ -428,7 +430,7 @@ Este mod é muito semelhante a outros mods existentes, então adaptá-lo ao seu 
   
 - **MCLK** deve ser conectado à saída de clock do oscilador.
   
-- **VCLK** é conectado ao pino de entrada de clock do 68000 (o VDP também está conectado a este pino e deve ser desconectado dele). Esses fios devem ser mantidos o mais curtos possível. VCLK é opcional caso você não deseje usar o recurso de overclock. Adicicionar um resitor em série entre o pico e o pino de 82ohms, o resitor deve ficar mais próximo possível do pico, de preferência soldado ao pino. (modelos 1 va0 até va4).
+- **VCLK** é conectado ao pino de entrada de clock do 68000 (o VDP também está conectado a este pino e deve ser desconectado dele). Esses fios devem ser mantidos o mais curtos possível. VCLK é opcional caso você não deseje usar o recurso de overclock. Adicicionar um resitor em série entre o pico e o pino de 82ohms, o resitor deve ficar mais próximo possível do pico, de preferência soldado ao pino.
   
 - **Jpn/Export** e **NTSC/PAL** devem ser conectados aos pontos da sua placa onde +5V e terra determinam a região e 50/60Hz, respectivamente.
   
