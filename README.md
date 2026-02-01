@@ -403,7 +403,7 @@ Mensagens exibidas:
 
 ## ⚙️ Configuração de Região
 
-Região salva na flash e restaurada na inicialização. LEDs indicam:
+A região é salva na memória flash 10 segundos após a troca e restaurada na inicialização. Indicadores LED:
 
 - Vermelho: Japão
 - Verde: Américas
