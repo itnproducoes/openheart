@@ -127,7 +127,7 @@ Displayed messages:
 
 ## ⚙️ Region Configuration
 
-Region is saved to flash and restored on boot. LED indicators:
+The region is saved to flash memory 10 seconds after the swap and restored at startup. LED indicators:
 
 - Red: Japan
 - Green: Americas
