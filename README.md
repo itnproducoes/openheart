@@ -153,9 +153,7 @@ This mod is very similar to other existing mods, so adapting it to your specific
 
 - **MCLK** should be connected to the oscillator clock output.
   
--  **VCLK** is connected to the clock input pin of the 68000 (the VDP is also connected to this pin and must be disconnected from it). VCLK and ***GND 68K*** must be connected by twisting two wires of maximum thickness of 30awg. One wire will be connected to the VCLK pin and the other to a GND pin of the 68000 processor. Use a GND pin of the 68000 as close as possible to the VCLK to maintain the twisting until the end. Add an 82-ohm resistor in series with the VCLK pin of the processor. The resistor should be as close as possible to the peak pin, preferably soldered to it.
-
-Do not use a wire for the VCLK and GND 68K that exceeds 10 cm.
+-  **VCLK** is connected to the clock input pin of the 68000 (the VDP is also connected to this pin and must be disconnected from it). VCLK and ***GND 68K*** must be connected by twisting two wires of maximum thickness of 30awg. One wire will be connected to the VCLK pin and the other to a GND pin of the 68000 processor. Use a GND pin of the 68000 as close as possible to the VCLK to maintain the twisting until the end. Add an 82-ohm resistor in series with the VCLK pin of the processor. The resistor should be as close as possible to the peak pin, preferably soldered to it. Do not use a wire for the VCLK and GND 68K that exceeds 10 cm.
 
 - **Jpn/Export** and **NTSC/PAL** should be connected to the points on your board where +5V and ground determine the region and 50/60Hz respectively.
 
@@ -432,7 +430,7 @@ Este mod é muito semelhante a outros mods existentes, então adaptá-lo ao seu 
   
 - **MCLK** deve ser conectado à saída de clock do oscilador.
   
-- **VCLK** está conectado ao pino de entrada de clock do 68000 (o VDP também está conectado a este pino e deve ser desconectado dele). VCLK e ***GND 68K*** devem ser conectados torcendo dois fios de espessura máxima de 30 AWG. Um fio será conectado ao pino VCLK e o outro a um pino GND do processador 68000. Use um pino GND do 68000 o mais próximo possível do VCLK para manter a torção até o final. Adicione um resistor de 82 ohms em série com o pino VCLK do processador. O resistor deve estar o mais próximo possível do pino de pico, preferencialmente soldado a ele.
+- **VCLK** está conectado ao pino de entrada de clock do 68000 (o VDP também está conectado a este pino e deve ser desconectado dele). VCLK e ***GND 68K*** devem ser conectados torcendo dois fios de espessura máxima de 30 AWG. Um fio será conectado ao pino VCLK e o outro a um pino GND do processador 68000. Use um pino GND do 68000 o mais próximo possível do VCLK para manter a torção até o final. Adicione um resistor de 82 ohms em série com o pino VCLK do processador. O resistor deve estar o mais próximo possível do pino de pico, preferencialmente soldado a ele. Não utilize fio com mais de 10cm.
   
 - **Jpn/Export** e **NTSC/PAL** devem ser conectados aos pontos da sua placa onde +5V e terra determinam a região e 50/60Hz, respectivamente.
   
