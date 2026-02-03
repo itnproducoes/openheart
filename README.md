@@ -196,7 +196,7 @@ Download the firmware image from this link [openheart.uf2](https://github.com/DU
 
 **Installation examples here** [Here](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
-**Pico pinout here** ![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png)
+**Pico pinout here** ![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout2.png)
 
 **Notes & considerations**
 Use at your own risk: The mod seems to work well on various Model 1 and Model 2 revisions, but not all revisions have been tested.
@@ -474,7 +474,7 @@ Baixe a imagem de firmware nesse link [openheart.uf2](https://github.com/DUSTINO
 
 **Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
-**Pinagem do pico** ![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png)
+**Pinagem do pico** ![https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout.png](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/pinout2.png)
 
 **Notas e considerações**
 Use por sua conta e risco: O mod parece funcionar bem em várias revisões dos modelos 1 e 2, mas nem todas as revisões foram testadas.
