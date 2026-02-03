@@ -153,8 +153,6 @@ This mod is very similar to other existing mods, so adapting it to your specific
 
 - **MCLK** should be connected to the oscillator clock output.
   
-- **VCLK** is connected to the clock input pin of the 68000 (VDP is also connected to this pin and must be disconnected from it). These wires should be kept as short as possible. VCLK is optional if you do not wish to use the overclocking feature. Add a resistor in series between the peak and the 82-ohm pin; the resistor should be as close as possible to the peak, preferably soldered to the pin.
-
 -  **VCLK** is connected to the clock input pin of the 68000 (the VDP is also connected to this pin and must be disconnected from it). VCLK and ***GND 68K*** must be connected by twisting two wires of maximum thickness of 30awg. One wire will be connected to the VCLK pin and the other to a GND pin of the 68000 processor. Use a GND pin of the 68000 as close as possible to the VCLK to maintain the twisting until the end. Add an 82-ohm resistor in series with the VCLK pin of the processor. The resistor should be as close as possible to the peak pin, preferably soldered to it.
 
 Do not use a wire for the VCLK and GND 68K that exceeds 10 cm.
