@@ -1,5 +1,5 @@
 # Open Heart by 32mbit
-# Version 2.1
+# Version 3.0
 
 Multi-region mod for Sega Genesis/Mega Drive using Raspberry Pi Pico (RP2040). This project allows switching between regions, controlling frequency, enabling Master System mode, overclocking, and much more — all via controller or physical button.
 
@@ -10,9 +10,9 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 
 ## 📦 Version Information
 
-**Open Heart Version**: fully available only to project collaborators (DEMO version available to everyone). [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21DEMO.uf2)
+**Open Heart Version**: fully available only to project collaborators (DEMO version available to everyone). [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2)
 
-**Open Heart Lite Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21LITE.uf2)
+**Open Heart Lite Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30LITE.uf2)
 
 **Extreme Edition**: commercial and unrestricted version.
 
@@ -38,7 +38,7 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 | **Inactivity Screensaver** | Active | Active | Active |
 | **Master System Pause (UP+B+C, 1s)** | Available | Available | Available |
 | **Master System Reset (UP+C, 5s)** | Available | Available | Available |
-| **Startup Screen** | “Extreme Edition” | “Open Heart 2.1” | “Open Heart 2.1” |
+| **Startup Screen** | “Extreme Edition” | “Open Heart 3.0” | “Open Heart 3.0” |
 | **Custom startup message** | Available | **Not available** | **Not available** |
 | **Personal‑use notice** | — | Active | Active |
 
@@ -192,7 +192,7 @@ Bluetooth is indicated by a flashing LED at 0.5Hz when activated.
 **Setting up the Pico**
 
 **Warning: demo version.**
-Download the firmware image from this link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21DEMO.uf2) from the /build folder and flash it to the Pico by connecting it to the computer while holding down the BOOTSEL button. It will appear as a storage device — simply drag the UF2 file onto it. When the storage device automatically disconnects, it will be ready for use.
+Download the firmware image from this link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2) from the /build folder and flash it to the Pico by connecting it to the computer while holding down the BOOTSEL button. It will appear as a storage device — simply drag the UF2 file onto it. When the storage device automatically disconnects, it will be ready for use.
 
 **Installation examples here** [Here](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
@@ -290,7 +290,7 @@ Project inspired by 32mbit and enhanced.
 ---
 
 # Open Heart by 32mbit
-# Versão 2.1
+# Versão 3.0
 
 Mod multi-região para Sega Genesis/Mega Drive usando Raspberry Pi Pico (RP2040). Este projeto permite alternar entre regiões, controlar frequência, ativar modo Master System, overclock, e muito mais — tudo via controle ou botão físico.
 
@@ -298,9 +298,9 @@ Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no proje
 
 ---
 
-**Versão Open heart**: disponível completa apenas para colaboradores do projeto (versão DEMO disponível para todos).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21DEMO.uf2)
+**Versão Open heart**: disponível completa apenas para colaboradores do projeto (versão DEMO disponível para todos).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2)
 
-**Versão Open Heart Lite**: disponível para todos apenas para uso pessoal (não comercial).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21LITE.uf2)
+**Versão Open Heart Lite**: disponível para todos apenas para uso pessoal (não comercial).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30LITE.uf2)
 
 **Extreme Edition**: versão comercial e irrestrita.
 
@@ -324,7 +324,7 @@ Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no proje
 | **Protetor de Tela por inatividade** | Ativo | Ativo | Ativo |
 | **Pause Master System (UP+B+C, 1s)** | Disponível | Disponível | Disponível |
 | **Reset Master System (UP+C, 5s)** | Disponível | Disponível | Disponível |
-| **Tela inicial** | “Extreme Edition ” | “Open Heart 2.1” | “Open Heart 2.1” |
+| **Tela inicial** | “Extreme Edition ” | “Open Heart 3.0” | “Open Heart 3.0” |
 | **Mensagem inicial personalizada** |  Disponível | **Não disponível**  | **Não disponível**  |
 | **Mensagem de uso pessoal**    | — | Ativa | Ativa |
 
@@ -470,7 +470,7 @@ O Bluetooth é indicado por um piscar do LED a 0,5Hz quando ativado.
 **Configurando o pico**
 
 **Atenção: versão demonstração.**
-Baixe a imagem de firmware nesse link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart21DEMO.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
+Baixe a imagem de firmware nesse link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
 
 **Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
