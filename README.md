@@ -41,6 +41,7 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 | **Startup Screen** | “Extreme Edition” | “Open Heart 3.0” | “Open Heart 3.0” |
 | **Custom startup message** | Available | **Not available** | **Not available** |
 | **Personal‑use notice** | — | Active | Active |
+| **Display MENU** | Available | Available | **Not available**  |
 
 ---
 
@@ -103,7 +104,9 @@ Function: Commands
 - Standby mode:
    UP + Start + A (2s) Reset in console return.
 - Sound Buzzer (OFF/ON):
-  UP + Start + B (2s) 
+  UP + Start + B (2s)
+- Access the MENU on the display:
+UP + Start + C (1s)
 
 ---
 
@@ -327,6 +330,7 @@ Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no proje
 | **Tela inicial** | “Extreme Edition ” | “Open Heart 3.0” | “Open Heart 3.0” |
 | **Mensagem inicial personalizada** |  Disponível | **Não disponível**  | **Não disponível**  |
 | **Mensagem de uso pessoal**    | — | Ativa | Ativa |
+| **MENU no display** | Disponível | Disponível | **Não disponível**  |
 
 ---
 
@@ -361,24 +365,26 @@ Open Heart transforma seu console em uma central multi-região com recursos avan
 
 ## 🎮 Comandos
 
-| Função                                 | Comandos                             |
-|----------------------------------------|--------------------------------------|
-| Troca de região                        | B + C + Start (1s)                   |
-| Troca de região (botão físico)         | Botão Reset (3s)                     |
-| Reset do jogo                          | A + B + C + Start (1s)               |
-| Troca 50Hz/60Hz (Europa)               | A + B + Start (1s)                   |
-| Overclock                              | A + Start (1s)                       |
-| Reset do Pico                          | A + C + Start (3s)                   |
-| Ativar Bluetooth                       | B + Start (2s)                       |
-| Ativar/desativar Bluetooth no iniciar  | Segurar UP ao ligar o console        |
-| Pausa Master System                    | UP + B + C (1s)                      |
-| Reset Master System                    | UP + C (5s)                          |
-| Alternar logo                          | C + Start (1s)                       |
-| Alternar brilho do LED                 | UP + Start (1s)                      |
-| Modo standby 	                         | UP + Start +A (2s)                   |
-|	                                       | Reset no console para retornar       |
-| Beep OFF / ON                          | UP + Start + B (2s)                  |
- 
+| Função                                 | Comandos                               |
+|----------------------------------------|----------------------------------------|
+| Troca de região                        | B + C + Start (1s)                     |
+| Troca de região (botão físico)         | Botão Reset (3s)                       |
+| Reset do jogo                          | A + B + C + Start (1s)                 |
+| Troca 50Hz/60Hz (Europa)               | A + B + Start (1s)                     |
+| Overclock                              | A + Start (1s)                         |
+| Reset do Pico                          | A + C + Start (3s)                     |
+| Ativar Bluetooth                       | B + Start (2s)                         |
+| Ativar/desativar Bluetooth no iniciar  | Segurar UP ao ligar o console          |
+| Pausa Master System                    | UP + B + C (1s)                        |
+| Reset Master System                    | UP + C (5s)                            |
+| Alternar logo                          | C + Start (1s)                         |
+| Alternar brilho do LED                 | UP + Start (1s)                        |
+| Modo standby 	                         | UP + Start +A (2s)                     |
+|	                                       | Reset no console para retornar         |
+| Beep OFF / ON                          | UP + Start + B (2s)                    |
+| Acesso ao MENU via display             | UP + Start + C (1s)                    |
+| Navegacão no MENU do display           | A e B. C para alterar. Start para sair |
+
 
 ---
 
