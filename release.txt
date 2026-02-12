@@ -1,3 +1,6 @@
+=== v 3.0 ==-
+--> Add selection menu via display.
+
 === v 2.1 ===
 --> Code optimization.
 --> Reset fixes.
