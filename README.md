@@ -107,6 +107,8 @@ Function: Commands
   UP + Start + B (2s)
 - Access the MENU on the display:
 UP + Start + C (1s)
+- Navigation in the display MENU
+A and B. C to change. Start to exit
 
 ---
 
