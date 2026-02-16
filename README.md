@@ -22,22 +22,21 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 
 | User Feature / Action | **Extreme Edition** | **Open Heart** | **OpenHeart Lite** |
 |---|---|---|---|
-| **Restart game (A+B+C+Start, 1s)** | Available | Available | Available |
-| **Pico reset (A+C+Start, 5s)** | Available |**Not available**  |**Not available** |
-| **Europe 50 Hz ↔ 60 Hz (A+B+Start, 1s)** | Available | Available | Available |
-| **Region Switch (B+C+Start, 1s)** | Available | Available | **Not available** |
-| **Region Switch using Reset (3s)** | Available | Available | Available |
-| **Overclock (A+Start, 1s)** | Available | Available | **Not available** |
-| **Enter Standby (UP+A+Start, 2s)** | Available | Available | **Not available** |
+| **Restart game by control** | Available | Available | Available |
+| **Pico reset by control** | Available |**Not available**  |**Not available** |
+| **Europe 50 Hz ↔ 60 Hz by control** | Available | Available | Available |
+| **Region Switch by control** | Available | Available | **Not available** |
+| **Region Switch using Reset** | Available | Available | Available |
+| **Overclock by control** | Available | Available | **Not available** |
+| **Enter Standby by control** | Available | Available | **Not available** |
 | **Exit Standby (Reset)** | Available | Available | — |
-| **Bluetooth (B+Start, 2s)** | Available | Available | **Not available** |
-| **Bluetooth on power‑on while holding UP** | Toggles and saves | Toggles and saves | **Disabled (always OFF)** |
-| **Beep ON/OFF (UP+B+Start, 2s)** | Available | Available | **Not available** |
-| **LED Brightness (UP+Start, 1s)** | Available | Available | **Not available** |
-| **Manual Logo / Screensaver Switch (C+Start, 1s)** | Available | Available | **Not available** |
+| **Bluetooth module suport** | Available | Available | **Not available** |
+| **Beep ON/OFF by control** | Available | Available | **Not available** |
+| **LED Brightness by control** | Available | Available | **Not available** |
+| **Manual Logo / Screensaver Switch by control** | Available | Available | **Not available** |
 | **Inactivity Screensaver** | Active | Active | Active |
-| **Master System Pause (UP+B+C, 1s)** | Available | Available | Available |
-| **Master System Reset (UP+C, 5s)** | Available | Available | Available |
+| **Master System Pause by control** | Available | Available | Available |
+| **Master System Reset by control** | Available | Available | Available |
 | **Startup Screen** | “Extreme Edition” | “Open Heart 3.0” | “Open Heart 3.0” |
 | **Custom startup message** | Available | **Not available** | **Not available** |
 | **Personal‑use notice** | — | Active | Active |
