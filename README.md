@@ -125,9 +125,11 @@ Displayed messages:
 - Bluetooth on/off
 - Logos: SEGA, 16bit, Custom message
 
-<img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/ssd1306_01.jpg" alt="ssd1306" width="300" />
+<img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/sd1306_01.jpeg" alt="ssd1306" width="300" /> <img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/st7735_01.jpeg" alt="ST7735" width="300" />
 
-<img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/ST7735_01.jpg" alt="ST7735" width="300" />
+<img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/sd1306_02.jpeg" alt="ssd1306" width="300" /> <img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/st7735_02.jpeg" alt="ST7735" width="300" />
+
+<img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/sd1306_03.jpeg" alt="ssd1306" width="300" /> <img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/st7735_03.jpeg" alt="ST7735" width="300" />
 
 ---
 
@@ -405,9 +407,11 @@ Mensagens exibidas:
 - Bluetooth ligado/desligado
 - Logos: SEGA, 16bit, Mensagem personalizada
 
-<img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/ssd1306_01.jpg" alt="ssd1306" width="300" />
+<img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/sd1306_01.jpeg" alt="ssd1306" width="300" /> <img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/st7735_01.jpeg" alt="ST7735" width="300" />
 
-<img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/ST7735_01.jpg" alt="ST7735" width="300" />
+<img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/sd1306_02.jpeg" alt="ssd1306" width="300" /> <img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/st7735_02.jpeg" alt="ST7735" width="300" />
+
+<img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/sd1306_03.jpeg" alt="ssd1306" width="300" /> <img src="https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/example/st7735_03.jpeg" alt="ST7735" width="300" />
 
 ---
 
