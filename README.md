@@ -41,7 +41,8 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 | **Startup Screen** | “Extreme Edition” | “Open Heart 3.0” | “Open Heart 3.0” |
 | **Custom startup message** | Available | **Not available** | **Not available** |
 | **Personal‑use notice** | — | Active | Active |
-| **Display MENU** | Available | Available | **Not available**  |
+| **Display MENU**   | Available | Available | **Not available**  |
+| **Hotkeys OFF/ON** | Available | Available | **Not available**  |
 
 ---
 
@@ -333,6 +334,7 @@ Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no proje
 | **Mensagem inicial personalizada** |  Disponível | **Não disponível**  | **Não disponível**  |
 | **Mensagem de uso pessoal**    | — | Ativa | Ativa |
 | **MENU no display** | Disponível | Disponível | **Não disponível**  |
+| **Atalhos OFF/ON** | Disponível | Disponível | **Não disponível**  |
 
 ---
 
