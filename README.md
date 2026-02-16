@@ -317,22 +317,21 @@ Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no proje
 
 | Recurso / Ação do Usuário | **Extreme Edition** | **Open Heart** | **OpenHeart Lite** |
 |---|---|---|---|
-| **Reiniciar o jogo (A+B+C+Start, 1s)** | Disponível | Disponível | Disponível |
-| **Pico reset (A+C+Start, 5s)** | Disponível |**Não disponível**  |**Não disponível** |
-| **Europa 50 Hz ↔ 60 Hz (A+B+Start, 1s)** | Disponível | Disponível | Disponível |
-| **Trocar Região (B+C+Start, 1s)** | Disponível | Disponível | **Não disponível** |
-| **Trocar Região pelo Reset (3s)** | Disponível | Disponível | Disponível |
-| **Overclock (A+Start, 1s)** | Disponível | Disponível | **Não disponível** |
-| **Entrar em Standby (UP+A+Start, 2s)** | Disponível | Disponível | **Não disponível** |
+| **Reiniciar o jogo pelo controle** | Disponível | Disponível | Disponível |
+| **Pico reset pelo controle** | Disponível |**Não disponível**  |**Não disponível** |
+| **Europa 50 Hz ↔ 60 Hz pelo controle** | Disponível | Disponível | Disponível |
+| **Trocar Região pelo controle** | Disponível | Disponível | **Não disponível** |
+| **Trocar Região pelo Reset** | Disponível | Disponível | Disponível |
+| **Overclock pelo controle** | Disponível | Disponível | **Não disponível** |
+| **Entrar em Standby pelo controle** | Disponível | Disponível | **Não disponível** |
 | **Acordar do Standby (Reset)** | Disponível | Disponível | — |
-| **Bluetooth (B+Start, 2s)** | Disponível | Disponível | **Não disponível** |
-| **Bluetooth ao ligar segurando UP** | Alterna e memoriza | Alterna e memoriza | **Desativado (sempre OFF)** |
-| **Beep ON/OFF (UP+B+Start, 2s)** | Disponível | Disponível | **Não disponível** |
-| **Brilho LED (UP+Start, 1s)** | Disponível | Disponível | **Não disponível** |
-| **Troca de Logos / Protetor manual (C+Start, 1s)** | Disponível | Disponível | **Não disponível** |
+| **Suporte para modulo blueretro** | Disponível | Disponível | **Não disponível** |
+| **Beep ON/OFF pelo controle** | Disponível | Disponível | **Não disponível** |
+| **Brilho LED pelo controle** | Disponível | Disponível | **Não disponível** |
+| **Troca de Logos / Protetor manual pelo controle** | Disponível | Disponível | **Não disponível** |
 | **Protetor de Tela por inatividade** | Ativo | Ativo | Ativo |
-| **Pause Master System (UP+B+C, 1s)** | Disponível | Disponível | Disponível |
-| **Reset Master System (UP+C, 5s)** | Disponível | Disponível | Disponível |
+| **Pause Master System pelo controle** | Disponível | Disponível | Disponível |
+| **Reset Master System pelo controle** | Disponível | Disponível | Disponível |
 | **Tela inicial** | “Extreme Edition ” | “Open Heart 3.0” | “Open Heart 3.0” |
 | **Mensagem inicial personalizada** |  Disponível | **Não disponível**  | **Não disponível**  |
 | **Mensagem de uso pessoal**    | — | Ativa | Ativa |
