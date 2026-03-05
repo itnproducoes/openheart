@@ -200,8 +200,12 @@ Bluetooth is indicated by a flashing LED at 0.5Hz when activated.
 
 **Setting up the Pico**
 
-**Warning: demo version.**
-Download the firmware image from this link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2) from the /build folder and flash it to the Pico by connecting it to the computer while holding down the BOOTSEL button. It will appear as a storage device — simply drag the UF2 file onto it. When the storage device automatically disconnects, it will be ready for use.
+IMPORTANT: First, download the firmware image from the link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/flash_nuke.uf2) to remove any unnecessary files stored from previous Pico versions.
+
+Flash the firmware onto the Pico by connecting it to the computer while holding down the BOOTSEL button. It will appear as a storage device simply drag the UF2 file onto it. The storage device will disconnect automatically.
+
+Now, download the firmware image from this link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2) and flash it onto the Pico by repeating the procedure already described.
+
 
 **Installation examples here** [Here](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
@@ -485,8 +489,11 @@ O Bluetooth é indicado por um piscar do LED a 0,5Hz quando ativado.
 
 **Configurando o pico**
 
-**Atenção: versão demonstração.**
-Baixe a imagem de firmware nesse link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2) da pasta /build e grave-a no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. Quando o dispositivo de armazenamento se desconectar automaticamente, estará pronto para uso.
+IMPORTANTE: Primeiro, baixe a imagem do firmware do link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/flash_nuke.uf2) para remover quaisquer arquivos desnecessários armazenados de versões anteriores do Pico.
+
+Grave o firmware no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. O dispositivo de armazenamento será desconectado automaticamente.
+
+Agora, baixe a imagem do firmware deste link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2) e grave-a no Pico repetindo o procedimento já descrito.
 
 **Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
