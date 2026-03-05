@@ -16,6 +16,8 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 
 **Extreme Edition**: commercial and unrestricted version.
 
+IMPORTANT: First, download the firmware image from the link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/flash_nuke.uf2) to remove any unnecessary files stored from previous Pico versions.
+
 ---
 
 ## 📋 Feature Comparison
@@ -316,6 +318,8 @@ Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no proje
 **Versão Open Heart Lite**: disponível para todos apenas para uso pessoal (não comercial).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30LITE.uf2)
 
 **Extreme Edition**: versão comercial e irrestrita.
+
+IMPORTANTE: Primeiro, baixe a imagem do firmware do link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/flash_nuke.uf2) para remover quaisquer arquivos desnecessários armazenados de versões anteriores.
 
 ## 📋 Comparativo de Funcionalidades.
 
