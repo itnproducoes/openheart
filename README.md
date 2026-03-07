@@ -344,7 +344,7 @@ IMPORTANTE: Primeiro, baixe a imagem do firmware do link [flash_nuke](https://gi
 | **Tela inicial** | “Extreme Edition ” | “Open Heart 3.0” | “Open Heart 3.0” |
 | **Mensagem inicial personalizada** |  Disponível | Disponível  | **Não disponível**  |
 | **Mensagem de uso pessoal**    | — | Ativa | Ativa |
-| **Destravar limite** | — | Necessáro | — |
+| **Destravar limite** | — | Necessário | — |
 | **MENU no display** | Disponível | Disponível | **Não disponível**  |
 | **Atalhos OFF/ON** | Disponível | Disponível | **Não disponível**  |
 
