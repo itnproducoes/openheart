@@ -342,7 +342,7 @@ IMPORTANTE: Primeiro, baixe a imagem do firmware do link [flash_nuke](https://gi
 | **Pause Master System pelo controle** | Disponível | Disponível | Disponível |
 | **Reset Master System pelo controle** | Disponível | Disponível | Disponível |
 | **Tela inicial** | “Extreme Edition ” | “Open Heart 3.0” | “Open Heart 3.0” |
-| **Mensagem inicial personalizada** |  Disponível | **Não disponível**  | **Não disponível**  |
+| **Mensagem inicial personalizada** |  Disponível | Disponível  | **Não disponível**  |
 | **Mensagem de uso pessoal**    | — | Ativa | Ativa |
 | **Destravar limite** | — | Necessáro | — |
 | **MENU no display** | Disponível | Disponível | **Não disponível**  |
