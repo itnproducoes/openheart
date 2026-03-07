@@ -40,8 +40,9 @@ IMPORTANT: First, download the firmware image from the link [flash_nuke](https:/
 | **Master System Pause by control** | Available | Available | Available |
 | **Master System Reset by control** | Available | Available | Available |
 | **Startup Screen** | “Extreme Edition” | “Open Heart 3.0” | “Open Heart 3.0” |
-| **Custom startup message** | Available | **Not available** | **Not available** |
+| **Custom startup message** | Available | Available | **Not available** |
 | **Personal‑use notice** | — | Active | Active |
+| **Unlock limit** | — | Necessary | — |
 | **Display MENU**   | Available | Available | **Not available**  |
 | **Hotkeys OFF/ON** | Available | Available | **Not available**  |
 
@@ -343,6 +344,7 @@ IMPORTANTE: Primeiro, baixe a imagem do firmware do link [flash_nuke](https://gi
 | **Tela inicial** | “Extreme Edition ” | “Open Heart 3.0” | “Open Heart 3.0” |
 | **Mensagem inicial personalizada** |  Disponível | **Não disponível**  | **Não disponível**  |
 | **Mensagem de uso pessoal**    | — | Ativa | Ativa |
+| **Destravar limite** | — | Necessáro | — |
 | **MENU no display** | Disponível | Disponível | **Não disponível**  |
 | **Atalhos OFF/ON** | Disponível | Disponível | **Não disponível**  |
 
