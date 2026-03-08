@@ -10,13 +10,13 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 
 ## 📦 Version Information
 
-**Open Heart Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30.uf2)
+**Open Heart Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/openheart30.uf2)
 
-**Open Heart Lite Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30LITE.uf2)
+**Open Heart Lite Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/openheart30LITE.uf2)
 
 **Extreme Edition**: commercial and unrestricted version.
 
-IMPORTANT: First, download the firmware image from the link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/flash_nuke.uf2) to remove any unnecessary files stored from previous Pico versions.
+IMPORTANT: First, download the firmware image from the link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/flash_nuke.uf2) to remove any unnecessary files stored from previous Pico versions.
 
 >[!NOTE]
 > READ CAREFULLY
@@ -214,11 +214,11 @@ Bluetooth is indicated by a flashing LED at 0.5Hz when activated.
 
 **Setting up the Pico**
 
-IMPORTANT: First, download the firmware image from the link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/flash_nuke.uf2) to remove any unnecessary files stored from previous Pico versions.
+IMPORTANT: First, download the firmware image from the link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/flash_nuke.uf2) to remove any unnecessary files stored from previous Pico versions.
 
 Flash the firmware onto the Pico by connecting it to the computer while holding down the BOOTSEL button. It will appear as a storage device simply drag the UF2 file onto it. The storage device will disconnect automatically.
 
-Now, download the firmware image from this link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2) and flash it onto the Pico by repeating the procedure already described.
+Now, download the firmware image from this link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/openheart30DEMO.uf2) and flash it onto the Pico by repeating the procedure already described.
 
 
 **Installation examples here** [Here](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
@@ -296,7 +296,7 @@ For complete details, please refer to the file:
 If you don't have one of the two displays (SSD 1306 or ST7735) installed and need to obtain the serial number of your Raspberry Pi 2040, follow the steps below:
 
 1 - With the BOOTSEL key pressed, connect PicoTool, download and load the firmware from the link below onto the pico:
-[here](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/serialnumber.uf2)
+[here](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/serialnumber.uf2)
 
 2 - Download and install the driver below:
 https://zadig.akeo.ie/
@@ -325,13 +325,13 @@ Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no proje
 
 ---
 
-**Versão Open heart**: disponível para todos apenas para uso pessoal (não comercial). [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30.uf2)
+**Versão Open heart**: disponível para todos apenas para uso pessoal (não comercial). [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/openheart30.uf2)
 
-**Versão Open Heart Lite**: disponível para todos apenas para uso pessoal (não comercial).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30LITE.uf2)
+**Versão Open Heart Lite**: disponível para todos apenas para uso pessoal (não comercial).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/openheart30LITE.uf2)
 
 **Extreme Edition**: versão comercial e irrestrita.
 
-IMPORTANTE: Primeiro, baixe a imagem do firmware do link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/flash_nuke.uf2) para remover quaisquer arquivos desnecessários armazenados de versões anteriores.
+IMPORTANTE: Primeiro, baixe a imagem do firmware do link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/flash_nuke.uf2) para remover quaisquer arquivos desnecessários armazenados de versões anteriores.
 
 >[!NOTE]
 >LEIA COM ATENÇÃO
@@ -517,11 +517,11 @@ O Bluetooth é indicado por um piscar do LED a 0,5Hz quando ativado.
 
 **Configurando o pico**
 
-IMPORTANTE: Primeiro, baixe a imagem do firmware do link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/flash_nuke.uf2) para remover quaisquer arquivos desnecessários armazenados de versões anteriores do Pico.
+IMPORTANTE: Primeiro, baixe a imagem do firmware do link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/flash_nuke.uf2) para remover quaisquer arquivos desnecessários armazenados de versões anteriores do Pico.
 
 Grave o firmware no Pico conectando-o ao computador enquanto mantém pressionado o botão BOOTSEL. Ele aparecerá como um dispositivo de armazenamento — basta arrastar o arquivo UF2 para ele. O dispositivo de armazenamento será desconectado automaticamente.
 
-Agora, baixe a imagem do firmware deste link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2) e grave-a no Pico repetindo o procedimento já descrito.
+Agora, baixe a imagem do firmware deste link [openheart.uf2](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/openheart30DEMO.uf2) e grave-a no Pico repetindo o procedimento já descrito.
 
 **Exemplos de instalação** [aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/tree/main/example).
 
@@ -598,7 +598,7 @@ Para obter detalhes completos, consulte o arquivo:
 Caso não tenha um dos dois displays (SSD 1306 ou ST7735) instalado e precise obter o número de série do Raspberry Pi 2040, siga os passos abaixo:
 
 1 - Com a tecla BOOTSEL pressionada, conecte o PicoTool, baixe e carregue no pico o firmware do link abaixo:
-[aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/serialnumber.uf2)
+[aqui](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/serialnumber.uf2)
 
 2 - Baixe e instale o driver abaixo:
 https://zadig.akeo.ie/
