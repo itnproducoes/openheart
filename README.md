@@ -10,13 +10,24 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 
 ## 📦 Version Information
 
-**Open Heart Version**: fully available only to project collaborators (DEMO version available to everyone). [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2)
+**Open Heart Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30.uf2)
 
 **Open Heart Lite Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30LITE.uf2)
 
 **Extreme Edition**: commercial and unrestricted version.
 
 IMPORTANT: First, download the firmware image from the link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/flash_nuke.uf2) to remove any unnecessary files stored from previous Pico versions.
+
+>[!NOTE]
+> READ CAREFULLY
+>
+> Open Heart 3.0 is unrestricted for personal use; the time limit can now be easily disabled by you.
+>
+> To disable the limitation, you must have a connected display. This is necessary to inform the user that this is a version for personal, non-commercial use and that its sale is prohibited. The commercial version is the Mega Drive Extreme Edition.
+>
+>If used without a display, it will work, but the time limitation will remain.
+>
+>If you want to use it without a display and without a time limit, use the Open Heart 3.0 Lite version or purchase the Extreme Edition.
 
 ---
 
@@ -314,13 +325,24 @@ Nota: Mega drive extreme edition IV é o codinome do Mega drive baseado no proje
 
 ---
 
-**Versão Open heart**: disponível completa apenas para colaboradores do projeto (versão DEMO disponível para todos).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30DEMO.uf2)
+**Versão Open heart**: disponível para todos apenas para uso pessoal (não comercial). [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30.uf2)
 
 **Versão Open Heart Lite**: disponível para todos apenas para uso pessoal (não comercial).[Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/openheart30LITE.uf2)
 
 **Extreme Edition**: versão comercial e irrestrita.
 
 IMPORTANTE: Primeiro, baixe a imagem do firmware do link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/buid/flash_nuke.uf2) para remover quaisquer arquivos desnecessários armazenados de versões anteriores.
+
+>[!NOTE]
+>LEIA COM ATENÇÃO
+>
+>Open Heart 3.0 é irrestrito para uso pessoal; o limite de tempo agora pode ser facilmente desativado por você.
+>
+>Para desativar a limitação, você precisa ter um monitor conectado. Isso é necessário para informar o usuário de que esta é uma versão para uso pessoal e não comercial, e que sua venda é proibida. A versão comercial é a Mega Drive Extreme Edition.
+>
+>Se usado sem um monitor, funcionará, mas o limite de tempo permanecerá.
+>
+>Se você quiser usá-lo sem um monitor e sem limite de tempo, use a versão Open Heart 3.0 Lite ou adquiria a versão Extreme Edition.
 
 ## 📋 Comparativo de Funcionalidades.
 
