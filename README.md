@@ -1,3 +1,8 @@
+# SPECIAL OFFER:
+**Mega Drive Extreme Edition IV Rev 03 Firmware for $39.90**
+
+Contact itnp@msn.com
+
 # Open Heart by 32mbit
 # Version 3.0
 
@@ -15,6 +20,7 @@ Note: Mega Drive Extreme Edition IV is the codename for the Mega Drive based on 
 **Open Heart Lite Version**: available to all users for personal, non‑commercial use. [Link download](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/openheart30LITE.uf2)
 
 **Extreme Edition**: commercial and unrestricted version.
+
 
 IMPORTANT: First, download the firmware image from the link [flash_nuke](https://github.com/DUSTINODELLOFFICIAL/openheart/blob/main/build/flash_nuke.uf2) to remove any unnecessary files stored from previous Pico versions.
 
@@ -315,6 +321,12 @@ Developed by Irineu Teza Nunes (YouTube @itnproducoes) for the Brazilian retro g
 Project inspired by 32mbit and enhanced.
 
 ---
+
+# OFERTA ESPECIAL:
+**Mega Drive Extreme Edition IV Rev 03 Firmware por $39.90**
+
+Contact itnp@msn.com
+
 
 # Open Heart by 32mbit
 # Versão 3.0
